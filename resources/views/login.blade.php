@@ -17,8 +17,8 @@
         <div class="login-form">
             <form action="" method="post">
                 {{ csrf_field() }}
-                <label for="username">UserName</label>
-                <input class="form-control" type="username" name="username" id="username">
+                <label for="email">Email</label>
+                <input class="form-control" type="email" name="email" id="email">
 
                 <label for="password">Password</label>
                 <input class="form-control" type="password" name="password" id="password">

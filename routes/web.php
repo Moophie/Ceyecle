@@ -15,14 +15,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
-});
+})->middleware('auth');
 
-Route::get('/login', function () {
-    return view('login');
-});
-
+// Signup
 Route::get('/signup', 'App\Http\Controllers\UserController@signup');
 Route::post('/signup', 'App\Http\Controllers\UserController@handleSignup');
+
+// Authentication and sessions (login/logout)
+Route::get('/login', 'App\Http\Controllers\UserController@login')->name('login');
+Route::post('/login', 'App\Http\Controllers\UserController@handleLogin');
+Route::get('/logout', 'App\Http\Controllers\UserController@handleLogout');
 
 Route::get('/profile', function () {
     return view('profile/index');

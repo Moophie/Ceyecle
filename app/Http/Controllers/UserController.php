@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
 class UserController extends Controller
@@ -24,5 +25,31 @@ class UserController extends Controller
         $user->save();
 
         return redirect('login');
+    }
+
+    public function login()
+    {
+        return view('login');
+    }
+
+    public function handleLogin(Request $request)
+    {
+        // Get the user's email and password and put them in an array
+        $credentials = $request->only(['email', 'password']);
+
+        if (Auth::attempt($credentials)) {
+            return redirect('/');
+        };
+
+        return view('login');
+    }
+
+    public function handleLogout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }
