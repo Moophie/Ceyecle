@@ -1,12 +1,12 @@
 @extends('layouts/app')
 
 @section('title')
-    Register
+    Sign up
 @endsection
 
 @section('content')
 
-<div class="register-container">
+<div class="signup-container">
     <div>
         <div class="header">
             <h1>Login</h1>
@@ -14,7 +14,7 @@
     </div>
 
     <div>
-        <div class="register-form">
+        <div class="signup-form">
             <form action="" method="post">
                 {{ csrf_field() }}
                 <label for="username">Username</label>
@@ -29,7 +29,7 @@
                     <label for="confirm-password">Confirm password</label>
                     <input class="form-control" type="password" name="confirm-password" id="password">
 
-                    <input class="btn btn-primary" type="submit" value="Register">
+                    <input class="btn btn-primary" type="submit" value="Sign up">
             </form>
         </div>
     </div>
