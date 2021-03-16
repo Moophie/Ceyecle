@@ -18,6 +18,21 @@ class UserController extends Controller
     {
         $user = new User();
 
+        // Check if email is unique
+        $email = $user::where('email', $request->input('email'))->first();
+        if ($email) {
+            $request->session()->flash('error', 'Email is already in use');
+
+            return view('signup');
+        }
+
+        // Check if both passwords are the same
+        if ($request->input('password') != $request->input('confirm-password')) {
+            $request->session()->flash('error', 'Passwords are not the same');
+
+            return view('signup');
+        }
+
         // Set object properties from the user input
         $user->username = $request->input('username');
         $user->email = $request->input('email');

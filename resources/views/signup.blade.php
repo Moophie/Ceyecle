@@ -6,18 +6,23 @@
 
 @section('content')
 
-<div class="signup-container">
-    <div>
-        <div class="header">
-            <h1>Login</h1>
-        </div>
-    </div>
+    <div class="signup-container">
+        <div>
+            <div class="header">
+                <h1>Login</h1>
 
-    <div>
-        <div class="signup-form">
-            <form action="" method="post">
-                {{ csrf_field() }}
-                <label for="username">Username</label>
+                @if ($flash = session('error'))
+                    <div class="alert alert-danger">{{ $flash }}</div>
+                @endif
+                
+            </div>
+        </div>
+
+        <div>
+            <div class="signup-form">
+                <form action="" method="post">
+                    {{ csrf_field() }}
+                    <label for="username">Username</label>
                     <input class="form-control" type="text" name="username" id="username">
 
                     <label for="email">Email</label>
@@ -30,9 +35,9 @@
                     <input class="form-control" type="password" name="confirm-password" id="password">
 
                     <input class="btn btn-primary" type="submit" value="Sign up">
-            </form>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 
 @endsection
