@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+
 <div class="login-container">
     <div>
         <div class="header">
@@ -23,9 +24,10 @@
                 <input class="form-control" type="password" name="password" id="password">
 
                 <input class="btn btn-primary" type="submit" value="Login">
-                <a href="/signup">Sign up here</a>
+                <a href="/register">Register here</a>
             </form>
         </div>
     </div>
 </div>
+
 @endsection
