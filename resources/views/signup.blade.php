@@ -15,6 +15,7 @@
                     <div class="alert alert-danger">{{ $flash }}</div>
                 @endif
                 
+                <img src="https://via.placeholder.com/150" alt="Ceyecle logo">
             </div>
         </div>
 
@@ -35,6 +36,8 @@
                     <input class="form-control" type="password" name="confirm-password" id="password">
 
                     <input class="btn btn-primary" type="submit" value="Sign up">
+
+                    <a href="/login">Log in</a>
                 </form>
             </div>
         </div>
