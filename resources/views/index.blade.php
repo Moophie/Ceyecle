@@ -6,8 +6,11 @@
 
 @section('content')
 
-<img src="https://via.placeholder.com/50" alt="Ceyecle small logo">
-<div class="current-races"><p>ETHIAS CROSS EEKLO 2021</p><img src="" alt=""></div><img src="https://via.placeholder.com/50" alt="Profile icon">
+<div class="header">
+    <img src="https://via.placeholder.com/50" alt="Ceyecle small logo">
+    <div class="current-races"><p>ETHIAS CROSS EEKLO 2021</p><img src="" alt=""></div>
+    <img src="https://via.placeholder.com/50" alt="Profile icon">
+</div>
 
 <h1>Upcoming events</h1>
 
