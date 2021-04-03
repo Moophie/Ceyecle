@@ -7,12 +7,13 @@
 @section('content')
 
 <h1>My profile</h1>
+<a href="/editProfile">Edit</a>
 
 <img src="https://via.placeholder.com/100" alt="Profile picture">
 
 <div>
-    <p>Interesses: veldrijden, fitness</p>
-    <p>Leeftijd: 23</p>
+    <p>Interesses: {{ Auth::user()->intrests }}</p>
+    <p>Leeftijd: {{ Auth::user()->age }}</p>
 </div>
 
 <h2>Deelgenomen aan</h2>

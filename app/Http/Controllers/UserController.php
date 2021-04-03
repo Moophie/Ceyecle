@@ -70,7 +70,20 @@ class UserController extends Controller
         return redirect('/');
     }
 
-    public function profile(){
+    public function profile()
+    {
         return view('profile/index');
+    }
+
+    public function editProfile()
+    {
+        return view('profile/edit');
+    }
+
+    public function updateInfo(Request $request)
+    {
+        User::where('id', Auth::user()->id)
+                ->update(['intrests' => $request->input('intrests'), 'age' => $request->input('age')]);
+        return redirect('/profile');
     }
 }

@@ -28,7 +28,10 @@ Route::post('/login', 'App\Http\Controllers\UserController@handleLogin');
 Route::get('/logout', 'App\Http\Controllers\UserController@handleLogout');
 
 // Profile
-Route::get('/profile', 'App\Http\Controllers\UserController@profile' );
+Route::get('/profile', 'App\Http\Controllers\UserController@profile')->middleware('auth');
+Route::get('/editProfile', 'App\Http\Controllers\UserController@editProfile')->middleware('auth');
+Route::post('/uploadPicture', 'App\Http\Controllers\UserController@uploadPicture')->middleware('auth');
+Route::post('/updateInfo', 'App\Http\Controllers\UserController@updateInfo')->middleware('auth');
 
 Auth::routes();
 
