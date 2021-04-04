@@ -17,9 +17,8 @@ class CreateEventsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
-            $table->dateTime('time');
+            $table->date('date');
             $table->string('thumbnail');
-            $table->foreign('route_id')->references('id')->on('cycle_routes');
             $table->timestamps();
         });
     }
