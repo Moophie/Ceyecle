@@ -93,7 +93,7 @@ class UserController extends Controller
         if ($request->hasFile('image')) {
             $imageName = time() . '-' . $request->image->getClientOriginalName();
             if (Auth::user()->profilepic) {
-                Storage::delete('/public/images/' . Auth::user()->profilepic);
+                unlink(public_path('images'). '/' . Auth::user()->profilepic);
             }
             $request->image->move(public_path('images'), $imageName);
 
