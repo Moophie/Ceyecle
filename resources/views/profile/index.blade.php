@@ -9,7 +9,9 @@
 <h1>My profile</h1>
 <a href="/editProfile">Edit</a>
 
-<img src="https://via.placeholder.com/100" alt="Profile picture">
+@if (Auth::user()->profilepic)
+<img src="{{ asset('images/' . Auth::user()->profilepic) }}" alt="Profile picture">
+@endif
 
 <div>
     <p>Interesses: {{ Auth::user()->intrests }}</p>

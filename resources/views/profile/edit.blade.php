@@ -1,19 +1,20 @@
 @extends('layouts/app')
 
 @section('title')
-    Profile
+    Profile settings
 @endsection
 
 @section('content')
 
 <h1>{{ Auth::user()->username }}</h1>
-
-<img src="https://via.placeholder.com/100" alt="Profile picture">
-
+<p>This is where you can make changes to your profile!</p>
 
 <div>
-    <form class="form-group" action="/updateInfo" method="POST">
+    <form class="form-group" action="/update" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
+        <label for="image">Profile picture</label><br>
+        <input type="file" name="image" id="image">
+
         <label for="intrests">Interesses</label>
         <input class="form-control" type="text" name="intrests" id="intrests" value="{{ Auth::user()->intrests }}">
 
