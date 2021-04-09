@@ -32,6 +32,9 @@ Route::get('/profile', 'App\Http\Controllers\UserController@profile')->middlewar
 Route::get('/editProfile', 'App\Http\Controllers\UserController@editProfile')->middleware('auth');
 Route::post('/update', 'App\Http\Controllers\UserController@update')->middleware('auth');
 
+// Social 
+Route::get('/social', 'App\Http\Controllers\SocialController@social')->middleware('auth');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
