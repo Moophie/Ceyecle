@@ -27,9 +27,11 @@ Route::get('/login', 'App\Http\Controllers\UserController@login')->name('login')
 Route::post('/login', 'App\Http\Controllers\UserController@handleLogin');
 Route::get('/logout', 'App\Http\Controllers\UserController@handleLogout');
 
-Route::get('/profile', function () {
-    return view('profile/index');
-});
+// Profile
+Route::get('/profile', 'App\Http\Controllers\UserController@profile')->middleware('auth');
+Route::get('/editProfile', 'App\Http\Controllers\UserController@editProfile')->middleware('auth');
+Route::post('/update', 'App\Http\Controllers\UserController@update')->middleware('auth');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Models\User;
 
 class UserController extends Controller
@@ -68,5 +69,41 @@ class UserController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/');
+    }
+
+    public function profile()
+    {
+        return view('profile/index');
+    }
+
+    public function editProfile()
+    {
+        return view('profile/edit');
+    }
+
+    public function update(Request $request)
+    {
+        $request->validate([
+            'intrests' => 'sometimes',
+            'age' => 'sometimes|integer|min:0',
+            'image' => 'sometimes|mimes:jpg,png,jpeg|max:5048'
+        ]);
+
+        // upload profile picture
+        if ($request->hasFile('image')) {
+            $imageName = time() . '-' . $request->image->getClientOriginalName();
+            if (Auth::user()->profilepic) {
+                unlink(public_path('images'). '/' . Auth::user()->profilepic);
+            }
+            $request->image->move(public_path('images'), $imageName);
+
+            User::where('id', Auth::user()->id)
+                ->update(['intrests' => $request->input('intrests'), 'age' => $request->input('age'), 'profilepic' => $imageName]);
+        } else {
+            User::where('id', Auth::user()->id)
+                ->update(['intrests' => $request->input('intrests'), 'age' => $request->input('age')]);
+        }
+    
+        return redirect('/profile');
     }
 }
