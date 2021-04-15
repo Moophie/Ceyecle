@@ -35,3 +35,16 @@ Route::post('/update', 'App\Http\Controllers\UserController@update')->middleware
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Friends
+Route::get('/social', function () {
+    return view('friends/index');
+})->middleware('auth');
+Route::get('/friends/search', function () {
+    return view('friends/search');
+})->middleware('auth');
+Route::get('/search', 'App\Http\Controllers\FriendController@search')->middleware('auth');
+Route::get('/friends/list', 'App\Http\Controllers\FriendController@getFriends')->middleware('auth');
+Route::get('/leaderboard', function () {
+    return view('friends/leaderboards');
+})->middleware('auth');
