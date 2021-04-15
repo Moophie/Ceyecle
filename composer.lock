@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0d2b791891a55092c8af99081d3dce71",
+    "content-hash": "6a3270dc73a16f8e240920f96dc9745b",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5096,16 +5096,16 @@
         },
         {
             "name": "laravel/homestead",
-            "version": "v12.1.0",
+            "version": "v12.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/homestead.git",
-                "reference": "c39bf89ce77705374041db38c8d6fc7387c1d67d"
+                "reference": "7d2fd62b3e955968b20123ad1fcadcf005e67695"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/homestead/zipball/c39bf89ce77705374041db38c8d6fc7387c1d67d",
-                "reference": "c39bf89ce77705374041db38c8d6fc7387c1d67d",
+                "url": "https://api.github.com/repos/laravel/homestead/zipball/7d2fd62b3e955968b20123ad1fcadcf005e67695",
+                "reference": "7d2fd62b3e955968b20123ad1fcadcf005e67695",
                 "shasum": ""
             },
             "require": {
@@ -5138,7 +5138,11 @@
                 }
             ],
             "description": "A virtual machine for web artisans.",
-            "time": "2021-02-26T04:17:03+00:00"
+            "support": {
+                "issues": "https://github.com/laravel/homestead/issues",
+                "source": "https://github.com/laravel/homestead/tree/v12.2.0"
+            },
+            "time": "2021-04-07T20:15:58+00:00"
         },
         {
             "name": "laravel/sail",
