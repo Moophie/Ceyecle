@@ -16,19 +16,19 @@
 <div class="grid">
     @if (isset($search))
         @foreach ($search as $user)
-            <div class="card" style="width:300px">
+            <div style="width:300px; border:solid 2px orange;">
                 @if ($user->profilepic)
-                    <img src="{{ asset('images/' . $user->profilepic) }}" class="card-img-top">
+                    <img src="{{ asset('images/' . $user->profilepic) }}" class="rounded-circle" style="max-width: 50px;">
                 @endif
-                <div class="card-body">
-                    <h2 class="card-title">{{ $user->username }}</h2>
-                    @if ($user->age)
-                        <p>{{ $user->age }} jaar oud</p>
-                    @endif
-                    @if ($user->intrests)
-                        <p>Interesses: {{ $user->intrests }}</p>
-                    @endif
-                </div>
+                <h2 class="card-title">{{ $user->username }}</h2>
+                <a href="">Toevoegen</a>
+                <a href="/user/{{ $user->id }}">Bekijk profiel</a>
+                <!-- @if ($user->age)
+                    <p>{{ $user->age }} jaar oud</p>
+                @endif
+                @if ($user->intrests)
+                    <p>Interesses: {{ $user->intrests }}</p>
+                @endif -->
             </div>
         @endforeach
     @endif
