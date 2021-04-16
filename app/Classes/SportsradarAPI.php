@@ -26,7 +26,10 @@ class SportsradarAPI
     {
     }
 
-    public function getEventInfo()
+    public static function getEventInfo($event_id)
     {
+        $url = 'https://api.sportradar.us/cycling/trial/v2/nl/sport_events/' . $event_id . '/summary.json?api_key=' . env('SPORTSRADAR_API_KEY');
+        $response = Http::get($url)->json();
+        return $response;
     }
 }
