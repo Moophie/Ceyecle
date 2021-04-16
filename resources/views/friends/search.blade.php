@@ -21,7 +21,7 @@
                     <img src="{{ asset('images/' . $user->profilepic) }}" class="rounded-circle" style="max-width: 50px;">
                 @endif
                 <h2 class="card-title">{{ $user->username }}</h2>
-                <a href="">Toevoegen</a>
+                <a href="/add/{{ $user->id }}">Toevoegen</a>
                 <a href="/user/{{ $user->id }}">Bekijk profiel</a>
                 <!-- @if ($user->age)
                     <p>{{ $user->age }} jaar oud</p>

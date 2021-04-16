@@ -48,3 +48,4 @@ Route::get('/friends/list', 'App\Http\Controllers\FriendController@getFriends')-
 Route::get('/leaderboard', function () {
     return view('friends/leaderboards');
 })->middleware('auth');
+Route::get('/add/{user}', 'App\Http\Controllers\FriendController@addFriend')->middleware('auth');
