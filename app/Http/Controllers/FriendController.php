@@ -43,6 +43,6 @@ class FriendController extends Controller
     {
         $currentUser = Auth::user();
         $user = User::find($user);
-        $user->friends()->attach($currentUser->id);
+        $user->friends()->attach($currentUser->id, ['status' => 'pending']);
     }
 }

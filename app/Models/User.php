@@ -53,6 +53,6 @@ class User extends Authenticatable
 
     public function friends()
     {
-        return $this->belongsToMany(User::class, 'users_friendships', 'user_id1', 'user_id2');
+        return $this->belongsToMany(User::class, 'users_friendships', 'user_id1', 'user_id2')->withPivot('status');
     }
 }
