@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('profilepic')->nullable();
             $table->integer('age')->nullable();
             $table->string('intrests')->nullable();
-            $table->integer('score')->nullable();
+            $table->integer('score')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });
