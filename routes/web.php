@@ -32,9 +32,7 @@ Route::post('/update', 'App\Http\Controllers\UserController@update')->middleware
 
 // Social 
 Route::get('/social', 'App\Http\Controllers\SocialController@social')->middleware('auth');
-
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Friends
@@ -52,3 +50,7 @@ Route::get('/leaderboard', function () {
     return view('friends/leaderboards');
 })->middleware('auth');
 Route::get('/add/{user}', 'App\Http\Controllers\FriendController@addFriend')->middleware('auth');
+
+// Rooms 
+Route::get('/rooms/create', 'App\Http\Controllers\RoomController@createRoom')->middleware('auth');
+Route::get('/rooms/{room}', 'App\Http\Controllers\RoomController@show')->middleware('auth');

@@ -21,6 +21,10 @@
     <h2>{{ $event->name }}</h2>
     <p>{{ $event->date }}</p>
     <a>Meer info</a>
+    <form action="/rooms/create" method="POST">
+        <input type="text" value="{{ $event->id }}" disabled>
+        <input type="submit">
+    </form>
 </div>
 @endforeach
 
