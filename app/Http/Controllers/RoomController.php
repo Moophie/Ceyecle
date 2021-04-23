@@ -27,7 +27,6 @@ class RoomController extends Controller
     public function show($room)
     {
         $data['room'] = Room::where('id', $room)->with('users')->first();
-        //FIX THIS
         $data['participants'] = Room::with('users')->get();
 
         return view('rooms/show', $data);
