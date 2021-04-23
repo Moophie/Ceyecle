@@ -26,7 +26,9 @@ class RoomController extends Controller
 
     public function show($room)
     {
-        $data['room'] = Room::where('id', $room)->first();
+        $data['room'] = Room::where('id', $room)->with('users')->first();
+        //FIX THIS
+        $data['participants'] = Room::with('users')->get();
 
         return view('rooms/show', $data);
     }
@@ -34,17 +36,16 @@ class RoomController extends Controller
     public function invite(Request $request)
     {
         $data['room'] = Room::where('id', $request->input('room-id'))->first();
-        $data['friends'] = User::all();
 
         return view('rooms/invite', $data);
     }
 
     public function inviteFriend(Request $request)
     {
-        $room = Room::find($request->input('room-id'));
+        $room_id = $request->input('room-id');
+        $room = Room::find($room_id);
         $room->users()->attach($request->input('friend-id'));
-        $data['room'] = Room::where('id', $request->input('room-id'))->first();
-        
-        return view('rooms/show', $data);
+
+        return redirect()->route('show-room', ['room' => $room_id]);
     }
 }
