@@ -30,7 +30,7 @@ Route::get('/profile', 'App\Http\Controllers\UserController@profile')->middlewar
 Route::get('/editProfile', 'App\Http\Controllers\UserController@editProfile')->middleware('auth');
 Route::post('/update', 'App\Http\Controllers\UserController@update')->middleware('auth');
 
-// Social 
+// Social
 Route::get('/social', 'App\Http\Controllers\SocialController@social')->middleware('auth');
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -51,7 +51,9 @@ Route::get('/leaderboard', function () {
 })->middleware('auth');
 Route::get('/add/{user}', 'App\Http\Controllers\FriendController@addFriend')->middleware('auth');
 
-// Rooms 
+// Rooms
 Route::get('/rooms/index', 'App\Http\Controllers\RoomController@index')->middleware('auth');
 Route::post('/rooms/create', 'App\Http\Controllers\RoomController@createRoom')->middleware('auth');
 Route::get('/rooms/{room}', 'App\Http\Controllers\RoomController@show')->middleware('auth');
+Route::post('/rooms/invite', 'App\Http\Controllers\RoomController@invite')->middleware('auth');
+Route::post('/rooms/inviteFriend', 'App\Http\Controllers\RoomController@inviteFriend')->middleware('auth');
