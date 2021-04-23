@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->middleware('auth');
+Route::get('/', 'App\Http\Controllers\EventController@upcomingEvents')->middleware('auth');
 
 // Signup
 Route::get('/signup', 'App\Http\Controllers\UserController@signup');
@@ -31,6 +29,9 @@ Route::get('/logout', 'App\Http\Controllers\UserController@handleLogout');
 Route::get('/profile', 'App\Http\Controllers\UserController@profile')->middleware('auth');
 Route::get('/editProfile', 'App\Http\Controllers\UserController@editProfile')->middleware('auth');
 Route::post('/update', 'App\Http\Controllers\UserController@update')->middleware('auth');
+
+// Social 
+Route::get('/social', 'App\Http\Controllers\SocialController@social')->middleware('auth');
 
 Auth::routes();
 

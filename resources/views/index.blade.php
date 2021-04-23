@@ -15,12 +15,14 @@
 <h1>Upcoming events</h1>
 
 <!-- Event template, make dynamic -->
+@foreach ($upcoming_events as $event)
 <div class="race-event">
     <img src="https://via.placeholder.com/100" alt="Event image">
-    <h2>Kuurne-Brussel-Kuurne</h2>
-    <p>28/02/2021</p>
+    <h2>{{ $event->name }}</h2>
+    <p>{{ $event->date }}</p>
     <a>Meer info</a>
 </div>
+@endforeach
 
 @component('components/navbar')
 

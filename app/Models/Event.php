@@ -11,7 +11,7 @@ class Event extends Model
 
     public function cycleRoutes()
     {
-        return $this->hasMany(CycleRoute::class);
+        return $this->hasMany(CycleRoute::class, 'event_id', 'event_code');
     }
 
     public function rooms()
