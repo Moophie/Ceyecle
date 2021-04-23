@@ -52,5 +52,6 @@ Route::get('/leaderboard', function () {
 Route::get('/add/{user}', 'App\Http\Controllers\FriendController@addFriend')->middleware('auth');
 
 // Rooms 
-Route::get('/rooms/create', 'App\Http\Controllers\RoomController@createRoom')->middleware('auth');
+Route::get('/rooms/index', 'App\Http\Controllers\RoomController@index')->middleware('auth');
+Route::post('/rooms/create', 'App\Http\Controllers\RoomController@createRoom')->middleware('auth');
 Route::get('/rooms/{room}', 'App\Http\Controllers\RoomController@show')->middleware('auth');

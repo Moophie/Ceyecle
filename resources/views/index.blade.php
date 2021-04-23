@@ -22,7 +22,10 @@
     <p>{{ $event->date }}</p>
     <a>Meer info</a>
     <form action="/rooms/create" method="POST">
-        <input type="text" value="{{ $event->id }}" disabled>
+
+        {{ csrf_field() }}
+
+        <input type="text" value="{{ $event->id }}" name="event-id" hidden>
         <input type="submit">
     </form>
 </div>

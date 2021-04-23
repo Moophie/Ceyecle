@@ -3,17 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Room;
 
 class RoomController extends Controller
 {
-    //
-    public function createRoom(){
-
-        return view('rooms/index');
+    public function index()
+    {
+        $data['rooms'] = Room::all();
+        return view('rooms/index', $data);
     }
 
-    public function show(){
+    //
+    public function createRoom(Request $request)
+    {
+        $room = new Room();
+        $room->event_id = $request->input('event-id');
+        $room->save();
 
+        return redirect('rooms/index');
+    }
+
+    public function show()
+    {
         return view('rooms/show');
     }
 }
