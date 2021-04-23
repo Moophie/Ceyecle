@@ -15,7 +15,7 @@ class CreateCycleRoutesTable extends Migration
     {
         Schema::create('cycle_routes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('event_id')->constrained();
+            $table->string('event_id');
             $table->string('name');
             $table->string('profile_img');
             $table->float('distance');

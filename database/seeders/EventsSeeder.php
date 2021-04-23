@@ -21,6 +21,7 @@ class EventsSeeder extends Seeder
             foreach ($championship['stages'] as $event) {
                 $e = new Event();
                 $e->name = $event['description'];
+                $e->event_code = $event['id'];
                 $e->description = "";
                 $e->date = $event['scheduled'];
                 $e->thumbnail = "";
