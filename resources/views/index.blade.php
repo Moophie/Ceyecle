@@ -26,7 +26,7 @@
         {{ csrf_field() }}
 
         <input type="text" value="{{ $event->id }}" name="event-id" hidden>
-        <input type="submit">
+        <input type="submit" value="Create room">
     </form>
 </div>
 @endforeach

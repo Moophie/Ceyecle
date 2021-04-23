@@ -23,8 +23,10 @@ class RoomController extends Controller
         return redirect('rooms/index');
     }
 
-    public function show()
+    public function show($room)
     {
-        return view('rooms/show');
+        $data['room'] = Room::where('id', $room)->first();
+
+        return view('rooms/show', $data);
     }
 }

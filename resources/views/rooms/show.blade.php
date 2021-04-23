@@ -1,5 +1,5 @@
 @extends('layouts/app')
 
 @section('content')
-<h1>hello</h1>
+<h1>{{ $room->event->name }}</h1>
 @endsection
