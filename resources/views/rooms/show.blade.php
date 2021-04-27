@@ -12,7 +12,7 @@
     <h1>Chat</h1>
     <div class="show-chat">
         @foreach ($room->messages as $message)
-        <p>{{ $message->content }}</p>
+        <p>{{ $message->user->username}}: {{ $message->content }}</p>
     @endforeach
     </div>
     <form action="/rooms/chat" method="POST">
