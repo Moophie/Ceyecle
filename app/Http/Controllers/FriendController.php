@@ -11,27 +11,20 @@ use Illuminate\Support\Facades\View;
 
 class FriendController extends Controller
 {
-    // public function getFriends()
-    // {
-    //     // Get all friends of user and put it in an array
-    //     $user = Auth::user();
-    //     $friends = UsersFriendship::where('status', '=', 'confirmed')
-    //                                     ->where(function ($q) use ($user) {
-    //                                         $q->where('user_id1', '=', $user->id)
-    //                                         ->orWhere('user_id2', '=', $user->id);
-    //                                     })->get();
-    //     $data = [];
-    //     foreach ($friends as $friend) {
-    //         if ($friend->user_id1 == $user->id) {
-    //             $user_id = $friend->user_id2;
-    //         } else {
-    //             $user_id = $friend->user_id1;
-    //         }
-    //         array_push($data, User::find($user_id));
-    //     }
+    public function friendRequests()
+    {
+        // Get all friend requests of user and put it in an array
+        $user = Auth::user();
+        $friends = UsersFriendship::where([['status', '=', 'pending'], ['user_id1', '=', $user->id]])->get();
+
+        $data = [];
+        foreach ($friends as $friend) {
+            $user_id = $friend->user_id2;
+            array_push($data, User::find($user_id));
+        }
         
-    //     return ['friends'=>$data];
-    // }
+        return view('friends/list', ['requests'=>$data]);
+    }
 
     public function search(Request $request)
     {
@@ -46,5 +39,12 @@ class FriendController extends Controller
         $user = User::find($user);
         $user->friends()->attach($currentUser->id, ['status' => 'pending']);
         return view('friends/search');
+    }
+
+    public function acceptRequest($user)
+    {
+        $currentUser = Auth::user();
+        UsersFriendship::where([['status', '=', 'pending'], ['user_id2', '=', $user], ['user_id1', '=', $currentUser->id]])->update(['status' => 'confirmed']);
+        return redirect('friends/list');
     }
 }
