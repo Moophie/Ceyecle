@@ -10,7 +10,11 @@
     @endforeach
 
     <h1>Chat</h1>
-    <div class="show-chat"></div>
+    <div class="show-chat">
+        @foreach ($room->messages as $message)
+        <p>{{ $message->content }}</p>
+    @endforeach
+    </div>
     <form action="/rooms/chat" method="POST">
         {{ csrf_field() }}
 
