@@ -5,12 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Room;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Builder;
 
 class RoomController extends Controller
 {
     public function index()
     {
-        $data['rooms'] = Room::all();
+
+        $data['rooms'] = Room::whereHas('users', function (Builder $query) {
+            $query->where('user_id', '=', Auth::user()->id);
+        })->get();
+
         return view('rooms/index', $data);
     }
 
@@ -20,6 +26,9 @@ class RoomController extends Controller
         $room = new Room();
         $room->event_id = $request->input('event-id');
         $room->save();
+
+        $room = Room::find($room->id);
+        $room->users()->attach(Auth::user()->id);
 
         return redirect('rooms/index');
     }
