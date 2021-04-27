@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Room;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Facades\Log;
+use App\Models\Message;
+
 
 class RoomController extends Controller
 {
@@ -25,7 +26,7 @@ class RoomController extends Controller
         $event_id = $request->input('event-id');
         $existing_room = Room::whereHas('users', function (Builder $query) {
             $query->where('user_id', '=', Auth::user()->id);
-        })->whereHas('users', function (Builder $query) use($event_id) {
+        })->whereHas('users', function (Builder $query) use ($event_id) {
             $query->where('event_id', '=', $event_id);
         })
         ->get();
@@ -64,5 +65,16 @@ class RoomController extends Controller
         $room->users()->attach($request->input('friend-id'));
 
         return redirect()->route('show-room', ['room' => $room_id]);
+    }
+
+    public function sendMessage(Request $request)
+    {
+        $message = new Message();
+        $message->user_id = $request->input('user-id');
+        $message->room_id = $request->input('room-id');
+        $message->content = $request->input('message-content');
+        $message->save();
+
+        return redirect()->route('show-room', ['room' => $request->input('room-id')]);
     }
 }

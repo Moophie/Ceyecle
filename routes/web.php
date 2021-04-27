@@ -57,3 +57,4 @@ Route::post('/rooms/create', 'App\Http\Controllers\RoomController@createRoom')->
 Route::get('/rooms/{room}', 'App\Http\Controllers\RoomController@show')->name('show-room')->middleware('auth');
 Route::post('/rooms/invite', 'App\Http\Controllers\RoomController@invite')->middleware('auth');
 Route::post('/rooms/inviteFriend', 'App\Http\Controllers\RoomController@inviteFriend')->middleware('auth');
+Route::post('/rooms/chat', 'App\Http\Controllers\RoomController@sendMessage')->middleware('auth');
