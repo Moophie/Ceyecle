@@ -8,8 +8,18 @@
     @foreach ($room->users as $user)
         <p>{{ $user->username }}</p>
     @endforeach
-    <form action="/rooms/invite" method="POST">
 
+    <h1>Chat</h1>
+    <div class="show-chat"></div>
+    <form action="/rooms/chat" method="POST">
+        {{ csrf_field() }}
+
+        <input type="text" value="{{ $room->id }}" name="room-id" hidden>
+        <input type="text" value="{{ Auth::user()->id }}" name="user-id" hidden>
+        <input type="textarea" name="message-content">
+        <input type="submit" value="Send message">
+    </form>
+    <form action="/rooms/invite" method="POST">
         {{ csrf_field() }}
 
         <input type="text" value="{{ $room->id }}" name="room-id" hidden>
