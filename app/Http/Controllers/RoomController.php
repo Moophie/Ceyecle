@@ -4,15 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Room;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Log;
 
 class RoomController extends Controller
 {
     public function index()
     {
-
         $data['rooms'] = Room::whereHas('users', function (Builder $query) {
             $query->where('user_id', '=', Auth::user()->id);
         })->get();
@@ -23,12 +22,22 @@ class RoomController extends Controller
     //
     public function createRoom(Request $request)
     {
-        $room = new Room();
-        $room->event_id = $request->input('event-id');
-        $room->save();
+        $event_id = $request->input('event-id');
+        $existing_room = Room::whereHas('users', function (Builder $query) {
+            $query->where('user_id', '=', Auth::user()->id);
+        })->whereHas('users', function (Builder $query) use($event_id) {
+            $query->where('event_id', '=', $event_id);
+        })
+        ->get();
 
-        $room = Room::find($room->id);
-        $room->users()->attach(Auth::user()->id);
+        if ($existing_room->isEmpty()) {
+            $room = new Room();
+            $room->event_id = $event_id;
+            $room->save();
+
+            $room = Room::find($room->id);
+            $room->users()->attach(Auth::user()->id);
+        }
 
         return redirect('rooms/index');
     }
