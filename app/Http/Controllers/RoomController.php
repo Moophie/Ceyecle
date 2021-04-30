@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\ProCyclingStats;
 use Illuminate\Http\Request;
 use App\Models\Room;
 use Illuminate\Support\Facades\Auth;
@@ -47,6 +48,7 @@ class RoomController extends Controller
     {
         $data['room'] = Room::where('id', $room)->with('users')->with('messages')->first();
         $data['participants'] = Room::with('users')->get();
+        $data['profile'] = ProCyclingStats::getRaceInfo("test");
 
         return view('rooms/show', $data);
     }
