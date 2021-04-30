@@ -5,9 +5,19 @@
 @endsection
 
 @section('content')
+
+    <h2>Vriendschapsverzoeken</h2>
+    @foreach($requests as $request)
+        <div>
+            <h3>{{ $request->username }}</h3>
+            <a href="accept/{{ $request->id }}">Accepteren</a>
+        </div>
+    @endforeach
+
+    <h2>Vrienden</h2>
     @foreach($friends as $friend)
         <div>
-            <h2>{{ $friend->username }}</h2>
+            <h3>{{ $friend->username }}</h3>
         </div>
     @endforeach
 
