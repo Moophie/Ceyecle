@@ -15,9 +15,11 @@ class CreateRacesTable extends Migration
     {
         Schema::create('races', function (Blueprint $table) {
             $table->id();
+            $table->string('class');
             $table->string('name');
             $table->date('startdate');
             $table->date('enddate');
+            $table->string('pcs_url');
             $table->timestamps();
         });
     }

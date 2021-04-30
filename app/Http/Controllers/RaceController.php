@@ -10,7 +10,7 @@ class RaceController extends Controller
 {
     public function upcomingRaces()
     {
-        $upcoming_races = Race::where('startdate', '>=', Carbon::now('Europe/Brussels'))->orderBy('date', 'ASC')->limit(3)->get();
+        $upcoming_races = Race::where('startdate', '>=', Carbon::now('Europe/Brussels'))->orderBy('startdate', 'ASC')->limit(3)->get();
         return view('index', ['upcoming_races' => $upcoming_races]);
     }
 }
