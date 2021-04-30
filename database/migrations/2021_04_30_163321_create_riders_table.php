@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCycleRoutesTable extends Migration
+class CreateRidersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateCycleRoutesTable extends Migration
      */
     public function up()
     {
-        Schema::create('cycle_routes', function (Blueprint $table) {
+        Schema::create('riders', function (Blueprint $table) {
             $table->id();
-            $table->string('event_id');
-            $table->string('name');
-            $table->string('profile_img');
-            $table->float('distance');
-            $table->string('type');
-            $table->dateTime('time');
+            $table->string('firstname');
+            $table->string('lastname');
+            $table->integer('age');
+            $table->string('nationality');
+            $table->integer('team_id');
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ class CreateCycleRoutesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cycle_routes');
+        Schema::dropIfExists('riders');
     }
 }

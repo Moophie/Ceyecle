@@ -12,20 +12,19 @@
     <img src="https://via.placeholder.com/50" alt="Profile icon">
 </div>
 
-<h1>Upcoming events</h1>
+<h1>Upcoming Races</h1>
 
-<!-- Event template, make dynamic -->
-@foreach ($upcoming_events as $event)
-<div class="race-event">
-    <img src="https://via.placeholder.com/100" alt="Event image">
-    <h2>{{ $event->name }}</h2>
-    <p>{{ $event->date }}</p>
+@foreach ($upcoming_races as $race)
+<div class="race">
+    <img src="https://via.placeholder.com/100" alt="Race image">
+    <h2>{{ $race->name }}</h2>
+    <p>{{ $race->date }}</p>
     <a>Meer info</a>
     <form action="/rooms/create" method="POST">
 
         {{ csrf_field() }}
 
-        <input type="text" value="{{ $event->id }}" name="event-id" hidden>
+        <input type="text" value="{{ $race->id }}" name="race-id" hidden>
         <input type="submit" value="Create room">
     </form>
 </div>

@@ -1,7 +1,7 @@
 @extends('layouts/app')
 
 @section('content')
-    <h1>{{ $room->event->name }}</h1>
+    <h1>{{ $room->race->name }}</h1>
     <img src="/images/stage_profiles/example.jpg" alt="" width="300px">
 
     @php

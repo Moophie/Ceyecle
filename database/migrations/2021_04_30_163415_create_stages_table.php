@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCompetitorsTable extends Migration
+class CreateStagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateCompetitorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('competitors', function (Blueprint $table) {
+        Schema::create('stages', function (Blueprint $table) {
             $table->id();
-            $table->string('firstname');
-            $table->string('lastname');
-            $table->integer('age');
-            $table->string('nationality');
-            $table->integer('team_id');
+            $table->string('name');
+            $table->date('date');
+            $table->integer('race_id');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateCompetitorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cyclers');
+        Schema::dropIfExists('stages');
     }
 }

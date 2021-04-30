@@ -14,9 +14,9 @@ class Room extends Model
         return $this->belongsToMany(User::class, 'users_rooms');
     }
 
-    public function event()
+    public function race()
     {
-        return $this->belongsTo(Event::class);
+        return $this->belongsTo(Race::class);
     }
 
     public function messages()
