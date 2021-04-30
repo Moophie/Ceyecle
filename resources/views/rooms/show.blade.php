@@ -2,7 +2,9 @@
 
 @section('content')
     <h1>{{ $room->event->name }}</h1>
-    <img src="/images/stage_profiles/example.jpg" alt="">
+    <img src="/images/stage_profiles/example.jpg" alt="" width="300px">
+
+    <h1>Participants</h1>
 
     <h1>Viewers</h1>
     @foreach ($room->users as $user)
