@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCyclersRacesTable extends Migration
+class CreateCompetitorsRacesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateCyclersRacesTable extends Migration
      */
     public function up()
     {
-        Schema::create('cyclers_races', function (Blueprint $table) {
+        Schema::create('competitors_races', function (Blueprint $table) {
             $table->id();
-            $table->integer('cycler_id');
+            $table->integer('competitor_id');
             $table->integer('race_id');
             $table->timestamps();
         });
