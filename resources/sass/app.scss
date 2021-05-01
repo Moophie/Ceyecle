@@ -1,8 +1,70 @@
-// Fonts
+/*// Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
 @import 'variables';
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import '~bootstrap/scss/bootstrap'; 
+
+*/
+
+body{
+    margin: 0;
+}
+
+.logo{
+    width: 35%;
+    margin-left: 145px;
+    margin-top: 75px;
+}
+
+form{
+    margin-top: 60px;
+    margin-left: 150px;
+
+}
+
+#email{
+  border: 2px solid #3C7A84;
+  padding: 10px;
+  border-radius: 25px 25px 0px 0px;
+}
+
+#password{
+    border: 2px solid #3C7A84;
+  padding: 10px;
+  border-radius: 0px  0px 25px 25px;
+}
+
+#btndeco{
+    border: 2px solid #3C7A84;
+    border-radius: 0px  25px 25px 0px;
+    padding-right: 50px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 130px;
+}
+
+button img{
+    width: 10px;
+    
+}
+
+#btn{
+    border-radius: 50px;
+    float: right;
+    margin-right: 170px;
+    position: relative;
+}
+
+hr{
+    border: 10px solid #FF7F11;
+    width: 99%;
+    margin: 0;
+}
+
+.winnaar{
+    width: 514px;
+    height: 400px;
+}

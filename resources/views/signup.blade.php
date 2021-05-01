@@ -9,7 +9,7 @@
     <div class="signup-container">
         <div>
             <div class="header">
-                <h1>Login</h1>
+                <h1>signup</h1>
 
                 @if ($flash = session('error'))
                     <div class="alert alert-danger">{{ $flash }}</div>
