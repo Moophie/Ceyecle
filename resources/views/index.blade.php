@@ -10,18 +10,20 @@
 <img class="profiel" src="../public/images/Profiel_2-8.png" alt="">
 
 <div class="header">
-    <div class="current-races"><h1 class="titel">Ethias Cross Eeklo 2021</h1></div>
+    <p>Ethias Cross Eeklo 2021</p>
 </div>
 
-<h1>Upcoming events</h1>
+<h1>Opkomende evenementen</h1>
 
 <!-- Event template, make dynamic -->
 @foreach ($upcoming_events as $event)
 <div class="race-event">
-    <img src="https://via.placeholder.com/100" alt="Event image">
+    <div class="evenement">
+    <img class="race" src="https://via.placeholder.com/100" alt="Event image">
     <h2>{{ $event->name }}</h2>
     <p>{{ $event->date }}</p>
     <a>Meer info</a>
+    </div>
     <form action="/rooms/create" method="POST">
 
         {{ csrf_field() }}

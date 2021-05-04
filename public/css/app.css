@@ -75,22 +75,43 @@ hr {
 .logoklein {
   width: 50px;
   margin-left: 10px;
-  margin-top: 10px;
   float: left;
 }
 
 .profiel {
   width: 50px;
   margin-right: 10px;
-  margin-top: 10px;
   float: right;
 }
 
 .header {
-  background-color: aqua;
-  width: 300px;
+  margin-top: 20px;
+  width: 230px;
+  height: 45px;
+  margin-left: 130px;
+  border-radius: 25px;
+  background-color: #D9E0E0;
+  border: 2px solid #3C7A84;
 }
 
-.titel {
-  color: aqua;
+.header p {
+  text-align: center;
+  padding-top: -11px;
+}
+
+.evenement {
+  width: 300px;
+  height: 250px;
+  margin-left: 100px;
+  border: 3px solid #FF7F11;
+  border-radius: 30px;
+}
+
+h1, h2, p {
+  text-align: center;
+}
+
+.race {
+  margin-left: 100px;
+  margin-top: 15px;
 }
