@@ -35,6 +35,12 @@ form {
   border-radius: 0px 0px 25px 25px;
 }
 
+#mail {
+  border: 2px solid #3C7A84;
+  padding: 10px;
+  border-radius: 0px 0px 0px 0px;
+}
+
 #btndeco {
   border: 2px solid #3C7A84;
   border-radius: 0px 25px 25px 0px;
@@ -64,4 +70,27 @@ hr {
 .winnaar {
   width: 514px;
   height: 400px;
+}
+
+.logoklein {
+  width: 50px;
+  margin-left: 10px;
+  margin-top: 10px;
+  float: left;
+}
+
+.profiel {
+  width: 50px;
+  margin-right: 10px;
+  margin-top: 10px;
+  float: right;
+}
+
+.header {
+  background-color: aqua;
+  width: 300px;
+}
+
+.titel {
+  color: aqua;
 }
