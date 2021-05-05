@@ -30,11 +30,9 @@ Route::get('/profile', 'App\Http\Controllers\UserController@profile')->middlewar
 Route::get('/editProfile', 'App\Http\Controllers\UserController@editProfile')->middleware('auth');
 Route::post('/update', 'App\Http\Controllers\UserController@update')->middleware('auth');
 
-// Social 
+// Social
 Route::get('/social', 'App\Http\Controllers\SocialController@social')->middleware('auth');
-
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Friends
@@ -51,3 +49,11 @@ Route::get('/friends/accept/{user}', 'App\Http\Controllers\FriendController@acce
 Route::get('/leaderboard', function () {
     return view('friends/leaderboards');
 })->middleware('auth');
+
+// Rooms
+Route::get('/rooms/index', 'App\Http\Controllers\RoomController@index')->middleware('auth');
+Route::post('/rooms/create', 'App\Http\Controllers\RoomController@createRoom')->middleware('auth');
+Route::get('/rooms/{room}', 'App\Http\Controllers\RoomController@show')->name('show-room')->middleware('auth');
+Route::post('/rooms/invite', 'App\Http\Controllers\RoomController@invite')->middleware('auth');
+Route::post('/rooms/inviteFriend', 'App\Http\Controllers\RoomController@inviteFriend')->middleware('auth');
+Route::post('/rooms/chat', 'App\Http\Controllers\RoomController@sendMessage')->middleware('auth');

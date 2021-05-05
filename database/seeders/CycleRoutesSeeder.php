@@ -51,15 +51,14 @@ class CycleRoutesSeeder extends Seeder
             //foreach ($championship['stages'] as $event) {
             $stage = $championship['stages'][2];
             foreach ($stage['stages'] as $stage) {
-                Log::info(print_r($stage['id'], true));
                 $event_info = SportsradarAPI::getEventInfo($stage['id']);
-                Log::info(print_r($event_info, true));
                 $event_info = $event_info['stage'];
 
                 $s = new CycleRoute();
                 $s->event_id = $event_info['parents'][0]['id'];
                 $s->name = $event_info['departure_city'] . ' - ' . $event_info['arrival_city'];
                 $s->profile_img = '';
+                
                 if (!empty($event_info['distance'])) {
                     $s->distance = $event_info['distance'];
                 } else {

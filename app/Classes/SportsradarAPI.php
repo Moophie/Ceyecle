@@ -22,8 +22,9 @@ class SportsradarAPI
         return $response['stages'];
     }
 
-    public function getCyclerInfo()
+    public function getCyclerInfo($competitor_id)
     {
+        $url = 'https://api.sportradar.us/cycling/trial/v2/nl/competitors/' . $competitor_id . '/profile.json?api_key=' . env('SPORTSRADAR_API_KEY');
     }
 
     public static function getEventInfo($event_id)
