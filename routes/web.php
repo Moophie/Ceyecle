@@ -44,6 +44,7 @@ Route::get('/friends/search', function () {
 })->middleware('auth');
 Route::get('/search', 'App\Http\Controllers\FriendController@search')->middleware('auth');
 Route::get('/add/{user}', 'App\Http\Controllers\FriendController@addFriend')->middleware('auth');
+Route::get('/user/{user}', 'App\Http\Controllers\FriendController@getFriend')->middleware('auth');
 Route::get('/friends/list', 'App\Http\Controllers\FriendController@friendRequests')->middleware('auth');
 Route::get('/friends/accept/{user}', 'App\Http\Controllers\FriendController@acceptRequest')->middleware('auth');
 Route::get('/leaderboard', function () {

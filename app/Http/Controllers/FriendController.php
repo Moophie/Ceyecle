@@ -11,6 +11,12 @@ use Illuminate\Support\Facades\View;
 
 class FriendController extends Controller
 {
+    public function getFriend($userId)
+    {
+        $user = User::find($userId);
+        return view('friends/profile', $user);
+    }
+
     public function friendRequests()
     {
         // Get all friend requests of user and put it in an array
