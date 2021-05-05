@@ -12,7 +12,9 @@
         <img src="{{ asset('images/' . $profilepic) }}" alt="Profile picture">
     @endif
 
+<!-- TODO: conditional if already friends or if pending request -->
     <a href="/add/{{ $id }}">Toevoegen</a>
+<!-- TODO: if received pending request => add accept request button -->
 
     <div>
         <p>Interesses: {{ $intrests }}</p>
