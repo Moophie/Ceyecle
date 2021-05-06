@@ -69,5 +69,19 @@ class ProCyclingStats
         return "";
     }
 
+    public static function getRidersFromTeam($team_url){
+        $url = self::BASE_URL . "team/" . $team_url;
+        $client = new Client();
+        $crawler = $client->request('GET', $url);
+        $riders = $crawler->filter('.ttabs.tabb a')->each(function (Crawler $node, $i) {
+            $rider['name'] = $node->text();
+            $rider['pcs_url'] = $node->attr('href');
+
+            return $rider;
+        });
+
+        return $riders;
+    }
+
 
 }
