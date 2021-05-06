@@ -43,4 +43,31 @@ class ProCyclingStats
 
         return $race_info;
     }
+
+    public static function getAllTeams()
+    {
+        $url = self::BASE_URL . "teams.php";
+        $client = new Client();
+        $crawler = $client->request('GET', $url);
+
+        $teams = $crawler->filter('.mob_columns1 a')->each(function (Crawler $node, $i) {
+            $team['name'] = $node->text();
+            $team['pcs_url'] = $node->attr('href');
+
+            return $team;
+        });
+
+        return $teams;
+    }
+
+    public static function getTeamInfo($team_url)
+    {
+        $url = self::BASE_URL . "team/" . $team_url;
+        $client = new Client();
+        $crawler = $client->request('GET', $url);
+
+        return "";
+    }
+
+
 }
