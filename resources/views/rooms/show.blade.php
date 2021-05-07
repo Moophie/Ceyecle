@@ -4,10 +4,6 @@
     <h1>{{ $room->race->name }}</h1>
     <img src="/images/stage_profiles/example.jpg" alt="" width="300px">
 
-    @php
-        dd($profile);   
-    @endphp
-
     <h1>Participants</h1>
 
     <h1>Viewers</h1>
