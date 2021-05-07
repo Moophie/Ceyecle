@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', 'App\Http\Controllers\EventController@upcomingEvents')->middleware('auth');
+Route::get('/', 'App\Http\Controllers\RaceController@upcomingRaces')->middleware('auth');
 
 // Signup
 Route::get('/signup', 'App\Http\Controllers\UserController@signup');

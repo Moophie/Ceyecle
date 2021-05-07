@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEventsTable extends Migration
+class CreateRidersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateEventsTable extends Migration
      */
     public function up()
     {
-        Schema::create('events', function (Blueprint $table) {
+        Schema::create('riders', function (Blueprint $table) {
             $table->id();
-            $table->string('event_code');
-            $table->string('name');
-            $table->string('description');
-            $table->date('date');
-            $table->string('thumbnail');
+            $table->string('firstname');
+            $table->string('lastname');
+            $table->integer('age');
+            $table->string('nationality');
+            $table->integer('team_id');
+            $table->string('pcs_url');
             $table->timestamps();
         });
     }
@@ -31,6 +32,6 @@ class CreateEventsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('events');
+        Schema::dropIfExists('riders');
     }
 }

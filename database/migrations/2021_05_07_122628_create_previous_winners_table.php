@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCycleRoutesTable extends Migration
+class CreatePreviousWinnersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateCycleRoutesTable extends Migration
      */
     public function up()
     {
-        Schema::create('cycle_routes', function (Blueprint $table) {
+        Schema::create('previous_winners', function (Blueprint $table) {
             $table->id();
-            $table->string('event_id');
-            $table->string('name');
-            $table->string('profile_img');
-            $table->float('distance');
-            $table->string('type');
-            $table->dateTime('time');
+            $table->integer('rider_id');
+            $table->integer('race_id');
+            $table->date('year');
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ class CreateCycleRoutesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cycle_routes');
+        Schema::dropIfExists('previous_winners');
     }
 }
