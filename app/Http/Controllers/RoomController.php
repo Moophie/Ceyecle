@@ -49,8 +49,10 @@ class RoomController extends Controller
 
     public function show($room)
     {
-        $data['room'] = Room::where('id', $room)->with('users')->with('messages')->first();
+        $room = Room::find($room);
+        $data['room'] = Room::where('id', $room->id)->with('users')->with('messages')->first();
         $data['participants'] = Room::with('users')->get();
+        $data['question'] = $room->questions()->where('status', 'unanswered')->first();
 
         return view('rooms/show', $data);
     }
