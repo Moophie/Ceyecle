@@ -70,11 +70,14 @@ class ProCyclingStats
     }
 
     public static function getRidersFromTeam($team_url){
-        $url = self::BASE_URL . "team/" . $team_url;
+        $url = self::BASE_URL . $team_url;
         $client = new Client();
         $crawler = $client->request('GET', $url);
         $riders = $crawler->filter('.ttabs.tabb a')->each(function (Crawler $node, $i) {
-            $rider['name'] = $node->text();
+            $fullname = $node->text();
+            $fullname = explode(' ', $fullname, 2);
+            $rider['firstname'] = $fullname[1];
+            $rider['lastname'] = $fullname[0];
             $rider['pcs_url'] = $node->attr('href');
 
             return $rider;
@@ -82,6 +85,16 @@ class ProCyclingStats
 
         return $riders;
     }
+
+    public static function getRiderInfo($rider_url)
+    {
+        $url = self::BASE_URL . $rider_url;
+        $client = new Client();
+        $crawler = $client->request('GET', $url);
+
+        return "";
+    }
+
 
 
 }

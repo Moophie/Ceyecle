@@ -20,6 +20,7 @@ class CreateRidersTable extends Migration
             $table->integer('age');
             $table->string('nationality');
             $table->integer('team_id');
+            $table->string('pcs_url');
             $table->timestamps();
         });
     }
