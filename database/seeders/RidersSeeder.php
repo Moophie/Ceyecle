@@ -29,7 +29,6 @@ class RidersSeeder extends Seeder
                 //$rider = ProCyclingstats::getRiderInfo($r->pcs_url);
                 $r->age = 0;
                 $r->nationality = "Unknown";
-                
                 $r->save();
                 sleep(5);
             }

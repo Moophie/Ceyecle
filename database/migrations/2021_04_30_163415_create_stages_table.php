@@ -16,8 +16,11 @@ class CreateStagesTable extends Migration
         Schema::create('stages', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->date('date');
+            $table->dateTime('date');
+            $table->string('departure');
+            $table->string('arrival');
             $table->integer('race_id');
+            $table->string('pcs_url');
             $table->timestamps();
         });
     }

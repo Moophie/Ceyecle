@@ -1,13 +1,13 @@
 <?php
 namespace App\Classes;
 
+use DateTime;
 use Illuminate\Support\Facades\Http;
 use Goutte\Client;
 use Symfony\Component\DomCrawler\Crawler;
 
 class ProCyclingStats
 {
-
     const BASE_URL = "https://www.procyclingstats.com/";
 
     public static function getAllRaces()
@@ -31,7 +31,7 @@ class ProCyclingStats
     {
         $gc_result = "/result";
 
-        if($class === "2.UWT"){
+        if ($class === "2.UWT") {
             $gc_result = "/gc";
         }
         
@@ -42,6 +42,33 @@ class ProCyclingStats
         $race_info['enddate'] = $crawler->filter('.infolist li div:nth-of-type(2)')->eq(1)->text();
 
         return $race_info;
+    }
+
+    public static function getStagesFromRace($race_url)
+    {
+        $url = self::BASE_URL . $race_url . "gc/overview";
+        $client = new Client();
+        $crawler = $client->request('GET', $url);
+        $stages = $crawler->filter('.pad2 a')->each(function (Crawler $node, $i) {
+            $stage['name'] = $node->text();
+            $stage['pcs_url'] = $node->attr('href');
+
+            return $stage;
+        });
+
+        return $stages;
+    }
+
+    public static function getStageInfo($stage_url){        
+        $url = self::BASE_URL . $stage_url;
+        $client = new Client();
+        $crawler = $client->request('GET', $url);
+        $timeInText = $crawler->filter('.infolist li div:nth-of-type(2)')->eq(0)->text();
+        $stage_info['date'] = DateTime::createFromFormat('d M Y, H:i', $timeInText);
+        $stage_info['departure'] = $crawler->filter('.infolist li div:nth-of-type(2)')->eq(5)->text();
+        $stage_info['arrival'] = $crawler->filter('.infolist li div:nth-of-type(2)')->eq(6)->text();
+
+        return $stage_info;
     }
 
     public static function getAllTeams()
@@ -62,14 +89,15 @@ class ProCyclingStats
 
     public static function getTeamInfo($team_url)
     {
-        $url = self::BASE_URL . "team/" . $team_url;
+        $url = self::BASE_URL . $team_url;
         $client = new Client();
         $crawler = $client->request('GET', $url);
 
         return "";
     }
 
-    public static function getRidersFromTeam($team_url){
+    public static function getRidersFromTeam($team_url)
+    {
         $url = self::BASE_URL . $team_url;
         $client = new Client();
         $crawler = $client->request('GET', $url);
@@ -94,7 +122,4 @@ class ProCyclingStats
 
         return "";
     }
-
-
-
 }
