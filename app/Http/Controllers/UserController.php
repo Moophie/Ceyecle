@@ -12,7 +12,7 @@ class UserController extends Controller
 {
     public function signup()
     {
-        return view('signup');
+        return view('auth/register');
     }
 
     public function handleSignup(Request $request)
@@ -24,14 +24,14 @@ class UserController extends Controller
         if ($email) {
             $request->session()->flash('error', 'Email is already in use');
 
-            return view('signup');
+            return view('auth/register');
         }
 
         // Check if both passwords are the same
         if ($request->input('password') != $request->input('confirm-password')) {
             $request->session()->flash('error', 'Passwords are not the same');
 
-            return view('signup');
+            return view('auth/register');
         }
 
         // Set object properties from the user input
@@ -40,12 +40,12 @@ class UserController extends Controller
         $user->password = Hash::make($request->input('password')); // Hash the password with BCRYPT
         $user->save();
 
-        return redirect('login');
+        return redirect('auth/login');
     }
 
     public function login()
     {
-        return view('login');
+        return view('auth/login');
     }
 
     public function handleLogin(Request $request)
@@ -59,7 +59,7 @@ class UserController extends Controller
 
         $request->session()->flash('error', 'Something went wrong');
 
-        return view('login');
+        return view('auth/login');
     }
 
     public function handleLogout(Request $request)

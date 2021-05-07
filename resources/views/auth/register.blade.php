@@ -72,6 +72,6 @@
 <br>
 <hr>
 <div class="winnaar" style="background-image: url(../public/images/winnaar.png);height:400px;width:514px;" >
-<button id="btndeco" ><a href="#">{{ __('Log in') }}</a></button> 
+<button id="btndeco" ><a href="login">{{ __('Log in') }}</a></button> 
 </div>
 @endsection

@@ -17,13 +17,15 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', 'App\Http\Controllers\RaceController@upcomingRaces')->middleware('auth');
 
 // Signup
-Route::get('/signup', 'App\Http\Controllers\UserController@signup');
-Route::post('/signup', 'App\Http\Controllers\UserController@handleSignup');
+Route::get('/register', 'App\Http\Controllers\UserController@signup');
+Route::post('/register', 'App\Http\Controllers\UserController@handleSignup');
 
 // Authentication and sessions (login/logout)
+Auth::routes();
 Route::get('/login', 'App\Http\Controllers\UserController@login')->name('login');
 Route::post('/login', 'App\Http\Controllers\UserController@handleLogin');
 Route::get('/logout', 'App\Http\Controllers\UserController@handleLogout');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Profile
 Route::get('/profile', 'App\Http\Controllers\UserController@profile')->middleware('auth');
@@ -32,8 +34,6 @@ Route::post('/update', 'App\Http\Controllers\UserController@update')->middleware
 
 // Social
 Route::get('/social', 'App\Http\Controllers\SocialController@social')->middleware('auth');
-Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Friends
 Route::get('/social', function () {

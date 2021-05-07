@@ -70,7 +70,7 @@
 <br>
 <hr>
 <div class="winnaar" style="background-image: url(../public/images/winnaar.png);height:400px;width:514px;" >
-<button id="btndeco" ><a href="register.blade.php">{{ __('Aanmelden') }}</a></button> 
+<button id="btndeco" ><a href="register">{{ __('Aanmelden') }}</a></button> 
 </div>
 
 @endsection
