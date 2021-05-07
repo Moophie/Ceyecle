@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Classes\ProCyclingStats;
 use App\Models\Race;
+use App\Models\Team;
 use Illuminate\Database\Seeder;
 
 class RacesSeeder extends Seeder
@@ -25,6 +26,14 @@ class RacesSeeder extends Seeder
             $r->startdate = $race_info['startdate'];
             $r->enddate = $race_info['enddate'];
             $r->save();
+
+            foreach ($race_info['competing_teams'] as $competing_team) {
+                $team = Team::where('pcs_url', $competing_team['pcs_url'])->first();
+                if($team){
+                    $r->teams()->attach($team->id);
+                }
+            }
+
             sleep(5);
         }
     }

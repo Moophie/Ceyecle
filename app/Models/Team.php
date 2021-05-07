@@ -13,4 +13,9 @@ class Team extends Model
     {
         return $this->hasMany(Rider::class);
     }
+
+    public function races()
+    {
+        return $this->belongsToMany(Race::class, 'races_teams');
+    }
 }

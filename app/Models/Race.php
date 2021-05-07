@@ -18,4 +18,9 @@ class Race extends Model
     {
         return $this->hasMany(Room::class);
     }
+
+    public function teams()
+    {
+        return $this->belongsToMany(Team::class, 'races_teams');
+    }
 }

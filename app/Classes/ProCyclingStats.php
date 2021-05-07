@@ -1,6 +1,7 @@
 <?php
 namespace App\Classes;
 
+use App\Models\Team;
 use DateTime;
 use Illuminate\Support\Facades\Http;
 use Goutte\Client;
@@ -40,6 +41,12 @@ class ProCyclingStats
         $crawler = $client->request('GET', $url);
         $race_info['startdate'] = $crawler->filter('.infolist li div:nth-of-type(2)')->eq(0)->text();
         $race_info['enddate'] = $crawler->filter('.infolist li div:nth-of-type(2)')->eq(1)->text();
+
+        $race_info['competing_teams'] = $crawler->filter('.mg_rp5 a')->each(function (Crawler $node, $i) {
+            $race_info['competing_teams'][$i]['pcs_url'] = $node->attr('href');
+
+            return $race_info['competing_teams'][$i];
+        });
 
         return $race_info;
     }
