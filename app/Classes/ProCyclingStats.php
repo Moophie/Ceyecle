@@ -48,6 +48,14 @@ class ProCyclingStats
             return $race_info['competing_teams'][$i];
         });
 
+        $race_info['previous_winners'] = $crawler->filter('.list.fs14')->eq(4)->filter('li')->each(function (Crawler $node, $i) {
+            $year_string = $node->filter('.mg_rp10 a')->text() . "-01-01";
+            $race_info['previous_winners'][$i]['year'] = DateTime::createFromFormat('Y-m-d', $year_string);
+            $race_info['previous_winners'][$i]['fullname'] = $node->filter('.mg_rp10 + div a')->text();
+
+            return $race_info['previous_winners'][$i];
+        });
+
         return $race_info;
     }
 

@@ -23,4 +23,8 @@ class Race extends Model
     {
         return $this->belongsToMany(Team::class, 'races_teams');
     }
+
+    public function previousWinners(){
+        return $this->belongsToMany(Rider::class, 'previous_winners');
+    }
 }
