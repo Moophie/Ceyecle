@@ -13,6 +13,10 @@
     <p>Ethias Cross Eeklo 2021</p>
 </div>
 
+<!-- test link -->
+<a href="rooms">My rooms<a>
+
+
 <h1>Opkomende evenementen</h1>
 
 <!-- Event template, make dynamic -->

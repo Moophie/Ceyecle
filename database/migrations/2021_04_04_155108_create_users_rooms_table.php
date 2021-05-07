@@ -17,6 +17,7 @@ class CreateUsersRoomsTable extends Migration
             $table->id();
             $table->foreignId("user_id")->constrained();
             $table->foreignId("room_id")->constrained();
+            $table->string("status")->nullable();
             $table->timestamps();
         });
     }
