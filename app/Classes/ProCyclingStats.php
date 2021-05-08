@@ -85,6 +85,11 @@ class ProCyclingStats
         $stage_info['departure'] = $crawler->filter('.infolist li div:nth-of-type(2)')->eq(5)->text();
         $stage_info['arrival'] = $crawler->filter('.infolist li div:nth-of-type(2)')->eq(6)->text();
 
+        $url = self::BASE_URL . $stage_url . '/today/profiles';
+        $client = new Client();
+        $crawler = $client->request('GET', $url);
+        $stage_info['profile_img'] = self::BASE_URL . $crawler->filter('.basic img')->eq(0)->attr('src');
+
         return $stage_info;
     }
 

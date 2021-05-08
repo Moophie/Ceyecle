@@ -29,6 +29,7 @@ class StagesSeeder extends Seeder
                     $s->date = $stage_info['date'];
                     $s->departure = $stage_info['departure'];
                     $s->arrival = $stage_info['arrival'];
+                    $s->profile_img = $stage_info['profile_img'];
                     $s->save();
                     sleep(5);
                 }
