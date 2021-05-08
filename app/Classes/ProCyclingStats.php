@@ -6,6 +6,7 @@ use DateTime;
 use Illuminate\Support\Facades\Http;
 use Goutte\Client;
 use Symfony\Component\DomCrawler\Crawler;
+use App\Classes\HelperFunctions;
 
 class ProCyclingStats
 {
@@ -173,6 +174,19 @@ class ProCyclingStats
         $client = new Client();
         $crawler = $client->request('GET', $url);
 
-        return "";
+        $rider_overview = $crawler->filter('.rdr-info-cont')->text();
+        $dob_string = HelperFunctions::get_string_between($rider_overview, 'Date of birth: ', ' (');
+        $rider_info['dob'] = DateTime::createFromFormat('dS M Y', $dob_string)->format('Y-m-d');
+
+        $age_string = HelperFunctions::get_string_between($rider_overview, '(', ')');
+        $rider_info['age'] = (int)$age_string;
+        $rider_info['height'] = (float)HelperFunctions::get_string_between($rider_overview, 'Height: ', ' mPlace');
+        $rider_info['weight'] = (int)HelperFunctions::get_string_between($rider_overview, 'Weight: ', ' kg');
+        $rider_info['uci_wr'] = (int)HelperFunctions::get_string_between($rider_overview, 'UCI World Ranking', ' Visits');
+
+        $rider_info['picture'] = self::BASE_URL . $crawler->filter('.rdr-img-cont img')->attr('src');
+        $rider_info['nationality'] = $crawler->filter('.rdr-info-cont a:nth-of-type(1)')->text();
+
+        return $rider_info;
     }
 }

@@ -15,11 +15,16 @@ class CreateRidersTable extends Migration
     {
         Schema::create('riders', function (Blueprint $table) {
             $table->id();
+            $table->string('picture');
             $table->string('firstname');
             $table->string('lastname');
+            $table->date('dob');
             $table->integer('age');
             $table->string('nationality');
+            $table->float('height');
+            $table->integer('weight');
             $table->integer('team_id');
+            $table->integer('uci_wr');
             $table->string('pcs_url');
             $table->timestamps();
         });
