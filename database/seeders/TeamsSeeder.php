@@ -19,8 +19,9 @@ class TeamsSeeder extends Seeder
         foreach ($teams as $team) {
             $t = new Team();
             $t->name = $team['name'];
-            $t->nationality = "Unknown";
             $t->pcs_url = $team['pcs_url'];
+            $team_info = ProCyclingStats::getTeamInfo($t->pcs_url);
+            $t->nationality = $team_info['nationality'];
             $t->save();
             sleep(5);
         }

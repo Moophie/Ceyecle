@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Http;
 use Goutte\Client;
 use Symfony\Component\DomCrawler\Crawler;
 use App\Classes\HelperFunctions;
+use Exception;
+use Illuminate\Support\Facades\Log;
 
 class ProCyclingStats
 {
@@ -57,14 +59,19 @@ class ProCyclingStats
             return $race_info['previous_winners'][$i];
         });
 
-        $race_info['event_map_picture'] = self::BASE_URL . $crawler->filter('.basic img')->attr('src');
+        try {
+            $race_info['event_map_picture'] = self::BASE_URL . $crawler->filter('.basic img')->attr('src');
+        } catch (Exception $e) {
+            $race_info['event_map_picture'] = 'images/event_map_placeholder.png';
+        }
+        
 
         return $race_info;
     }
 
     public static function getStagesFromRace($race_url)
     {
-        $url = self::BASE_URL . $race_url . "gc/overview";
+        $url = self::BASE_URL . $race_url . "/gc/overview";
         $client = new Client();
         $crawler = $client->request('GET', $url);
         $stages = $crawler->filter('.pad2 a')->each(function (Crawler $node, $i) {
@@ -87,7 +94,7 @@ class ProCyclingStats
 
         $stage_info['date'] = DateTime::createFromFormat('d M Y, H:i', $timeInText);
        
-        $type_string = $crawler->filter('.infolist li div:nth-of-type(2)')->eq(3)->attr('class');
+        $type_string = $crawler->filter('.icon.profile')->attr('class');
         $type_p = substr($type_string, -2);
         $stage_info['type'] = '';
 
@@ -107,6 +114,8 @@ class ProCyclingStats
             case 'p5':
                 $stage_info['type'] = 'very mountainous';
                 break;
+            default:
+                $stage_info['type'] = 'Unknown';
 
         }
 
@@ -120,7 +129,11 @@ class ProCyclingStats
         $url = self::BASE_URL . $stage_url . '/today/profiles';
         $client = new Client();
         $crawler = $client->request('GET', $url);
-        $stage_info['profile_img'] = self::BASE_URL . $crawler->filter('.basic img')->eq(0)->attr('src');
+        try {
+            $stage_info['profile_img'] = self::BASE_URL . $crawler->filter('.basic img')->eq(0)->attr('src');
+        } catch (Exception $e) {
+            $stage_info['profile_img'] = 'images/stage_placeholder.png';
+        }
 
         return $stage_info;
     }
@@ -146,8 +159,10 @@ class ProCyclingStats
         $url = self::BASE_URL . $team_url;
         $client = new Client();
         $crawler = $client->request('GET', $url);
+        $nationality_class_string = $crawler->filter('.main .flag')->attr('class');
+        $team_info['nationality'] = HelperFunctions::get_string_between($nationality_class_string, 'flag ', ' w');
 
-        return "";
+        return $team_info;
     }
 
     public static function getRidersFromTeam($team_url)
@@ -184,7 +199,12 @@ class ProCyclingStats
         $rider_info['weight'] = (int)HelperFunctions::get_string_between($rider_overview, 'Weight: ', ' kg');
         $rider_info['uci_wr'] = (int)HelperFunctions::get_string_between($rider_overview, 'UCI World Ranking', ' Visits');
 
-        $rider_info['picture'] = self::BASE_URL . $crawler->filter('.rdr-img-cont img')->attr('src');
+        try {
+            $rider_info['picture'] = self::BASE_URL . $crawler->filter('.rdr-img-cont img')->attr('src') ;
+        } catch (Exception $e) {
+            $rider_info['picture'] = 'images/rider_placeholder.png';
+        }
+        
         $rider_info['nationality'] = $crawler->filter('.rdr-info-cont a:nth-of-type(1)')->text();
 
         return $rider_info;
