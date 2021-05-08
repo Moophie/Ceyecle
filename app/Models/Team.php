@@ -9,8 +9,13 @@ class Team extends Model
 {
     use HasFactory;
 
-    public function competitors()
+    public function riders()
     {
-        return $this->hasMany(Competitor::class);
+        return $this->hasMany(Rider::class);
+    }
+
+    public function races()
+    {
+        return $this->belongsToMany(Race::class, 'races_teams');
     }
 }

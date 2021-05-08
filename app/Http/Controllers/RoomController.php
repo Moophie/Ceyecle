@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\ProCyclingStats;
 use Illuminate\Http\Request;
 use App\Models\Room;
 use Illuminate\Support\Facades\Auth;
@@ -23,17 +24,17 @@ class RoomController extends Controller
     //
     public function createRoom(Request $request)
     {
-        $event_id = $request->input('event-id');
+        $race_id = $request->input('race-id');
         $existing_room = Room::whereHas('users', function (Builder $query) {
             $query->where('user_id', '=', Auth::user()->id);
-        })->whereHas('users', function (Builder $query) use ($event_id) {
-            $query->where('event_id', '=', $event_id);
+        })->whereHas('users', function (Builder $query) use ($race_id) {
+            $query->where('race_id', '=', $race_id);
         })
         ->get();
 
         if ($existing_room->isEmpty()) {
             $room = new Room();
-            $room->event_id = $event_id;
+            $room->race_id = $race_id;
             $room->save();
 
             $room = Room::find($room->id);

@@ -28,7 +28,7 @@
 <h2>Deelgenomen aan</h2>
 
 <div>
-    <img src="https://via.placeholder.com/100" alt="Event picture">
+    <img src="https://via.placeholder.com/100" alt="Race picture">
     <h2>WK Veldrijden 2021</h2>
     <p>30-31/01/2021</p>
     <a href="">Meer info</a>

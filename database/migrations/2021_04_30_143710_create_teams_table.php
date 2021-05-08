@@ -17,6 +17,7 @@ class CreateTeamsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('nationality');
+            $table->string('pcs_url');
             $table->timestamps();
         });
     }

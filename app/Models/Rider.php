@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Competitor extends Model
+class Rider extends Model
 {
     use HasFactory;
 
@@ -14,9 +14,7 @@ class Competitor extends Model
         return $this->belongsTo(Team::class);
     }
 
-    public function cycleRoutes()
-    {
-        return $this->belongsToMany(CycleRoute::class, 'competitors_races', 'race_id', 'competitor_id');
+    public function wonRaces(){
+        return $this->belongsToMany(Race::class, 'previous_winners');
     }
-
 }
