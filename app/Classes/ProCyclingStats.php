@@ -56,6 +56,8 @@ class ProCyclingStats
             return $race_info['previous_winners'][$i];
         });
 
+        $race_info['event_map_picture'] = self::BASE_URL . $crawler->filter('.basic img')->attr('src');
+
         return $race_info;
     }
 
