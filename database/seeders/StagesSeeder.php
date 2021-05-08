@@ -27,8 +27,10 @@ class StagesSeeder extends Seeder
                     $s->race_id = $race->id;
                     $stage_info = ProCyclingStats::getStageInfo($s->pcs_url);
                     $s->date = $stage_info['date'];
+                    $s->type = $stage_info['type'];
                     $s->departure = $stage_info['departure'];
                     $s->arrival = $stage_info['arrival'];
+                    $s->distance = $stage_info['distance'];
                     $s->profile_img = $stage_info['profile_img'];
                     $s->save();
                     sleep(5);

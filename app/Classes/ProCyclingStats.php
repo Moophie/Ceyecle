@@ -76,14 +76,45 @@ class ProCyclingStats
         return $stages;
     }
 
-    public static function getStageInfo($stage_url){        
+    public static function getStageInfo($stage_url)
+    {
         $url = self::BASE_URL . $stage_url;
         $client = new Client();
         $crawler = $client->request('GET', $url);
+
         $timeInText = $crawler->filter('.infolist li div:nth-of-type(2)')->eq(0)->text();
+
         $stage_info['date'] = DateTime::createFromFormat('d M Y, H:i', $timeInText);
+       
+        $type_string = $crawler->filter('.infolist li div:nth-of-type(2)')->eq(3)->attr('class');
+        $type_p = substr($type_string, -2);
+        $stage_info['type'] = '';
+
+        switch ($type_p) {
+            case 'p1':
+                $stage_info['type'] = 'flat';
+                break;
+            case 'p2':
+                $stage_info['type'] = 'hilly';
+                break;
+            case 'p3':
+                $stage_info['type'] = 'very hilly';
+                break;
+            case 'p4':
+                $stage_info['type'] = 'mountainous';
+                break;
+            case 'p5':
+                $stage_info['type'] = 'very mountainous';
+                break;
+
+        }
+
         $stage_info['departure'] = $crawler->filter('.infolist li div:nth-of-type(2)')->eq(5)->text();
         $stage_info['arrival'] = $crawler->filter('.infolist li div:nth-of-type(2)')->eq(6)->text();
+
+        $distance_string = $crawler->filter('.infolist li div:nth-of-type(2)')->eq(7)->text();
+        $distance_string= explode(' ', $distance_string, 2);
+        $stage_info['distance'] = (int)$distance_string[0];
 
         $url = self::BASE_URL . $stage_url . '/today/profiles';
         $client = new Client();
