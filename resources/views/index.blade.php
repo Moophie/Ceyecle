@@ -6,8 +6,8 @@
 
 @section('content')
 
-<img class="logoklein" src="../public/images/LK-8.png" alt="">
-<img class="profiel" src="../public/images/Profiel_2-8.png" alt="">
+<img class="logoklein" src="../images/LK-8.png" alt="">
+<img class="profiel" src="../images/Profiel_2-8.png" alt="">
 
 <div class="header">
     <p>Ethias Cross Eeklo 2021</p>
