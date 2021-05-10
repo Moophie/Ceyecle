@@ -125,19 +125,9 @@ class UserController extends Controller
         // get oauth request back from facebook
         $facebookUser = Socialite::driver('facebook')->user();
 
-        //  if this user doesn't exist, add them
-        // if they do, get the model
-        // dd($user);
-        // $user = User::firstOrCreate([
-        //     'email' => $user->getEmail()
-        // ], [
-        //     'email' => $user->getEmail(),
-        //     'password' => Hash::make(Str::random(24))
-        // ]);
-        // Auth::login($user, true);
-
         $user = User::where('email', '=', $facebookUser->getEmail())->first();
-
+        
+        //  if this user doesn't exist, add them
         if (!$user) {
             $u = new User();
             $u->username = $facebookUser->getName();
