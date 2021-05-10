@@ -142,6 +142,7 @@ class UserController extends Controller
         return redirect('/');
     }
 
+    // TODO: check if works when app is online
     public function google()
     {
         // send user's request to Google
@@ -158,10 +159,12 @@ class UserController extends Controller
         $user = User::firstOrCreate([
             'email' => $user->email
         ], [
+            'email' => $user->email,
+            'username' => $user->name,
             'password' => Hash::make(Str::random(24))
         ]);
         Auth::login($user, true);
 
-        return redirect('auth/login');
+        return redirect('/');
     }
 }
