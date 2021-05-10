@@ -123,18 +123,33 @@ class UserController extends Controller
     public function facebookRedirect()
     {
         // get oauth request back from facebook
-        $user = Socialite::driver('facebook')->user();
+        $facebookUser = Socialite::driver('facebook')->user();
 
         //  if this user doesn't exist, add them
         // if they do, get the model
-        $user = User::firstOrCreate([
-            'email' => $user->email
-        ], [
-            'password' => Hash::make(Str::random(24))
-        ]);
-        Auth::login($user, true);
+        // dd($user);
+        // $user = User::firstOrCreate([
+        //     'email' => $user->getEmail()
+        // ], [
+        //     'email' => $user->getEmail(),
+        //     'password' => Hash::make(Str::random(24))
+        // ]);
+        // Auth::login($user, true);
 
-        return redirect('auth/login');
+        $user = User::where('email', '=', $facebookUser->getEmail())->first();
+
+        if (!$user) {
+            $u = new User();
+            $u->username = $facebookUser->getName();
+            $u->email = $facebookUser->getEmail();
+            $u->password = Hash::make(Str::random(20));
+            $u->save();
+            Auth::login($u, true);
+        } else{
+            Auth::login($user, true);
+        }
+
+        return redirect('/');
     }
 
     public function google()
