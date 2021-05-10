@@ -19,6 +19,7 @@ class CreateRacesTable extends Migration
             $table->string('name');
             $table->date('startdate');
             $table->date('enddate');
+            $table->string('event_map_picture');
             $table->string('pcs_url');
             $table->timestamps();
         });

@@ -17,8 +17,11 @@ class CreateStagesTable extends Migration
             $table->id();
             $table->string('name');
             $table->dateTime('date');
+            $table->string('type');
             $table->string('departure');
             $table->string('arrival');
+            $table->integer('distance');
+            $table->string('profile_img');
             $table->integer('race_id');
             $table->string('pcs_url');
             $table->timestamps();

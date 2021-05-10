@@ -26,9 +26,14 @@ class RidersSeeder extends Seeder
                 $r->pcs_url = $rider['pcs_url'];
                 $r->team_id = $team->id; 
                
-                //$rider = ProCyclingstats::getRiderInfo($r->pcs_url);
-                $r->age = 0;
-                $r->nationality = "Unknown";
+                $rider = ProCyclingstats::getRiderInfo($r->pcs_url);
+                $r->dob = $rider['dob'];
+                $r->age = $rider['age'];
+                $r->nationality = $rider['nationality'];
+                $r->picture = $rider['picture'];
+                $r->height = $rider['height'];
+                $r->weight = $rider['weight'];
+                $r->uci_wr = $rider['uci_wr'];
                 $r->save();
                 sleep(5);
             }

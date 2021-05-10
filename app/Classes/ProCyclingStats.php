@@ -6,6 +6,9 @@ use DateTime;
 use Illuminate\Support\Facades\Http;
 use Goutte\Client;
 use Symfony\Component\DomCrawler\Crawler;
+use App\Classes\HelperFunctions;
+use Exception;
+use Illuminate\Support\Facades\Log;
 
 class ProCyclingStats
 {
@@ -56,12 +59,19 @@ class ProCyclingStats
             return $race_info['previous_winners'][$i];
         });
 
+        try {
+            $race_info['event_map_picture'] = self::BASE_URL . $crawler->filter('.basic img')->attr('src');
+        } catch (Exception $e) {
+            $race_info['event_map_picture'] = 'images/event_map_placeholder.png';
+        }
+        
+
         return $race_info;
     }
 
     public static function getStagesFromRace($race_url)
     {
-        $url = self::BASE_URL . $race_url . "gc/overview";
+        $url = self::BASE_URL . $race_url . "/gc/overview";
         $client = new Client();
         $crawler = $client->request('GET', $url);
         $stages = $crawler->filter('.pad2 a')->each(function (Crawler $node, $i) {
@@ -74,14 +84,56 @@ class ProCyclingStats
         return $stages;
     }
 
-    public static function getStageInfo($stage_url){        
+    public static function getStageInfo($stage_url)
+    {
         $url = self::BASE_URL . $stage_url;
         $client = new Client();
         $crawler = $client->request('GET', $url);
+
         $timeInText = $crawler->filter('.infolist li div:nth-of-type(2)')->eq(0)->text();
+
         $stage_info['date'] = DateTime::createFromFormat('d M Y, H:i', $timeInText);
+       
+        $type_string = $crawler->filter('.icon.profile')->attr('class');
+        $type_p = substr($type_string, -2);
+        $stage_info['type'] = '';
+
+        switch ($type_p) {
+            case 'p1':
+                $stage_info['type'] = 'flat';
+                break;
+            case 'p2':
+                $stage_info['type'] = 'hilly';
+                break;
+            case 'p3':
+                $stage_info['type'] = 'very hilly';
+                break;
+            case 'p4':
+                $stage_info['type'] = 'mountainous';
+                break;
+            case 'p5':
+                $stage_info['type'] = 'very mountainous';
+                break;
+            default:
+                $stage_info['type'] = 'Unknown';
+
+        }
+
         $stage_info['departure'] = $crawler->filter('.infolist li div:nth-of-type(2)')->eq(5)->text();
         $stage_info['arrival'] = $crawler->filter('.infolist li div:nth-of-type(2)')->eq(6)->text();
+
+        $distance_string = $crawler->filter('.infolist li div:nth-of-type(2)')->eq(7)->text();
+        $distance_string= explode(' ', $distance_string, 2);
+        $stage_info['distance'] = (int)$distance_string[0];
+
+        $url = self::BASE_URL . $stage_url . '/today/profiles';
+        $client = new Client();
+        $crawler = $client->request('GET', $url);
+        try {
+            $stage_info['profile_img'] = self::BASE_URL . $crawler->filter('.basic img')->eq(0)->attr('src');
+        } catch (Exception $e) {
+            $stage_info['profile_img'] = 'images/stage_placeholder.png';
+        }
 
         return $stage_info;
     }
@@ -107,8 +159,10 @@ class ProCyclingStats
         $url = self::BASE_URL . $team_url;
         $client = new Client();
         $crawler = $client->request('GET', $url);
+        $nationality_class_string = $crawler->filter('.main .flag')->attr('class');
+        $team_info['nationality'] = HelperFunctions::get_string_between($nationality_class_string, 'flag ', ' w');
 
-        return "";
+        return $team_info;
     }
 
     public static function getRidersFromTeam($team_url)
@@ -135,6 +189,24 @@ class ProCyclingStats
         $client = new Client();
         $crawler = $client->request('GET', $url);
 
-        return "";
+        $rider_overview = $crawler->filter('.rdr-info-cont')->text();
+        $dob_string = HelperFunctions::get_string_between($rider_overview, 'Date of birth: ', ' (');
+        $rider_info['dob'] = DateTime::createFromFormat('dS M Y', $dob_string)->format('Y-m-d');
+
+        $age_string = HelperFunctions::get_string_between($rider_overview, '(', ')');
+        $rider_info['age'] = (int)$age_string;
+        $rider_info['height'] = (float)HelperFunctions::get_string_between($rider_overview, 'Height: ', ' mPlace');
+        $rider_info['weight'] = (int)HelperFunctions::get_string_between($rider_overview, 'Weight: ', ' kg');
+        $rider_info['uci_wr'] = (int)HelperFunctions::get_string_between($rider_overview, 'UCI World Ranking', ' Visits');
+
+        try {
+            $rider_info['picture'] = self::BASE_URL . $crawler->filter('.rdr-img-cont img')->attr('src') ;
+        } catch (Exception $e) {
+            $rider_info['picture'] = 'images/rider_placeholder.png';
+        }
+        
+        $rider_info['nationality'] = $crawler->filter('.rdr-info-cont a:nth-of-type(1)')->text();
+
+        return $rider_info;
     }
 }

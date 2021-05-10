@@ -52,9 +52,12 @@ Route::get('/leaderboard', function () {
 })->middleware('auth');
 
 // Rooms
-Route::get('/rooms/index', 'App\Http\Controllers\RoomController@index')->middleware('auth');
+Route::get('/rooms', 'App\Http\Controllers\RoomController@index')->middleware('auth');
 Route::post('/rooms/create', 'App\Http\Controllers\RoomController@createRoom')->middleware('auth');
 Route::get('/rooms/{room}', 'App\Http\Controllers\RoomController@show')->name('show-room')->middleware('auth');
 Route::post('/rooms/invite', 'App\Http\Controllers\RoomController@invite')->middleware('auth');
 Route::post('/rooms/inviteFriend', 'App\Http\Controllers\RoomController@inviteFriend')->middleware('auth');
 Route::post('/rooms/chat', 'App\Http\Controllers\RoomController@sendMessage')->middleware('auth');
+Route::get('/rooms/accept/{room}', 'App\Http\Controllers\RoomController@acceptRequest')->middleware('auth');
+Route::post('/rooms/raceQuestion', 'App\Http\Controllers\QuestionController@raceQuestion')->middleware('auth');
+Route::post('/rooms/answerQuestion', 'App\Http\Controllers\QuestionController@answerQuestion')->middleware('auth');

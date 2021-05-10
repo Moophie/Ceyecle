@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersRoomsTable extends Migration
+class CreateQuestionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateUsersRoomsTable extends Migration
      */
     public function up()
     {
-        Schema::create('users_rooms', function (Blueprint $table) {
+        Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("user_id")->constrained();
-            $table->foreignId("room_id")->constrained();
-            $table->string("status")->nullable();
+            $table->string('question');
+            $table->string('answer');
+            $table->integer('room_id');
+            $table->string('status');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateUsersRoomsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users_rooms');
+        Schema::dropIfExists('questions');
     }
 }

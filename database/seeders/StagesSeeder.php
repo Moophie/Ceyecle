@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Classes\ProCyclingStats;
+use App\Models\Race;
 use App\Models\Stage;
 
 class StagesSeeder extends Seeder
@@ -15,7 +16,7 @@ class StagesSeeder extends Seeder
      */
     public function run()
     {
-        $races = ProCyclingStats::getAllRaces();
+        $races = Race::all();
         foreach ($races as $race) {
             if ($race->class == "2.UWT") {
                 $stages = ProCyclingStats::getStagesFromRace($race->pcs_url);
@@ -23,14 +24,19 @@ class StagesSeeder extends Seeder
                 foreach ($stages as $stage) {
                     $s = new Stage();
                     $s->name = $stage['name'];
-                    $s->pcs_url = $stage['pcs_url'];
-                    $s->race_id = $race->id;
-                    $stage_info = ProCyclingStats::getStageInfo($s->pcs_url);
-                    $s->date = $stage_info['date'];
-                    $s->departure = $stage_info['departure'];
-                    $s->arrival = $stage_info['arrival'];
-                    $s->save();
-                    sleep(5);
+                    if (!empty($s->name)) {
+                        $s->pcs_url = $stage['pcs_url'];
+                        $s->race_id = $race->id;
+                        $stage_info = ProCyclingStats::getStageInfo($s->pcs_url);
+                        $s->date = $stage_info['date'];
+                        $s->type = $stage_info['type'];
+                        $s->departure = $stage_info['departure'];
+                        $s->arrival = $stage_info['arrival'];
+                        $s->distance = $stage_info['distance'];
+                        $s->profile_img = $stage_info['profile_img'];
+                        $s->save();
+                        sleep(5);
+                    }
                 }
             }
         }

@@ -27,6 +27,7 @@ class RacesSeeder extends Seeder
             $race_info = ProCyclingStats::getRaceInfo($r->class, $r->pcs_url);
             $r->startdate = $race_info['startdate'];
             $r->enddate = $race_info['enddate'];
+            $r->event_map_picture = $race_info['event_map_picture'];
             $r->save();
 
             foreach ($race_info['competing_teams'] as $competing_team) {
