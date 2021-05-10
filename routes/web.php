@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,12 @@ Route::get('/', 'App\Http\Controllers\RaceController@upcomingRaces')->middleware
 // Signup
 Route::get('/register', 'App\Http\Controllers\UserController@signup');
 Route::post('/register', 'App\Http\Controllers\UserController@handleSignup');
+
+// Signup with social media
+Route::get('/register/facebook', 'App\Http\Controllers\UserController@facebook');
+Route::get('/register/facebook/redirect', 'App\Http\Controllers\UserController@facebookRedirect');
+Route::get('/register/google', 'App\Http\Controllers\UserController@google');
+Route::get('/register/google/redirect', 'App\Http\Controllers\UserController@googleRedirect');
 
 // Authentication and sessions (login/logout)
 Auth::routes();

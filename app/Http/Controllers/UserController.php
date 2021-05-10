@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Models\User;
+use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -18,6 +20,11 @@ class UserController extends Controller
     public function handleSignup(Request $request)
     {
         $user = new User();
+
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
 
         // Check if email is unique
         $email = $user::where('email', $request->input('email'))->first();
@@ -105,5 +112,51 @@ class UserController extends Controller
         }
     
         return redirect('/profile');
+    }
+
+    public function facebook()
+    {
+        // send user's request to Facebook
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    public function facebookRedirect()
+    {
+        // get oauth request back from facebook
+        $user = Socialite::driver('facebook')->user();
+
+        //  if this user doesn't exist, add them
+        // if they do, get the model
+        $user = User::firstOrCreate([
+            'email' => $user->email
+        ], [
+            'password' => Hash::make(Str::random(24))
+        ]);
+        Auth::login($user, true);
+
+        return redirect('auth/login');
+    }
+
+    public function google()
+    {
+        // send user's request to Google
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function googleRedirect()
+    {
+        // get oauth request back from Google
+        $user = Socialite::driver('google')->user();
+
+        //  if this user doesn't exist, add them
+        // if they do, get the model
+        $user = User::firstOrCreate([
+            'email' => $user->email
+        ], [
+            'password' => Hash::make(Str::random(24))
+        ]);
+        Auth::login($user, true);
+
+        return redirect('auth/login');
     }
 }

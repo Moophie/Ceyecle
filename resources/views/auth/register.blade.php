@@ -70,6 +70,16 @@
                                 </div>
                             </div>
 
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                <a href="/register/facebook" class="btn btn-secondary">Sign in with Facebook</a>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                <a href="/register/google" class="btn btn-secondary">Sign in with Google</a>
+                                </div>
+                            </div>
 
                         </form>
                     </div>
