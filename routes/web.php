@@ -26,6 +26,8 @@ Route::get('/register/facebook', 'App\Http\Controllers\UserController@facebook')
 Route::get('/register/facebook/redirect', 'App\Http\Controllers\UserController@facebookRedirect');
 Route::get('/register/google', 'App\Http\Controllers\UserController@google');
 Route::get('/register/google/redirect', 'App\Http\Controllers\UserController@googleRedirect');
+Route::get('/register/twitter', 'App\Http\Controllers\UserController@twitter');
+Route::get('/register/twitter/redirect', 'App\Http\Controllers\UserController@twitterRedirect');
 
 // Authentication and sessions (login/logout)
 Auth::routes();

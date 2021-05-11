@@ -12,11 +12,7 @@
     <a href="/editProfile">Edit</a>
 
     @if (Auth::user()->profilepic)
-        @if(substr(Auth::user()->profilepic, 0, 4) === "http")
-            <img src="{{ Auth::user()->profilepic }}" alt="Profile picture">
-        @else
-            <img src="{{ asset('images/' . Auth::user()->profilepic) }}" alt="Profile picture">
-        @endif
+        <img src="{{ Auth::user()->profilepic }}" alt="Profile picture">
     @endif
 
     <div>

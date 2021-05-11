@@ -80,6 +80,11 @@
                                 <a href="/register/google" class="btn btn-secondary">Sign in with Google</a>
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                <a href="/register/twitter" class="btn btn-secondary">Sign in with Twitter</a>
+                                </div>
+                            </div>
 
                         </form>
                     </div>
