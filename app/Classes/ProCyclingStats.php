@@ -100,22 +100,22 @@ class ProCyclingStats
 
         switch ($type_p) {
             case 'p1':
-                $stage_info['type'] = 'flat';
+                $stage_info['type'] = 'plat';
                 break;
             case 'p2':
-                $stage_info['type'] = 'hilly';
+                $stage_info['type'] = 'heuvelachtig';
                 break;
             case 'p3':
-                $stage_info['type'] = 'very hilly';
+                $stage_info['type'] = 'zeer heuvelachtig';
                 break;
             case 'p4':
-                $stage_info['type'] = 'mountainous';
+                $stage_info['type'] = 'bergachtig';
                 break;
             case 'p5':
-                $stage_info['type'] = 'very mountainous';
+                $stage_info['type'] = 'zeer bergachtig';
                 break;
             default:
-                $stage_info['type'] = 'Unknown';
+                $stage_info['type'] = 'onbekend';
 
         }
 

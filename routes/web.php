@@ -68,3 +68,6 @@ Route::post('/rooms/chat', 'App\Http\Controllers\RoomController@sendMessage')->m
 Route::get('/rooms/accept/{room}', 'App\Http\Controllers\RoomController@acceptRequest')->middleware('auth');
 Route::post('/rooms/raceQuestion', 'App\Http\Controllers\QuestionController@raceQuestion')->middleware('auth');
 Route::post('/rooms/answerQuestion', 'App\Http\Controllers\QuestionController@answerQuestion')->middleware('auth');
+
+// Races
+Route::get('/races/{race}', 'App\Http\Controllers\RaceController@showRace');
