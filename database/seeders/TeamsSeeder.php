@@ -23,7 +23,7 @@ class TeamsSeeder extends Seeder
             $team_info = ProCyclingStats::getTeamInfo($t->pcs_url);
             $t->nationality = $team_info['nationality'];
             $t->save();
-            sleep(5);
+            sleep(2);
         }
     }
 }

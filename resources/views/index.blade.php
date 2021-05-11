@@ -24,7 +24,7 @@
                 <div class="race-event">
                     <div class="evenement">
                         <h2>{{ $race->name }}</h2>
-                        <img class="race" src="{{ $race->event_map_picture }}" alt="Event image" height="100px">
+                        <img class="race" src="{{ $race->logo }}" alt="Event image" style="max-height: 50px; max-width: 100px">
                         <p>{{ $race->date }}</p>
                         <a href="/races/{{ $race->id }}">Meer info</a>
                         <form action="/rooms/create" method="POST">
@@ -44,7 +44,7 @@
                 <div class="race-event">
                     <div class="evenement">
                         <h2>{{ $race->name }}</h2>
-                        <img class="race" src="{{ $race->logo }}" alt="Event logo" height="150px">
+                        <img class="race" src="{{ $race->logo }}" alt="Event logo" style="max-height: 50px; max-width: 100px">
                         <p>{{ $race->date }}</p>
                         <a href="/races/{{ $race->id }}">Meer info</a>
                         <form action="/rooms/create" method="POST">

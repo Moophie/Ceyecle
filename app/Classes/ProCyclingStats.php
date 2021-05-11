@@ -64,6 +64,12 @@ class ProCyclingStats
         } catch (Exception $e) {
             $race_info['event_map_picture'] = 'images/event_map_placeholder.png';
         }
+
+        try {
+            $race_info['logo'] = self::BASE_URL . $crawler->filter('.infolist li div:nth-of-type(2) img')->attr('src');
+        } catch (Exception $e) {
+            $race_info['logo'] = 'images/logo_placeholder.png';
+        }
         
 
         return $race_info;
@@ -93,6 +99,9 @@ class ProCyclingStats
         $timeInText = $crawler->filter('.infolist li div:nth-of-type(2)')->eq(0)->text();
 
         $stage_info['date'] = DateTime::createFromFormat('d M Y, H:i', $timeInText);
+        if($stage_info['date'] == false){
+            $stage_info['date'] = DateTime::createFromFormat('d M Y', $timeInText);
+        }
        
         $type_string = $crawler->filter('.icon.profile')->attr('class');
         $type_p = substr($type_string, -2);

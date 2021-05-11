@@ -35,7 +35,7 @@ class StagesSeeder extends Seeder
                         $s->distance = $stage_info['distance'];
                         $s->profile_img = $stage_info['profile_img'];
                         $s->save();
-                        sleep(5);
+                        sleep(2);
                     }
                 }
             }

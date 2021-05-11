@@ -27,6 +27,7 @@ class RacesSeeder extends Seeder
             $race_info = ProCyclingStats::getRaceInfo($r->class, $r->pcs_url);
             $r->startdate = $race_info['startdate'];
             $r->enddate = $race_info['enddate'];
+            $r->logo = $race_info['logo'];
             $r->event_map_picture = $race_info['event_map_picture'];
             $r->save();
 
@@ -48,7 +49,7 @@ class RacesSeeder extends Seeder
                 }
             }
 
-            sleep(5);
+            sleep(2);
         }
     }
 }
