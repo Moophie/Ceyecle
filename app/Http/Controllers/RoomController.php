@@ -64,7 +64,7 @@ class RoomController extends Controller
             };
         }
 
-        $data['top25'] = ProCyclingStats::getLiveRanking('race/giro-d-italia/2021/stage-4');
+        $data['top25'] = ProCyclingStats::getLiveRanking($data['current_stage']->pcs_url);
 
         return view('rooms/show', $data);
     }
