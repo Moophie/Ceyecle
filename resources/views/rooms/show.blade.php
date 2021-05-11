@@ -3,7 +3,7 @@
 @section('content')
     <h1>{{ $room->race->name }}</h1>
     <h2>Current stage: {{ $current_stage->name }}</h2>
-    <img src="{{ $room->race->name }}" alt="" width="300px">
+    <img src="{{ $current_stage->profile_img }}" alt="" width="500px">
 
     <h1>Teams</h1>
     <ul>
