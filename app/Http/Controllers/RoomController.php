@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
 use App\Models\Message;
 use App\Models\Rider;
+use App\Models\Stage;
+use Carbon\Carbon;
 
 class RoomController extends Controller
 {
@@ -53,6 +55,15 @@ class RoomController extends Controller
         $data['room'] = Room::where('id', $room->id)->with('users')->with('messages')->first();
         $data['participants'] = Room::with('users')->get();
         $data['question'] = $room->questions()->where('status', 'unanswered')->first();
+        $data['current_stage'] = "No stage going on for this race";
+        $past_stages = Stage::where('race_id', $room->race_id)->whereRaw('date < ? ', [date("Y-m-d H:i:s")])->get();
+        foreach ($past_stages as $p_s) {
+            $end_of_stage = Carbon::createFromFormat('Y-m-d H:i:s', $p_s->date)->endOfDay();
+            if (date("Y-m-d H:i:s") < date($end_of_stage)) {
+                $data['current_stage'] = $p_s;
+            };
+        }
+
         $data['top25'] = ProCyclingStats::getLiveRanking('race/giro-d-italia/2021/stage-4');
 
         return view('rooms/show', $data);
