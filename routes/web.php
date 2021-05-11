@@ -60,6 +60,10 @@ Route::get('/leaderboard', function () {
     return view('friends/leaderboards');
 })->middleware('auth');
 
+// Chat
+Route::get('/friends/chat/{friend}', 'App\Http\Controllers\ChatController@index')->middleware('auth')->name('chat');
+Route::post('/friends/chat', 'App\Http\Controllers\ChatController@sendMessage')->middleware('auth');
+
 // Rooms
 Route::get('/rooms', 'App\Http\Controllers\RoomController@index')->middleware('auth');
 Route::post('/rooms/create', 'App\Http\Controllers\RoomController@createRoom')->middleware('auth');
