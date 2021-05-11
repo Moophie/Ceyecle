@@ -8,8 +8,10 @@ use App\Models\Room;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
 use App\Models\Message;
+use App\Models\Race;
 use App\Models\Rider;
 use App\Models\Stage;
+use App\Models\Team;
 use Carbon\Carbon;
 
 class RoomController extends Controller
@@ -55,6 +57,7 @@ class RoomController extends Controller
         $data['room'] = Room::where('id', $room->id)->with('users')->with('messages')->first();
         $data['participants'] = Room::with('users')->get();
         $data['question'] = $room->questions()->where('status', 'unanswered')->first();
+        
         $data['current_stage'] = "No stage going on for this race";
         $past_stages = Stage::where('race_id', $room->race_id)->whereRaw('date < ? ', [date("Y-m-d H:i:s")])->get();
         foreach ($past_stages as $p_s) {
@@ -63,6 +66,9 @@ class RoomController extends Controller
                 $data['current_stage'] = $p_s;
             };
         }
+
+        $race = Race::find($room->race_id);
+        $data['participating_teams'] = $race->teams;
 
         $data['top25'] = ProCyclingStats::getLiveRanking($data['current_stage']->pcs_url);
 

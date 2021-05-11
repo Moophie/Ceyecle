@@ -5,7 +5,12 @@
     <h2>Current stage: {{ $current_stage->name }}</h2>
     <img src="{{ $room->race->name }}" alt="" width="300px">
 
-    <h1>Participants</h1>
+    <h1>Teams</h1>
+    <ul>
+        @foreach ($participating_teams as $team)
+            <li>{{ $team->name }}</li>
+        @endforeach
+    </ul>
 
     <h1>Viewers</h1>
 
@@ -38,8 +43,8 @@
 
             {{ $question->question }}
 
-            <input type="text" value="{{ $question->id }}" name="question-id" hidden>
-            <input type="text" value="{{ $room->id }}" name="room-id" hidden>
+            <input type="hidden" value="{{ $question->id }}" name="question-id" hidden>
+            <input type="hidden" value="{{ $room->id }}" name="room-id" hidden>
             <input type="text" name="question-answer">
             <input type="submit" value="Answer">
         </form>
