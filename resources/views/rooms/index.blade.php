@@ -11,9 +11,9 @@
     @endforeach
 
     @foreach ($rooms as $room)
-        <div class="room-container">
-            <a href="/rooms/{{ $room->id }}"><img src="https://via.placeholder.com/150"
-                    alt="A thumbnail of the relevant race."></a>
+        <div class="room-container" style="border: solid 2px black; border-radius: 5px; padding:20px">
+            <a href="/rooms/{{ $room->id }}"><img src="{{ $room->race->logo }}"
+                    alt="A thumbnail of the relevant race." width="200px;"></a>
             <h1>{{ $room->race->name }}</h1>
         </div>
     @endforeach
