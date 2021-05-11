@@ -26,6 +26,8 @@ Route::get('/register/facebook', 'App\Http\Controllers\UserController@facebook')
 Route::get('/register/facebook/redirect', 'App\Http\Controllers\UserController@facebookRedirect');
 Route::get('/register/google', 'App\Http\Controllers\UserController@google');
 Route::get('/register/google/redirect', 'App\Http\Controllers\UserController@googleRedirect');
+Route::get('/register/twitter', 'App\Http\Controllers\UserController@twitter');
+Route::get('/register/twitter/redirect', 'App\Http\Controllers\UserController@twitterRedirect');
 
 // Authentication and sessions (login/logout)
 Auth::routes();
@@ -57,6 +59,10 @@ Route::get('/friends/accept/{user}', 'App\Http\Controllers\FriendController@acce
 Route::get('/leaderboard', function () {
     return view('friends/leaderboards');
 })->middleware('auth');
+
+// Chat
+Route::get('/friends/chat/{friend}', 'App\Http\Controllers\ChatController@index')->middleware('auth')->name('chat');
+Route::post('/friends/chat', 'App\Http\Controllers\ChatController@sendMessage')->middleware('auth');
 
 // Rooms
 Route::get('/rooms', 'App\Http\Controllers\RoomController@index')->middleware('auth');

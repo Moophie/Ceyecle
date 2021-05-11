@@ -100,12 +100,15 @@ class UserController extends Controller
         if ($request->hasFile('image')) {
             $imageName = time() . '-' . $request->image->getClientOriginalName();
             if (Auth::user()->profilepic) {
-                unlink(public_path('images'). '/' . Auth::user()->profilepic);
+                if (substr(Auth::user()->profilepic, 0, 4) != "http") {
+                    // TODO: fix unlink
+                    unlink(public_path('images/profile_pic') . str_replace( url('images/profile_pic/'), "", Auth::user()->profilepic));
+                }
             }
-            $request->image->move(public_path('images'), $imageName);
+            $request->image->move(public_path('images/profile_pic'), $imageName);
 
             User::where('id', Auth::user()->id)
-                ->update(['intrests' => $request->input('intrests'), 'age' => $request->input('age'), 'profilepic' => $imageName]);
+                ->update(['intrests' => $request->input('intrests'), 'age' => $request->input('age'), 'profilepic' => url('images/profile_pic/'.$imageName)]);
         } else {
             User::where('id', Auth::user()->id)
                 ->update(['intrests' => $request->input('intrests'), 'age' => $request->input('age')]);
@@ -133,9 +136,10 @@ class UserController extends Controller
             $u->username = $facebookUser->getName();
             $u->email = $facebookUser->getEmail();
             $u->password = Hash::make(Str::random(20));
+            $u->profilepic = $facebookUser->getAvatar();
             $u->save();
             Auth::login($u, true);
-        } else{
+        } else {
             Auth::login($user, true);
         }
 
@@ -164,6 +168,35 @@ class UserController extends Controller
             'password' => Hash::make(Str::random(24))
         ]);
         Auth::login($user, true);
+
+        return redirect('/');
+    }
+
+    public function twitter()
+    {
+        // send user's request to Twitter
+        return Socialite::driver('twitter')->redirect();
+    }
+
+    public function twitterRedirect()
+    {
+        // get oauth request back from twitter
+        $twitterUser = Socialite::driver('twitter')->user();
+        dd($twitterUser->getAvatar());
+        $user = User::where('email', '=', $twitterUser->getEmail())->first();
+        
+        //  if this user doesn't exist, add them
+        if (!$user) {
+            $u = new User();
+            $u->username = $twitterUser->getName();
+            $u->email = $twitterUser->getEmail();
+            $u->password = Hash::make(Str::random(20));
+            $u->profilepic = $twitterUser->getAvatar();
+            $u->save();
+            Auth::login($u, true);
+        } else {
+            Auth::login($user, true);
+        }
 
         return redirect('/');
     }
