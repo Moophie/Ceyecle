@@ -15,7 +15,7 @@ use Laravel\Socialite\Facades\Socialite;
 |
 */
 
-Route::get('/', 'App\Http\Controllers\RaceController@upcomingRaces')->middleware('auth');
+Route::get('/', 'App\Http\Controllers\RaceController@indexRaces')->middleware('auth');
 
 // Signup
 Route::get('/register', 'App\Http\Controllers\UserController@signup');
