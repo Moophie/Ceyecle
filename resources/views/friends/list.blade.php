@@ -18,6 +18,7 @@
     @foreach($friends as $friend)
         <div>
             <h3>{{ $friend->username }}</h3>
+            <a href="chat/{{ $friend->id }}">Chat</a>
         </div>
     @endforeach
 
