@@ -7,11 +7,16 @@
 @section('content')
 
     <h1>My profile</h1>
+    <h2>{{ Auth::user()->username }}</h2>
     <a href="/logout">Log out</a>
     <a href="/editProfile">Edit</a>
 
     @if (Auth::user()->profilepic)
-        <img src="{{ asset('images/' . Auth::user()->profilepic) }}" alt="Profile picture">
+        @if(substr(Auth::user()->profilepic, 0, 4) === "http")
+            <img src="{{ Auth::user()->profilepic }}" alt="Profile picture">
+        @else
+            <img src="{{ asset('images/' . Auth::user()->profilepic) }}" alt="Profile picture">
+        @endif
     @endif
 
     <div>
