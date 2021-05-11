@@ -8,7 +8,7 @@ use App\Models\Room;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
 use App\Models\Message;
-
+use App\Models\Rider;
 
 class RoomController extends Controller
 {
@@ -53,6 +53,7 @@ class RoomController extends Controller
         $data['room'] = Room::where('id', $room->id)->with('users')->with('messages')->first();
         $data['participants'] = Room::with('users')->get();
         $data['question'] = $room->questions()->where('status', 'unanswered')->first();
+        $data['top25'] = ProCyclingStats::getLiveRanking('race/giro-d-italia/2021/stage-4');
 
         return view('rooms/show', $data);
     }

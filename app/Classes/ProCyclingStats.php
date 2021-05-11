@@ -218,4 +218,17 @@ class ProCyclingStats
 
         return $rider_info;
     }
+
+    public static function getLiveRanking($stage_url){
+        $url = self::BASE_URL . $stage_url . "/today/livestats";
+        $client = new Client();
+        $crawler = $client->request('GET', $url);
+        $top_25_riders = $crawler->filter('.riders2 .name a')->each(function (Crawler $node, $i) {
+            $top_25_rider['name'] = $node->text();
+
+            return $top_25_rider;
+        });
+
+        return $top_25_riders;
+    }
 }

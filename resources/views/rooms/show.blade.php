@@ -12,6 +12,15 @@
         <p>{{ $user->username }}</p>
     @endforeach
 
+    <h1>Top 25</h1>
+    <ol>
+        @foreach ($top25 as $rider)
+            <li>{{ $rider['name'] }}</li>
+
+        @endforeach
+    </ol>
+
+
     <h1>Chat</h1>
 
     <div class="show-chat">
