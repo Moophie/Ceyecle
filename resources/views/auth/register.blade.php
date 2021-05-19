@@ -6,7 +6,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header"></div>
-                    <img class="logo" src="../images/Logo.png" alt="">
+                    <img class="logo" src="../public/images/Logo.png" alt="">
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('register') }}">
@@ -42,7 +42,7 @@
 
                             <div class="form-group row">
                                 <div class="col-md-6">
-                                    <input placeholder="Wachtwoord" type="password"
+                                    <input placeholder="Wachtwoord" id="mail" type="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
                                         required autocomplete="new-password">
 
@@ -57,7 +57,7 @@
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button id="btn" type="submit" class="btn btn-primary">
-                                        <img src="../images/middel 7-8.png" alt="">
+                                        <img src="../public/images/middel 7-8.png" alt="">
                                     </button>
                                 </div>
                             </div>
