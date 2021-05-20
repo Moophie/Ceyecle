@@ -72,7 +72,11 @@ class RoomController extends Controller
 
         if($data['current_stage'] != "No stage going on for this race"){
             $data['top25'] = ProCyclingStats::getLiveRanking($data['current_stage']->pcs_url);
+            $data['top25_json'] = json_encode($data['top25']);
         }
+
+        $test = ['Egan BERNAL', 'Remco EVENEPOEL'];
+        $data['top25_json'] = json_encode($test);
 
         return view('rooms/show', $data);
     }

@@ -40,22 +40,6 @@
         @endforeach
     </div>
 
-    {{-- <h2>Room Question</h2>
-
-    @if ($question)
-        <form action="/rooms/answerQuestion" method="POST">
-            {{ csrf_field() }}
-
-            {{ $question->question }}
-
-            <input type="hidden" value="{{ $question->id }}" name="question-id" hidden>
-            <input type="hidden" value="{{ $room->id }}" name="room-id" hidden>
-            <input type="text" name="question-answer">
-            <input type="submit" value="Answer">
-        </form>
-    @endif --}}
-
-
     <form action="/rooms/chat" method="POST">
         {{ csrf_field() }}
 
@@ -72,10 +56,35 @@
         <input type="submit" value="Invite friends">
     </form>
 
-    {{-- <form action="/rooms/raceQuestion" method="POST">
-        {{ csrf_field() }}
+    
+        <h2>Room Question</h2>
 
-        <input type="text" value="{{ $room->id }}" name="room-id" hidden>
-        <input type="submit" value="Get Race Question">
-    </form> --}}
+        @if ($question)
+            <form action="/rooms/answerQuestion" method="POST">
+                {{ csrf_field() }}
+
+                {{ $question->question }}
+
+                <input type="hidden" value="{{ $question->id }}" name="question-id" hidden>
+                <input type="hidden" value="{{ $room->id }}" name="room-id" hidden>
+                <input type="text" name="question-answer">
+                <input type="submit" value="Answer">
+            </form>
+        @endif
+
+        <form action="/rooms/raceQuestion" method="POST">
+            {{ csrf_field() }}
+
+            <input type="text" value="{{ $room->id }}" name="room-id" hidden>
+            <input type="submit" value="Test Race Question">
+        </form>
+
+        <form action="/rooms/riderQuestion" method="POST">
+            {{ csrf_field() }}
+
+            <input type="text" value="{{ $room->id }}" name="room-id" hidden>
+            <input type="text" value="{{ $top25_json }}" name="top-25" hidden>
+            <input type="submit" value="Test Rider Question">
+        </form>
+    
 @endsection
