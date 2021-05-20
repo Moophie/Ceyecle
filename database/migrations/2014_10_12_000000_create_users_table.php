@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('profilepic')->nullable();
+            $table->string('profilepic')->default("https://homestead.test/images/profile_pic/default.png");
             $table->integer('age')->nullable();
             $table->string('intrests')->nullable();
             $table->integer('score')->default(0);
