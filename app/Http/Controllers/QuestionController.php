@@ -47,10 +47,8 @@ class QuestionController extends Controller
         $race = Race::find($room->race->id);
         $top25 = json_decode($request->input('top-25'));
         $rng_rider = rand(0, (count($top25)-1));
-        Log::info($top25);
         $rng = rand(0, 0);
         $rider_name = explode(" ", $top25[0]->name);
-        Log::info($rider_name);
         $rider = Rider::where('lastname', $rider_name[0])->where('firstname', $rider_name[1])->first(); 
 
         $q = new Question();

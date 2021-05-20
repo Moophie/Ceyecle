@@ -26,6 +26,13 @@
                         <img class="race" src="{{ $race->logo }}" alt="Event image">
                         <h2>{{ $race->name }}</h2>
                         <p>{{ $race->date }}</p>
+                        <form action="/rooms/create" method="POST">
+
+                            {{ csrf_field() }}
+
+                            <input type="text" value="{{ $race->id }}" name="race-id" hidden>
+                            <input type="submit" value="Create room">
+                        </form>
 
                         <a class="info" href="/races/{{ $race->id }}">Meer info</a>
 
