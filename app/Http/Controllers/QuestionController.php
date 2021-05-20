@@ -6,6 +6,7 @@ use App\Models\Question;
 use App\Models\Race;
 use App\Models\Rider;
 use App\Models\Room;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
@@ -70,7 +71,7 @@ class QuestionController extends Controller
         $answer = strtolower($request->input('question-answer'));
 
         if($answer == strtolower($question->answer)){
-            Question::where('id', $question->id)->update(['status' => 'answered']);
+            Question::where('id', $question->id)->update(['status' => 'answered', 'user_id' => $request->input('user-id')]);
         }
 
         return redirect()->route('show-room', ['room' => $room->id]);;

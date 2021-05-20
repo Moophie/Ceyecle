@@ -67,6 +67,7 @@
 
                 <input type="hidden" value="{{ $question->id }}" name="question-id" hidden>
                 <input type="hidden" value="{{ $room->id }}" name="room-id" hidden>
+                <input type="hidden" value="{{ Auth::user()->id }}" name="user-id" hidden>
                 <input type="text" name="question-answer">
                 <input type="submit" value="Answer">
             </form>

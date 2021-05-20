@@ -13,4 +13,9 @@ class Question extends Model
     {
         return $this->belongsTo(Room::class);
     }
+
+    public function answerer()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
