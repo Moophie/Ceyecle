@@ -20,9 +20,9 @@
         <p>Leeftijd: {{ Auth::user()->age }}</p>
     </div>
 
-    <h2>Deelgenomen aan</h2>
 
-    <div>
+    <div class="evenementen">
+    <h2>Deelgenomen aan</h2>
         <img src="https://via.placeholder.com/100" alt="Race picture">
         <h2>WK Veldrijden 2021</h2>
         <p>30-31/01/2021</p>

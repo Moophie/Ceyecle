@@ -6,7 +6,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header"></div>
-                    <img class="logo" src="../images/Logo.png" alt="">
+                    <img class="logo" src="../public/images/Logo.png" alt="">
                     <div class="card-body" id="form">
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
@@ -39,7 +39,7 @@
                             </div>
 
                             <button id="btn" type="submit" class="btn btn-primary">
-                                <img src="../images/middel 7-8.png" alt="">
+                                <img src="../public/images/middel 7-8.png" alt="">
                             </button>
 
                             <div class="form-group row">
@@ -91,8 +91,6 @@
     </div>
     <br>
     <hr>
-    <div class="winnaar" style="background-image: url(../images/winnaar.png);height:400px;width:514px;">
-        <button id="btndeco"><a href="register">{{ __('Aanmelden') }}</a></button>
-    </div>
+    <button id="btndeco"><a href="register">{{ __('Aanmelden') }}</a></button>
 
 @endsection
