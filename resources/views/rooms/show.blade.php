@@ -35,7 +35,7 @@
         @endforeach
     </div>
 
-    <h2>Room Question</h2>
+    {{-- <h2>Room Question</h2>
 
     @if ($question)
         <form action="/rooms/answerQuestion" method="POST">
@@ -48,7 +48,7 @@
             <input type="text" name="question-answer">
             <input type="submit" value="Answer">
         </form>
-    @endif
+    @endif --}}
 
 
     <form action="/rooms/chat" method="POST">
@@ -67,10 +67,10 @@
         <input type="submit" value="Invite friends">
     </form>
 
-    <form action="/rooms/raceQuestion" method="POST">
+    {{-- <form action="/rooms/raceQuestion" method="POST">
         {{ csrf_field() }}
 
         <input type="text" value="{{ $room->id }}" name="room-id" hidden>
         <input type="submit" value="Get Race Question">
-    </form>
+    </form> --}}
 @endsection

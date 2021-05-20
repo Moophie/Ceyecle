@@ -11,15 +11,55 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
+-- Dumping structure for table ceyecle.failed_jobs
+CREATE TABLE IF NOT EXISTS `failed_jobs` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Dumping data for table ceyecle.failed_jobs: ~0 rows (approximately)
 /*!40000 ALTER TABLE `failed_jobs` DISABLE KEYS */;
 /*!40000 ALTER TABLE `failed_jobs` ENABLE KEYS */;
 
--- Dumping data for table ceyecle.messages: ~0 rows (approximately)
+-- Dumping structure for table ceyecle.messages
+CREATE TABLE IF NOT EXISTS `messages` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` bigint unsigned NOT NULL,
+  `room_id` bigint unsigned NOT NULL,
+  `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `messages_user_id_foreign` (`user_id`),
+  KEY `messages_room_id_foreign` (`room_id`),
+  CONSTRAINT `messages_room_id_foreign` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`id`),
+  CONSTRAINT `messages_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table ceyecle.messages: ~3 rows (approximately)
 /*!40000 ALTER TABLE `messages` DISABLE KEYS */;
+INSERT INTO `messages` (`id`, `user_id`, `room_id`, `content`, `created_at`, `updated_at`) VALUES
+	(2, 1, 1, 'hello', '2021-05-11 13:14:16', '2021-05-11 13:14:16'),
+	(3, 3, 1, 'hello', '2021-05-11 13:14:31', '2021-05-11 13:14:31'),
+	(4, 1, 1, 'heeey', '2021-05-11 13:39:04', '2021-05-11 13:39:04');
 /*!40000 ALTER TABLE `messages` ENABLE KEYS */;
 
--- Dumping data for table ceyecle.migrations: ~0 rows (approximately)
+-- Dumping structure for table ceyecle.migrations
+CREATE TABLE IF NOT EXISTS `migrations` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table ceyecle.migrations: ~14 rows (approximately)
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(1, '2014_10_12_000000_create_users_table', 1),
@@ -38,11 +78,30 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(15, '2021_04_30_163340_create_races_table', 2);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 
+-- Dumping structure for table ceyecle.password_resets
+CREATE TABLE IF NOT EXISTS `password_resets` (
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  KEY `password_resets_email_index` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Dumping data for table ceyecle.password_resets: ~0 rows (approximately)
 /*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
 /*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
 
--- Dumping data for table ceyecle.previous_winners: ~11 rows (approximately)
+-- Dumping structure for table ceyecle.previous_winners
+CREATE TABLE IF NOT EXISTS `previous_winners` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `rider_id` int NOT NULL,
+  `race_id` int NOT NULL,
+  `year` date NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table ceyecle.previous_winners: ~57 rows (approximately)
 /*!40000 ALTER TABLE `previous_winners` DISABLE KEYS */;
 INSERT INTO `previous_winners` (`id`, `rider_id`, `race_id`, `year`, `created_at`, `updated_at`) VALUES
 	(1, 268, 1, '2020-01-01', NULL, NULL),
@@ -104,11 +163,40 @@ INSERT INTO `previous_winners` (`id`, `rider_id`, `race_id`, `year`, `created_at
 	(57, 254, 45, '2018-01-01', NULL, NULL);
 /*!40000 ALTER TABLE `previous_winners` ENABLE KEYS */;
 
--- Dumping data for table ceyecle.questions: ~0 rows (approximately)
+-- Dumping structure for table ceyecle.questions
+CREATE TABLE IF NOT EXISTS `questions` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `question` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `answer` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `room_id` int NOT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table ceyecle.questions: ~1 rows (approximately)
 /*!40000 ALTER TABLE `questions` DISABLE KEYS */;
+INSERT INTO `questions` (`id`, `question`, `answer`, `room_id`, `status`, `created_at`, `updated_at`) VALUES
+	(1, 'Who won the last Giro d\'Italia?', 'HART Tao GEOGHEGAN', 1, 'unanswered', '2021-05-11 12:01:12', '2021-05-11 12:01:12');
 /*!40000 ALTER TABLE `questions` ENABLE KEYS */;
 
--- Dumping data for table ceyecle.races: ~5 rows (approximately)
+-- Dumping structure for table ceyecle.races
+CREATE TABLE IF NOT EXISTS `races` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `class` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `startdate` date NOT NULL,
+  `enddate` date NOT NULL,
+  `logo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `event_map_picture` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pcs_url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table ceyecle.races: ~33 rows (approximately)
 /*!40000 ALTER TABLE `races` DISABLE KEYS */;
 INSERT INTO `races` (`id`, `class`, `name`, `startdate`, `enddate`, `logo`, `event_map_picture`, `pcs_url`, `created_at`, `updated_at`) VALUES
 	(13, '2.UWT', 'UAE Tour', '2021-02-21', '2021-02-27', 'https://www.procyclingstats.com/images/logo/bn/eh/abu-dhabi-tour-230.jpg', 'https://www.procyclingstats.com/images/profiles/ap/cd/uae-tour-2021-map-1e51fcfed9.png', 'race/uae-tour/2021', '2021-05-11 10:53:59', '2021-05-11 10:53:59'),
@@ -146,7 +234,17 @@ INSERT INTO `races` (`id`, `class`, `name`, `startdate`, `enddate`, `logo`, `eve
 	(45, '2.UWT', 'Gree-Tour of Guangxi', '2021-10-14', '2021-10-19', 'https://www.procyclingstats.com/images/logo/bn/dm/tour-of-guangxi.jpg', 'images/event_map_placeholder.png', 'race/tour-of-guangxi/2021', '2021-05-11 10:55:18', '2021-05-11 10:55:18');
 /*!40000 ALTER TABLE `races` ENABLE KEYS */;
 
--- Dumping data for table ceyecle.races_teams: ~192 rows (approximately)
+-- Dumping structure for table ceyecle.races_teams
+CREATE TABLE IF NOT EXISTS `races_teams` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `race_id` int NOT NULL,
+  `team_id` int NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1263 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table ceyecle.races_teams: ~1.262 rows (approximately)
 /*!40000 ALTER TABLE `races_teams` DISABLE KEYS */;
 INSERT INTO `races_teams` (`id`, `race_id`, `team_id`, `created_at`, `updated_at`) VALUES
 	(1, 1, 19, NULL, NULL),
@@ -1413,6 +1511,25 @@ INSERT INTO `races_teams` (`id`, `race_id`, `team_id`, `created_at`, `updated_at
 	(1262, 45, 12, NULL, NULL);
 /*!40000 ALTER TABLE `races_teams` ENABLE KEYS */;
 
+-- Dumping structure for table ceyecle.riders
+CREATE TABLE IF NOT EXISTS `riders` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `picture` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `firstname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lastname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `dob` date NOT NULL,
+  `age` int NOT NULL,
+  `nationality` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `height` double(8,2) NOT NULL,
+  `weight` int NOT NULL,
+  `team_id` int NOT NULL,
+  `uci_wr` int NOT NULL,
+  `pcs_url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=290 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Dumping data for table ceyecle.riders: ~289 rows (approximately)
 /*!40000 ALTER TABLE `riders` DISABLE KEYS */;
 INSERT INTO `riders` (`id`, `picture`, `firstname`, `lastname`, `dob`, `age`, `nationality`, `height`, `weight`, `team_id`, `uci_wr`, `pcs_url`, `created_at`, `updated_at`) VALUES
@@ -1707,11 +1824,40 @@ INSERT INTO `riders` (`id`, `picture`, `firstname`, `lastname`, `dob`, `age`, `n
 	(289, 'https://www.procyclingstats.com/images/riders/bp/ba/rein-taaramae-2021.jpeg', 'Rein', 'TAARAMÄE', '1987-04-24', 34, 'Estonia', 1.86, 68, 10, 1099, 'rider/rein-taaramae', '2021-05-08 06:32:46', '2021-05-08 06:32:46');
 /*!40000 ALTER TABLE `riders` ENABLE KEYS */;
 
--- Dumping data for table ceyecle.rooms: ~0 rows (approximately)
+-- Dumping structure for table ceyecle.rooms
+CREATE TABLE IF NOT EXISTS `rooms` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `race_id` int NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table ceyecle.rooms: ~2 rows (approximately)
 /*!40000 ALTER TABLE `rooms` DISABLE KEYS */;
+INSERT INTO `rooms` (`id`, `race_id`, `created_at`, `updated_at`) VALUES
+	(1, 30, '2021-05-11 11:40:47', '2021-05-11 11:40:47'),
+	(2, 30, '2021-05-11 14:01:34', '2021-05-11 14:01:34');
 /*!40000 ALTER TABLE `rooms` ENABLE KEYS */;
 
--- Dumping data for table ceyecle.stages: ~0 rows (approximately)
+-- Dumping structure for table ceyecle.stages
+CREATE TABLE IF NOT EXISTS `stages` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date` datetime NOT NULL,
+  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `departure` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `arrival` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `distance` int NOT NULL,
+  `profile_img` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `race_id` int NOT NULL,
+  `pcs_url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=203 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table ceyecle.stages: ~140 rows (approximately)
 /*!40000 ALTER TABLE `stages` DISABLE KEYS */;
 INSERT INTO `stages` (`id`, `name`, `date`, `type`, `departure`, `arrival`, `distance`, `profile_img`, `race_id`, `pcs_url`, `created_at`, `updated_at`) VALUES
 	(63, 'Stage 1 | Al Dhafra Castle - Al Mirfa', '2021-02-21 12:30:00', 'plat', 'Al Dhafra Castle', 'Al Mirfa', 176, 'https://www.procyclingstats.com/images/profiles/ap/ea/uae-tour-2021-stage-1-profile-5d3b0e2067.jpg', 13, 'race/uae-tour/2021/stage-1', '2021-05-11 11:13:51', '2021-05-11 11:13:51'),
@@ -1856,6 +2002,17 @@ INSERT INTO `stages` (`id`, `name`, `date`, `type`, `departure`, `arrival`, `dis
 	(202, 'Stage 6 | -', '2021-10-19 11:19:31', 'onbekend', '', '', 0, 'images/stage_placeholder.png', 45, 'race/tour-of-guangxi/2021/stage-6', '2021-05-11 11:19:31', '2021-05-11 11:19:31');
 /*!40000 ALTER TABLE `stages` ENABLE KEYS */;
 
+-- Dumping structure for table ceyecle.teams
+CREATE TABLE IF NOT EXISTS `teams` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nationality` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pcs_url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Dumping data for table ceyecle.teams: ~38 rows (approximately)
 /*!40000 ALTER TABLE `teams` DISABLE KEYS */;
 INSERT INTO `teams` (`id`, `name`, `nationality`, `pcs_url`, `created_at`, `updated_at`) VALUES
@@ -1899,20 +2056,72 @@ INSERT INTO `teams` (`id`, `name`, `nationality`, `pcs_url`, `created_at`, `upda
 	(38, 'Vini Zabù', 'it', 'team/vini-zabu-2021', '2021-05-11 10:46:18', '2021-05-11 10:46:18');
 /*!40000 ALTER TABLE `teams` ENABLE KEYS */;
 
--- Dumping data for table ceyecle.users: ~3 rows (approximately)
+-- Dumping structure for table ceyecle.users
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `profilepic` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `age` int DEFAULT NULL,
+  `intrests` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `score` int NOT NULL DEFAULT '0',
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_email_unique` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table ceyecle.users: ~4 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `username`, `email`, `email_verified_at`, `password`, `profilepic`, `age`, `intrests`, `score`, `remember_token`, `created_at`, `updated_at`) VALUES
 	(1, 'Michael', 'michael@test.com', NULL, '$2y$10$a8PftWRqOWLFU6mZ0F31V.NS8T03RSkjZyBVrHLjNlMV.f12b0FJW', NULL, NULL, NULL, 0, NULL, '2021-05-11 10:44:05', '2021-05-11 10:44:05'),
 	(2, 'Hannah', 'hannah@test.com', NULL, '$2y$10$SmbrgJCcIigFZkCSwXUsiOP62/YmbHhUvR7FP1k/qnyHd/Pcknyyu', NULL, NULL, NULL, 0, NULL, '2021-05-11 10:44:05', '2021-05-11 10:44:05'),
-	(3, 'Lize', 'lize@test.com', NULL, '$2y$10$oyO093rxciWdePcr12L.FuJiaoGQNmOIWclLwYDQrDmBHh/1CBfju', NULL, NULL, NULL, 0, NULL, '2021-05-11 10:44:05', '2021-05-11 10:44:05');
+	(3, 'Lize', 'lize@test.com', NULL, '$2y$10$oyO093rxciWdePcr12L.FuJiaoGQNmOIWclLwYDQrDmBHh/1CBfju', NULL, NULL, NULL, 0, NULL, '2021-05-11 10:44:05', '2021-05-11 10:44:05'),
+	(4, 'Tyler Alfgddfdgcjbg Letuchystein', 'xfieesrjod_1620658663@tfbnw.net', NULL, '$2y$10$.yunKIWkjfqrsqpaTToTTO7szckNmU.hcq6oYJL8UwLAfayLxvzQe', 'https://graph.facebook.com/v3.3/108954894696059/picture?type=normal', NULL, NULL, 0, 'wegoOBkuIOOUFvjMQXOtEhD0Gt5zGobutBYCgHPT6OevLzL9IwaZIkg2h1Pk', '2021-05-11 13:52:11', '2021-05-11 13:52:11');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
+
+-- Dumping structure for table ceyecle.users_friendships
+CREATE TABLE IF NOT EXISTS `users_friendships` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `user_id1` bigint unsigned NOT NULL,
+  `user_id2` bigint unsigned NOT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `users_friendships_user_id1_foreign` (`user_id1`),
+  KEY `users_friendships_user_id2_foreign` (`user_id2`),
+  CONSTRAINT `users_friendships_user_id1_foreign` FOREIGN KEY (`user_id1`) REFERENCES `users` (`id`),
+  CONSTRAINT `users_friendships_user_id2_foreign` FOREIGN KEY (`user_id2`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table ceyecle.users_friendships: ~0 rows (approximately)
 /*!40000 ALTER TABLE `users_friendships` DISABLE KEYS */;
 /*!40000 ALTER TABLE `users_friendships` ENABLE KEYS */;
 
--- Dumping data for table ceyecle.users_rooms: ~0 rows (approximately)
+-- Dumping structure for table ceyecle.users_rooms
+CREATE TABLE IF NOT EXISTS `users_rooms` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` bigint unsigned NOT NULL,
+  `room_id` bigint unsigned NOT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `users_rooms_user_id_foreign` (`user_id`),
+  KEY `users_rooms_room_id_foreign` (`room_id`),
+  CONSTRAINT `users_rooms_room_id_foreign` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`id`),
+  CONSTRAINT `users_rooms_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table ceyecle.users_rooms: ~2 rows (approximately)
 /*!40000 ALTER TABLE `users_rooms` DISABLE KEYS */;
+INSERT INTO `users_rooms` (`id`, `user_id`, `room_id`, `status`, `created_at`, `updated_at`) VALUES
+	(1, 1, 1, 'active', NULL, NULL),
+	(2, 4, 2, 'active', NULL, NULL);
 /*!40000 ALTER TABLE `users_rooms` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
