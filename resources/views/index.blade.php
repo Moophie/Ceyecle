@@ -23,11 +23,6 @@
             @foreach ($ongoing_races as $race)
                 <div class="race-event">
                     <div class="evenement">
-                        <form action="/rooms/create" method="POST">
-                            {{ csrf_field() }}
-                            <input type="text" value="{{ $race->id }}" name="race-id" hidden>
-                            <input type="submit" value="Create room">
-                        </form>
                         <img class="race" src="{{ $race->logo }}" alt="Event image">
                         <h2>{{ $race->name }}</h2>
                         <p>{{ $race->date }}</p>
