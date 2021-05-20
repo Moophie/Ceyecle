@@ -56,7 +56,7 @@
         <input type="submit" value="Invite friends">
     </form>
 
-    
+    @if ($current_stage !== 'No stage going on for this race')
         <h2>Room Question</h2>
 
         @if ($question)
@@ -87,5 +87,5 @@
             <input type="text" value="{{ $top25_json }}" name="top-25" hidden>
             <input type="submit" value="Test Rider Question">
         </form>
-    
+    @endif
 @endsection

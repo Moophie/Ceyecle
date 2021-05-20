@@ -75,9 +75,6 @@ class RoomController extends Controller
             $data['top25_json'] = json_encode($data['top25']);
         }
 
-        $test = ['Egan BERNAL', 'Remco EVENEPOEL'];
-        $data['top25_json'] = json_encode($test);
-
         return view('rooms/show', $data);
     }
 

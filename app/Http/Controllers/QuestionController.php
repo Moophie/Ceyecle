@@ -8,6 +8,8 @@ use App\Models\Rider;
 use App\Models\Room;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Symfony\Polyfill\Intl\Idn\Info;
 
 class QuestionController extends Controller
 {
@@ -45,15 +47,17 @@ class QuestionController extends Controller
         $race = Race::find($room->race->id);
         $top25 = json_decode($request->input('top-25'));
         $rng_rider = rand(0, (count($top25)-1));
+        Log::info($top25);
         $rng = rand(0, 0);
-        $rider_name = explode(" ", $top25[$rng_rider]);
-        $rider = Rider::where('firstname', $rider_name[0])->where('lastname', $rider_name[1])->first(); 
+        $rider_name = explode(" ", $top25[0]->name);
+        Log::info($rider_name);
+        $rider = Rider::where('lastname', $rider_name[0])->where('firstname', $rider_name[1])->first(); 
 
         $q = new Question();
 
         switch ($rng) {
             case 0:
-                $q->question = $top25[$rng_rider] . " is momenteel op plaats " . $rng_rider . ". Welke nationaliteit heeft deze renner?";
+                $q->question = $top25[$rng_rider]->name . " is momenteel op plaats " . $rng_rider . ". Uit welk land komt deze renner?";
                 $q->answer = $rider->nationality;
                 break;
         }
