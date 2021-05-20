@@ -27,8 +27,8 @@ class QuestionController extends Controller
 
             case 1:
                 $random_year = rand(2015, 2020);
-                $q->question = "Who won the the " . $race->name . " in " . $random_year . "?";
-                $q->answer = $race->previousWinners()->where('year', $random_year . '-01-01')->first();
+                $q->question = "Who won the " . $race->name . " in " . $random_year . "?";
+                $q->answer = $race->previousWinners()->where('year', $random_year . '-01-01')->first()->firstname . " " .  $race->previousWinners()->where('year', $random_year . '-01-01')->first()->lastname;
                 break;
         }
 
@@ -69,9 +69,12 @@ class QuestionController extends Controller
         $question = Question::find($request->input('question-id'));
         $room = Room::find($request->input('room-id'));
         $answer = strtolower($request->input('question-answer'));
+        $user = User::find($request->input('user-id'));
+        $new_score = $user->score + 1;
 
         if($answer == strtolower($question->answer)){
-            Question::where('id', $question->id)->update(['status' => 'answered', 'user_id' => $request->input('user-id')]);
+            Question::where('id', $question->id)->update(['status' => 'answered', 'user_id' => $user->id]);
+            User::where('id', $user->id)->update(['score' => $new_score]);
         }
 
         return redirect()->route('show-room', ['room' => $room->id]);;

@@ -56,9 +56,8 @@ Route::get('/add/{user}', 'App\Http\Controllers\FriendController@addFriend')->mi
 Route::get('/user/{user}', 'App\Http\Controllers\FriendController@getFriend')->middleware('auth');
 Route::get('/friends/list', 'App\Http\Controllers\FriendController@friendRequests')->middleware('auth');
 Route::get('/friends/accept/{user}', 'App\Http\Controllers\FriendController@acceptRequest')->middleware('auth');
-Route::get('/leaderboard', function () {
-    return view('friends/leaderboards');
-})->middleware('auth');
+
+Route::get('/leaderboard', 'App\Http\Controllers\SocialController@leaderboard')->middleware('auth');
 
 // Chat
 Route::get('/friends/chat/{friend}', 'App\Http\Controllers\ChatController@index')->middleware('auth')->name('chat');
