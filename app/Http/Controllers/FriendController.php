@@ -17,21 +17,6 @@ class FriendController extends Controller
         return view('friends/profile', $user);
     }
 
-    public function friendRequests()
-    {
-        // Get all friend requests of user and put it in an array
-        $user = Auth::user();
-        $friends = UsersFriendship::where([['status', '=', 'pending'], ['user_id1', '=', $user->id]])->get();
-
-        $data = [];
-        foreach ($friends as $friend) {
-            $user_id = $friend->user_id2;
-            array_push($data, User::find($user_id));
-        }
-        
-        return view('friends/list', ['requests'=>$data]);
-    }
-
     public function search(Request $request)
     {
         $input = $request->username;

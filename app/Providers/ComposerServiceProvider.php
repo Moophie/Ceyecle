@@ -24,5 +24,6 @@ class ComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer(['friends/list', 'friends/leaderboards', 'rooms/invite'], \App\Http\ViewComposers\FriendsComposer::class);
+        view()->composer(['friends/list', 'friends/index'], \App\Http\ViewComposers\RequestComposer::class);
     }
 }
