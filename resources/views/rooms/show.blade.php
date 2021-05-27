@@ -2,9 +2,12 @@
 
 @section('content')
     <h1>{{ $room->race->name }}</h1>
-    <h2>Current stage: {{ $current_stage->name }}</h2>
-    <img src="{{ $current_stage->profile_img }}" alt="" width="500px">
-
+    @if ($current_stage !== 'No stage going on for this race')
+        <h2>Current stage: {{ $current_stage->name }}</h2>
+        <img src="{{ $current_stage->profile_img }}" alt="" width="500px">
+    @else
+        <h2>Current stage: {{ $current_stage }}</h2>
+    @endif
     <h1>Teams</h1>
     <ul>
         @foreach ($participating_teams as $team)
@@ -18,13 +21,15 @@
         <p>{{ $user->username }}</p>
     @endforeach
 
-    <h1>Top 25</h1>
-    <ol>
-        @foreach ($top25 as $rider)
-            <li>{{ $rider['name'] }}</li>
+    @if (!empty($top25))
+        <h1>Top 25</h1>
+        <ol>
+            @foreach ($top25 as $rider)
+                <li>{{ $rider['name'] }}</li>
 
-        @endforeach
-    </ol>
+            @endforeach
+        </ol>
+    @endif
 
 
     <h1>Chat</h1>
@@ -34,22 +39,6 @@
             <p>{{ $message->user->username }}: {{ $message->content }}</p>
         @endforeach
     </div>
-
-    {{-- <h2>Room Question</h2>
-
-    @if ($question)
-        <form action="/rooms/answerQuestion" method="POST">
-            {{ csrf_field() }}
-
-            {{ $question->question }}
-
-            <input type="hidden" value="{{ $question->id }}" name="question-id" hidden>
-            <input type="hidden" value="{{ $room->id }}" name="room-id" hidden>
-            <input type="text" name="question-answer">
-            <input type="submit" value="Answer">
-        </form>
-    @endif --}}
-
 
     <form action="/rooms/chat" method="POST">
         {{ csrf_field() }}
@@ -67,10 +56,36 @@
         <input type="submit" value="Invite friends">
     </form>
 
-    {{-- <form action="/rooms/raceQuestion" method="POST">
-        {{ csrf_field() }}
+    @if ($current_stage !== 'No stage going on for this race')
+        <h2>Room Question</h2>
 
-        <input type="text" value="{{ $room->id }}" name="room-id" hidden>
-        <input type="submit" value="Get Race Question">
-    </form> --}}
+        @if ($question)
+            <form action="/rooms/answerQuestion" method="POST">
+                {{ csrf_field() }}
+
+                {{ $question->question }}
+
+                <input type="hidden" value="{{ $question->id }}" name="question-id" hidden>
+                <input type="hidden" value="{{ $room->id }}" name="room-id" hidden>
+                <input type="hidden" value="{{ Auth::user()->id }}" name="user-id" hidden>
+                <input type="text" name="question-answer">
+                <input type="submit" value="Answer">
+            </form>
+        @endif
+
+        <form action="/rooms/raceQuestion" method="POST">
+            {{ csrf_field() }}
+
+            <input type="text" value="{{ $room->id }}" name="room-id" hidden>
+            <input type="submit" value="Test Race Question">
+        </form>
+
+        <form action="/rooms/riderQuestion" method="POST">
+            {{ csrf_field() }}
+
+            <input type="text" value="{{ $room->id }}" name="room-id" hidden>
+            <input type="text" value="{{ $top25_json }}" name="top-25" hidden>
+            <input type="submit" value="Test Rider Question">
+        </form>
+    @endif
 @endsection

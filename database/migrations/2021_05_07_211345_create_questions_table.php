@@ -19,6 +19,7 @@ class CreateQuestionsTable extends Migration
             $table->string('answer');
             $table->integer('room_id');
             $table->string('status');
+            $table->integer('user_id')->nullable();
             $table->timestamps();
         });
     }

@@ -58,9 +58,8 @@ Route::get('/friends/list', function () {
     return view('friends/list');
 })->middleware('auth');
 Route::get('/friends/accept/{user}', 'App\Http\Controllers\FriendController@acceptRequest')->middleware('auth');
-Route::get('/leaderboard', function () {
-    return view('friends/leaderboards');
-})->middleware('auth');
+
+Route::get('/leaderboard', 'App\Http\Controllers\SocialController@leaderboard')->middleware('auth');
 
 // Chat
 Route::get('/friends/chat/{friend}', 'App\Http\Controllers\ChatController@index')->middleware('auth')->name('chat');
@@ -75,6 +74,7 @@ Route::post('/rooms/inviteFriend', 'App\Http\Controllers\RoomController@inviteFr
 Route::post('/rooms/chat', 'App\Http\Controllers\RoomController@sendMessage')->middleware('auth');
 Route::get('/rooms/accept/{room}', 'App\Http\Controllers\RoomController@acceptRequest')->middleware('auth');
 Route::post('/rooms/raceQuestion', 'App\Http\Controllers\QuestionController@raceQuestion')->middleware('auth');
+Route::post('/rooms/riderQuestion', 'App\Http\Controllers\QuestionController@riderQuestion')->middleware('auth');
 Route::post('/rooms/answerQuestion', 'App\Http\Controllers\QuestionController@answerQuestion')->middleware('auth');
 
 // Races

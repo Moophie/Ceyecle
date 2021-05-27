@@ -10,8 +10,8 @@
         <img class="logoklein" src="../public/images/LK-8.png" alt="">
         <img class="profiel" src="../public/images/icons/Profiel_2-8.png" alt="">
         <div class="header">
-        <p>Nu bezig: Ethias Cross Eeklo 2021</p>
-    </div>
+            <p>Nu bezig: Ethias Cross Eeklo 2021</p>
+        </div>
     </div>
 
     <!-- test link -->
@@ -26,7 +26,16 @@
                         <img class="race" src="{{ $race->logo }}" alt="Event image">
                         <h2>{{ $race->name }}</h2>
                         <p>{{ $race->date }}</p>
+                        <form action="/rooms/create" method="POST">
+
+                            {{ csrf_field() }}
+
+                            <input type="text" value="{{ $race->id }}" name="race-id" hidden>
+                            <input type="submit" value="Create room">
+                        </form>
+
                         <a class="info" href="/races/{{ $race->id }}">Meer info</a>
+
                     </div>
                 </div>
             @endforeach

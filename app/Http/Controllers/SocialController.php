@@ -12,4 +12,9 @@ class SocialController extends Controller
     {
         return view('social/index');
     }
+
+    public function leaderboard()
+    {
+        return view('friends/leaderboards');
+    }
 }
