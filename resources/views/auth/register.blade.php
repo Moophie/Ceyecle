@@ -1,12 +1,16 @@
 @extends('layouts.app')
 
+@section('title')
+    Register
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header"></div>
-                    <img class="logo" src="../public/images/Logo.png" alt="">
+                    <img class="logo" src="{{ asset('/images/Logo.png') }}" alt="">
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('register') }}">
@@ -57,7 +61,7 @@
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button id="btn" type="submit" class="btn btn-primary">
-                                        <img src="../public/images/middel 7-8.png" alt="">
+                                        <img src="{{ asset('/images/arrow-right.png') }}" alt="">
                                     </button>
                                 </div>
                             </div>
