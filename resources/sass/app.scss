@@ -4,6 +4,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Catamaran&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
 /*
 // Variables
 @import 'variables';
@@ -53,7 +55,14 @@ form {
     padding-top: 5px;
     padding-bottom: 5px;
     margin-top: 130px;
-    margin-right: 300px;
+    margin-right: 270px;
+    padding: 10px 30px;
+}
+
+#btndecoa {
+    text-decoration: none; 
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
 }
 
 button img {
@@ -64,7 +73,17 @@ button img {
 #btn {
     border-radius: 50px;
     margin-right: 170px;
-    position: relative;
+    position: absolute;
+    right: -105px;
+    top: 238px;
+}
+
+#btnn {
+    border-radius: 50px;
+    margin-right: 170px;
+    position: absolute;
+    right: -105px;
+    top: 276px;
 }
 
 hr {
@@ -73,10 +92,6 @@ hr {
     margin: 0;
 }
 
-.winnaar {
-    width: 500px;
-    height: 400px;
-}
 
 .logoklein {
     margin-top: 14px;
@@ -202,5 +217,27 @@ a{
     text-align: center;
 }
 
+#login{
+    text-decoration: none; 
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
 
+}
 
+.loginlogo{
+    margin-top: 10px;
+    width: 20px;
+    height: 20px;
+}
+
+#inlogbtn{
+    border: 2px solid #3C7A84;
+    border-radius: 25px;
+    padding: 9px 23px;
+    align-content: center;
+
+}
+
+.back{
+    background-image: url(/public/images/winnaar.jpeg);
+}

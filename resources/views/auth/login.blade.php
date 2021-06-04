@@ -57,35 +57,40 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <br>
                             <div class="form-group row mb-0">
-                                <div class="col-md-8 offset-md-4">
+                                <btn id="inlogbtn" class="col-md-8 offset-md-4">
                                     <!--  <button id="btndeco" type="submit" class="btn btn-primary">
                                         {{ __('Aanmelden') }}
                                     </button> -->
 
                                     @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        <a id="login" class="btn btn-link" href="{{ route('password.request') }}">
                                             {{ __('Forgot Your Password?') }}
                                         </a>
                                     @endif
-                                </div>
+                                </btn>
                             </div>
-
+                            <br>
                             <div class="form-group row">
-                                <div class="col-md-6">
-                                <a href="/register/facebook" class="btn btn-secondary">Login with Facebook</a>
-                                </div>
+                                <btn id="inlogbtn" class="col-md-6">
+                                <img class="loginlogo" src="{{ asset('/images/facebook.svg') }}" alt="">
+                                <a id="login" href="/register/facebook" class="btn btn-secondary">Login with Facebook</a>
+                                </btn>
                             </div>
+                            <br>
                             <div class="form-group row">
-                                <div class="col-md-6">
-                                <a href="/register/google" class="btn btn-secondary">Login with Google</a>
-                                </div>
+                                <btn id="inlogbtn" class="col-md-6">
+                                <img class="loginlogo" src="{{ asset('/images/google.png') }}" alt="">
+                                <a id="login" href="/register/google" class="btn btn-secondary">Login with Google</a>
+                                </btn>
                             </div>
+                            <br>
                             <div class="form-group row">
-                                <div class="col-md-6">
-                                <a href="/register/twitter" class="btn btn-secondary">Login with Twitter</a>
-                                </div>
+                                <btn id="inlogbtn" class="col-md-6">
+                                <img class="loginlogo" src="{{ asset('/images/twitter.png') }}" alt="">
+                                <a id="login" href="/register/twitter" class="btn btn-secondary">Login with Twitter</a>
+                                </btn>
                             </div>
                         </form>
                     </div>
@@ -95,7 +100,7 @@
     </div>
     <br>
     <hr>
-    <div class="winnaar" style="background-image: url(../images/winnaar.png);height:400px;width:514px;">
-        <button id="btndeco"><a href="register">{{ __('Aanmelden') }}</a></button>
-    </div>
+    
+    <button id="btndeco"><a id="btndecoa" href="register">{{ __('Aanmelden') }}</a></button>
+    
 @endsection
