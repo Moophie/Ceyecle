@@ -1,7 +1,7 @@
 @extends('layouts/app')
 
 @section('content')
-    <h1>My Rooms</h1>
+    <h1>Mijn rooms</h1>
 
     @foreach ($room_requests as $room_request)
         <div>

@@ -13,7 +13,7 @@
                     <img class="logo" src="{{ asset('/images/Logo.png') }}" alt="">
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
+                        <form class="formone" method="POST" action="{{ route('register') }}">
                             @csrf
 
                             <div class="form-group row">

@@ -26,7 +26,7 @@
                         <img class="races" src="{{ $race->logo }}" alt="Event image">
                         <h2>{{ $race->name }}</h2>
                         <p>{{ $race->date }}</p>
-                        <button class="info" href="/races/{{ $race->id }}">Meer info</button>
+                        <a class="info" href="/races/{{ $race->id }}">Meer info</a>
                         <forms class="create" action="/rooms/create" method="POST">
 
                             {{ csrf_field() }}
@@ -46,7 +46,7 @@
                         <img class="races" src="{{ $race->logo }}" alt="Event logo">
                         <h2>{{ $race->name }}</h2>
                         <p>{{ $race->date }}</p>
-                        <button class="info" href="/races/{{ $race->id }}">Meer info</button>
+                        <a class="info" href="/races/{{ $race->id }}">Meer info</a>
                         <form class="createone" action="/rooms/create" method="POST">
 
                             {{ csrf_field() }}
