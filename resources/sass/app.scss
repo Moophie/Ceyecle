@@ -161,6 +161,17 @@ nav a{
     padding-top: 10px;
 }
 
+.kamer{ 
+    font-family: 'Poppins', sans-serif;
+    color: #FF7F11;
+    font-size: 15px;
+    border: 2px solid #3C7A84;
+    border-radius: 25px;
+    padding: 9px 20px;
+    margin-top: 10px;
+    }
+
+
 h1{
     text-align: center;
     font-family: 'Catamaran', sans-serif;
@@ -171,20 +182,12 @@ h1{
 h2{
     font-family: 'Poppins', sans-serif;
     color: #FF7F11;
-    font-size: 20px;
+    font-size: 16px;
     text-align: center;
 }
 
-.race {
-    margin-left: 80px;
-    margin-top: 15px;
-    width: 40%;
-    margin-bottom: 20px;
-}
-
 .races {
-    margin-left: 0px;
-    margin-top: 15px;
+    margin-top: 20px;
     width: 40%;
     margin-bottom: 20px;
 }
@@ -192,8 +195,43 @@ h2{
 .info{
     font-family: 'Poppins', sans-serif;
     color: #FF7F11;
-    font-size: 20px;
-    text-align: center;
+    font-size: 15px;
+    border: 2px solid #3C7A84;
+    border-radius: 25px;
+    padding: 9px 20px;
+    float: left;  
+    margin-right: 130px;
+    margin-top: 180px;
+    position: absolute;
+
+}
+
+.knop{
+    font-family: 'Poppins', sans-serif;
+    color: #FF7F11;
+    font-size: 15px;
+    border: 2px solid #3C7A84;
+    border-radius: 25px;
+    padding: 9px 20px;
+    
+}
+
+.create{ 
+    float: left;
+    padding-top: 180px;
+    margin-left: 140px;
+    float: right;
+    position: absolute;
+    
+}
+
+.createone{ 
+    float: left;
+    padding-top: 120px;
+    margin-left: 140px;
+    float: right;
+    position: absolute;
+    
 }
 
 //temporary css

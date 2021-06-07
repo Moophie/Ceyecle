@@ -10,12 +10,12 @@
         <img class="logoklein" src="../public/images/LK-8.png" alt="">
         <img class="profiel" src="../public/images/icons/Profiel_2-8.png" alt="">
         <div class="header">
-            <p>Nu bezig: Ethias Cross Eeklo 2021</p>
+        <p>Nu bezig: Ethias Cross Eeklo 2021</p>
         </div>
     </div>
 
     <!-- test link -->
-    <a href="rooms">My rooms<a>
+    <button class="kamer" href="rooms">Mijn rooms</button>
 
             <h1>Huidige evenementen</h1>
 
@@ -23,19 +23,17 @@
             @foreach ($ongoing_races as $race)
                 <div class="race-event">
                     <div class="evenement">
-                        <img class="race" src="{{ $race->logo }}" alt="Event image">
+                        <img class="races" src="{{ $race->logo }}" alt="Event image">
                         <h2>{{ $race->name }}</h2>
                         <p>{{ $race->date }}</p>
-                        <form action="/rooms/create" method="POST">
+                        <button class="info" href="/races/{{ $race->id }}">Meer info</button>
+                        <forms class="create" action="/rooms/create" method="POST">
 
                             {{ csrf_field() }}
 
-                            <input type="text" value="{{ $race->id }}" name="race-id" hidden>
-                            <input type="submit" value="Create room">
+                        <input type="text" value="{{ $race->id }}" name="race-id" hidden>
+                        <input class="knop" type="submit" value="Create room">
                         </form>
-
-                        <a class="info" href="/races/{{ $race->id }}">Meer info</a>
-
                     </div>
                 </div>
             @endforeach
@@ -48,7 +46,14 @@
                         <img class="races" src="{{ $race->logo }}" alt="Event logo">
                         <h2>{{ $race->name }}</h2>
                         <p>{{ $race->date }}</p>
-                        <a class="info" href="/races/{{ $race->id }}">Meer info</a>
+                        <button class="info" href="/races/{{ $race->id }}">Meer info</button>
+                        <form class="createone" action="/rooms/create" method="POST">
+
+                            {{ csrf_field() }}
+
+                        <input type="text" value="{{ $race->id }}" name="race-id" hidden>
+                        <input class="knop" type="submit" value="Create room">
+                        </form>
                     </div>
                 </div>
             @endforeach
