@@ -15,7 +15,7 @@
     </div>
 
     <!-- test link -->
-    <button class="kamer" href="rooms">Mijn rooms</button>
+    <a class="kamer" href="rooms">Mijn rooms</a>
 
             <h1>Huidige evenementen</h1>
 
@@ -27,7 +27,7 @@
                         <h2>{{ $race->name }}</h2>
                         <p>{{ $race->date }}</p>
                         <a class="info" href="/races/{{ $race->id }}">Meer info</a>
-                        <forms class="create" action="/rooms/create" method="POST">
+                        <form class="create" action="/rooms/create" method="POST">
 
                             {{ csrf_field() }}
 
