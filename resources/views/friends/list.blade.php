@@ -10,7 +10,7 @@
     @foreach($requests as $request)
         <div>
             <h3>{{ $request->username }}</h3>
-            <a href="accept/{{ $request->id }}">Accepteren</a>
+            <a class="knop" href="./accept/{{ $request->id }}">Accepteren</a>
         </div>
     @endforeach
 
@@ -18,7 +18,7 @@
     @foreach($friends as $friend)
         <div>
             <h3>{{ $friend->username }}</h3>
-            <a href="chat/{{ $friend->id }}">Chat</a>
+            <a class="knop" href="./chat/{{ $friend->id }}">Chat</a>
         </div>
     @endforeach
 

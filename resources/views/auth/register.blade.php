@@ -103,6 +103,7 @@
     </div>
     <br>
     <hr>
+    <img src="{{ asset('/images/winnaar.jpeg') }}" alt="">
     <button id="btndeco"><a id="btndecoa" href="login">{{ __('Log in') }}</a></button>
 
 @endsection

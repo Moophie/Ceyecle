@@ -14,12 +14,12 @@
                     });
     @endphp
 
+    <img class="sparkel" src="{{ asset('/images/sparkel.png') }}" alt="">
     @if(count($friends) >= 3)
         @for($i = 0; $i < 3; $i++)
-        <h4>{{ $friends[$i]['username'] }}</h4>
                 <div class="podium">
-                <img class="sparkel" src="{{ asset('/images/sparkel.png') }}" alt="">
                 <img class="winner" src="{{ $friends[$i]['profilepic'] }}" alt="{{ $friends[$i]['username'] }}">
+                <h4>{{ $friends[$i]['username'] }}</h4>
             </div>
         @endfor
     @else
@@ -30,7 +30,7 @@
             </div>
         @endfor
     @endif
-    <img class="sparkel" src="{{ asset('/images/sparkel.png') }}" alt="">
+
     <h2>Beste quizer</h2>
     @for($i = 0; $i < count($friends); $i++)
         <div class="flex">
