@@ -19,7 +19,7 @@
         <h4>{{ $friends[$i]['username'] }}</h4>
                 <div class="podium">
                 <img class="sparkel" src="{{ asset('/images/sparkel.png') }}" alt="">
-                <img src="{{ $friends[$i]['profilepic'] }}" alt="{{ $friends[$i]['username'] }}">
+                <img class="winner" src="{{ $friends[$i]['profilepic'] }}" alt="{{ $friends[$i]['username'] }}">
             </div>
         @endfor
     @else
