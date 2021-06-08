@@ -11,16 +11,16 @@
         <img src="{{ Auth::user()->profilepic }}" alt="Profile picture">
     @endif
     <h2>{{ Auth::user()->username }}</h2>
-    <a class="logout"href="/logout">Log out</a>
-    <a class="edit" href="/editProfile">Edit</a>
-    <a class="vrienden" href="">Bekijk vriendenlijst</a>
+    <a class="logout"href="./logout">Log out</a>
+    <a class="edit" href="./editProfile">Edit</a>
+    <a class="vrienden" href="./friends/list" >Bekijk vriendenlijst</a>
     <div class="knowme">
         <p class="me">Interesses: {{ Auth::user()->intrests }}</p>
         <p class="me">Leeftijd: {{ Auth::user()->age }}</p>
     </div>
 
 
-    <div class="evenementen">
+    <div class="kader">
     <h2>Deelgenomen aan</h2>
         <img src="https://via.placeholder.com/100" alt="Race picture">
         <h2>WK Veldrijden 2021</h2>

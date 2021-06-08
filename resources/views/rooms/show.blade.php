@@ -18,7 +18,7 @@
     <h1>Viewers</h1>
 
     @foreach ($room->users as $user)
-        <p>{{ $user->username }}</p>
+        <p class="me">{{ $user->username }}</p>
     @endforeach
 
     @if (!empty($top25))
@@ -40,27 +40,27 @@
         @endforeach
     </div>
 
-    <form action="/rooms/chat" method="POST">
+    <form class="chatbox" action="./rooms/chat" method="POST">
         {{ csrf_field() }}
 
         <input type="text" value="{{ $room->id }}" name="room-id" hidden>
         <input type="text" value="{{ Auth::user()->id }}" name="user-id" hidden>
-        <input type="textarea" name="message-content">
-        <input type="submit" value="Send message">
+        <input class="text" type="textarea" name="message-content">
+        <input class="knop" type="submit" value="Send message">
     </form>
 
-    <form action="/rooms/invite" method="POST">
+    <form action="./rooms/invite" method="POST">
         {{ csrf_field() }}
 
         <input type="text" value="{{ $room->id }}" name="room-id" hidden>
-        <input type="submit" value="Invite friends">
+        <input id="knop" class="knop" type="submit" value="Invite friends">
     </form>
 
     @if ($current_stage !== 'No stage going on for this race')
         <h2>Room Question</h2>
 
         @if ($question)
-            <form action="/rooms/answerQuestion" method="POST">
+            <form action="./rooms/answerQuestion" method="POST">
                 {{ csrf_field() }}
 
                 {{ $question->question }}
@@ -73,14 +73,14 @@
             </form>
         @endif
 
-        <form action="/rooms/raceQuestion" method="POST">
+        <form action="./rooms/raceQuestion" method="POST">
             {{ csrf_field() }}
 
             <input type="text" value="{{ $room->id }}" name="room-id" hidden>
             <input type="submit" value="Test Race Question">
         </form>
 
-        <form action="/rooms/riderQuestion" method="POST">
+        <form action="./rooms/riderQuestion" method="POST">
             {{ csrf_field() }}
 
             <input type="text" value="{{ $room->id }}" name="room-id" hidden>
@@ -88,4 +88,7 @@
             <input type="submit" value="Test Rider Question">
         </form>
     @endif
+
+    @component('components/navbar')
+@endcomponent
 @endsection

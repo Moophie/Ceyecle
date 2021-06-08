@@ -168,9 +168,11 @@ nav a{
 
 #nav{
     width: 375px;
-    height: 60px;
     background-color: #FF7F11 ;
     padding-top: 10px;
+    position: fixed;
+    bottom: 0;
+    overflow: hidden;
 }
 
 .kamer{ 
@@ -182,6 +184,7 @@ nav a{
     padding: 9px 20px;
     margin-top: 10px;
     background-color: #D9E0E0;
+    text-decoration: none;
     }
 
 
@@ -197,6 +200,7 @@ h2{
     color: #FF7F11;
     font-size: 18px;
     text-align: center;
+    margin: 10px;
 }
 
 h3{
@@ -236,12 +240,13 @@ h3{
     border-radius: 25px;
     padding: 9px 20px;
     background-color: #D9E0E0;
+    text-decoration: none;
     
 }
 
 .create{ 
     float: left;
-    padding-top: 180px;
+    padding-top: 120px;
     margin-left: 140px;
     float: right;
     position: absolute;
@@ -331,7 +336,7 @@ a{
 }
 
 .knowme{
-    border: 2px solid #FF7F11; ;
+    border: 3px solid #FF7F11; ;
     border-radius: 25px;
     width: 300px;
     height: 110px;
@@ -403,3 +408,62 @@ a{
 #form{
     margin-left: -100px;
 }
+
+ul li{
+    font-family: 'Poppins', sans-serif;
+    color: #FF7F11;
+    font-size: 15px;
+    margin-left: 60px;
+}
+
+.chatbox{
+    margin-right: 180px;
+}
+
+.text{
+    margin-bottom: 15px;
+}
+
+#knop{
+    margin-right: 180px;
+    margin-bottom: 30px;
+}
+
+.kader {
+    width: 300px;
+    height: 310px;
+    border: 3px solid #FF7F11;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 90px;
+}
+
+#knopone{
+    margin-top: 35px;
+    width: 160px;
+}
+
+#knoptwo{
+    margin-top: 35px;
+    margin-bottom: 500px;
+    width: 160px;
+}
+
+#knopdrie{
+    margin-right: 180px;
+    margin-top: 10px;
+    margin-bottom: 522px;
+    width: 160px;
+    
+}
+
+.sparkel{
+    position: absolute;
+    width: 170px;
+    height: 170px;
+    z-index: -1;
+    
+}
+

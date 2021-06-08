@@ -25,7 +25,7 @@
     </form>
 </div>
 
-<div class="evenementen">
+<div class="kader">
 <h2>Deelgenomen aan</h2>
     <img src="https://via.placeholder.com/100" alt="Race picture">
     <h2>WK Veldrijden 2021</h2>

@@ -5,12 +5,12 @@
 @endsection
 
 @section('content')
+<h1>Search</h1>
     <form class="search" action="/search" method="GET" role="search">
         <div class="form-group">
-            <label for="username">Search</label>
-            <input type="text" class="form-control" class="form-control mr-2" name="username" placeholder="Search users" id="username">
+            <input class="chatbox" type="text" class="form-control" class="form-control mr-2" name="username" placeholder="Search users" id="username">
         </div>
-        <button class="btn btn-primary" type="submit" title="Search projects">Search</button>
+        <button class="knop" id="knopdrie" class="btn btn-primary" type="submit" title="Search projects">Search</button>
     </form>
 
 <div class="grid">
