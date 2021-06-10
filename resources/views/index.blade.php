@@ -7,8 +7,8 @@
 @section('content')
 
     <div>
-        <img class="logoklein" src="../public/images/LK-8.png" alt="">
-       <a href="./profile/"> <img class="profiel" src="../public/images/icons/Profiel_2-8.png" alt=""></a>
+        <img class="logoklein" src="{{ asset('/images/LK-8.png') }}" alt="">
+       <a href="./profile/"> <img class="profiel" src="{{ asset('/images/icons/Profiel_2-8.png') }}" alt=""></a>
         <div class="header">
         <p>Nu bezig: Ethias Cross Eeklo 2021</p>
         </div>
