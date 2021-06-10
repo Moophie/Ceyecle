@@ -15,6 +15,13 @@ use Laravel\Socialite\Facades\Socialite;
 |
 */
 
+Route::get('/privacy', function () {
+    return view('privacy');
+});
+Route::get('/terms', function () {
+    return view('terms');
+});
+
 Route::get('/', 'App\Http\Controllers\RaceController@indexRaces')->middleware('auth');
 
 // Signup
