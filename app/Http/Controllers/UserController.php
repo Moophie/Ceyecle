@@ -132,6 +132,8 @@ class UserController extends Controller
         //  if this user doesn't exist, add them
         if (!$user) {
             $u = new User();
+            $u->provider = 'facebook';
+            $u->provider_id = $facebookUser->getId();
             $u->username = $facebookUser->getName();
             $u->email = $facebookUser->getEmail();
             $u->password = Hash::make(Str::random(20));

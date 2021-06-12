@@ -86,3 +86,5 @@ Route::post('/rooms/answerQuestion', 'App\Http\Controllers\QuestionController@an
 
 // Races
 Route::get('/races/{race}', 'App\Http\Controllers\RaceController@showRace');
+
+Route::post('/fb-data-deletion', 'App\Http\Controllers\Auth\DataDeletionController@dataDeletionCallback');
