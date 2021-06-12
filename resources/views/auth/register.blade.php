@@ -18,7 +18,7 @@
 
                             <div class="form-group row">
                                 <div class="col-md-6">
-                                    <input placeholder="Naam" id="email" type="text"
+                                    <input placeholder="Naam" id="name" type="text"
                                         class="form-control @error('name') is-invalid @enderror" name="name"
                                         value="{{ old('name') }}" required autocomplete="name" autofocus>
 
@@ -46,7 +46,7 @@
 
                             <div class="form-group row">
                                 <div class="col-md-6">
-                                    <input placeholder="Wachtwoord" id="mail" type="password"
+                                    <input placeholder="Wachtwoord" id="password" type="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
                                         required autocomplete="new-password">
 
@@ -103,7 +103,7 @@
     </div>
     <br>
     <hr>
-    <img src="{{ asset('/images/winnaar.jpeg') }}" alt="">
+    <img src="{{ asset('/images/winnaar.jpg') }}" alt="">
     <button id="btndeco"><a id="btndecoa" href="login">{{ __('Log in') }}</a></button>
 
 @endsection
