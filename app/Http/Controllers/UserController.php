@@ -145,7 +145,6 @@ class UserController extends Controller
         return redirect('/');
     }
 
-    // TODO: check if works when app is online
     public function google()
     {
         // send user's request to Google
@@ -155,18 +154,22 @@ class UserController extends Controller
     public function googleRedirect()
     {
         // get oauth request back from Google
-        $user = Socialite::driver('google')->user();
+        $googleUser = Socialite::driver('google')->user();
 
+        $user = User::where('email', '=', $googleUser->getEmail())->first();
+        
         //  if this user doesn't exist, add them
-        // if they do, get the model
-        $user = User::firstOrCreate([
-            'email' => $user->email
-        ], [
-            'email' => $user->email,
-            'username' => $user->name,
-            'password' => Hash::make(Str::random(24))
-        ]);
-        Auth::login($user, true);
+        if (!$user) {
+            $u = new User();
+            $u->username = $googleUser->getName();
+            $u->email = $googleUser->getEmail();
+            $u->password = Hash::make(Str::random(20));
+            $u->profilepic = $googleUser->getAvatar();
+            $u->save();
+            Auth::login($u, true);
+        } else {
+            Auth::login($user, true);
+        }
 
         return redirect('/');
     }
@@ -181,7 +184,6 @@ class UserController extends Controller
     {
         // get oauth request back from twitter
         $twitterUser = Socialite::driver('twitter')->user();
-        dd($twitterUser->getAvatar());
         $user = User::where('email', '=', $twitterUser->getEmail())->first();
         
         //  if this user doesn't exist, add them
