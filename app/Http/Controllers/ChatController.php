@@ -11,6 +11,25 @@ use App\Models\UsersFriendship;
 
 class ChatController extends Controller
 {
+    public function overview()
+    {
+        $userId = Auth::user()->id;
+        $data['friendships'] = UsersFriendship::where('status', '=', 'confirmed')
+        ->where(function ($q) use ($userId) {
+            $q->where('user_id1', '=', $userId)
+            ->orWhere('user_id2', '=', $userId);
+        })->get();
+
+        $i = 0;
+        foreach ($data['friendships'] as $friendship) {
+            $data['friendships'][$i]['other_user'] = $friendship->other_user();
+            $data['friendships'][$i]['latest_chat'] = $friendship->chats->last();
+            $i++;
+        }
+
+        return view('friends/chatOverview', $data);
+    }
+
     public function index($friendId)
     {
         $user = Auth::user();

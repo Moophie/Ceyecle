@@ -69,6 +69,7 @@ Route::get('/friends/accept/{user}', 'App\Http\Controllers\FriendController@acce
 Route::get('/leaderboard', 'App\Http\Controllers\SocialController@leaderboard')->middleware('auth');
 
 // Chat
+Route::get('/chat', 'App\Http\Controllers\ChatController@overview')->middleware('auth');
 Route::get('/friends/chat/{friend}', 'App\Http\Controllers\ChatController@index')->middleware('auth')->name('chat');
 Route::post('/friends/chat', 'App\Http\Controllers\ChatController@sendMessage')->middleware('auth');
 
