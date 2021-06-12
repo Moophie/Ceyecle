@@ -1,7 +1,7 @@
 @extends('layouts/app')
 
 @section('title')
-    Home
+    Terms and Conditions
 @endsection
 
 @section('content')
