@@ -21,7 +21,7 @@
             <h2>Vrienden om mee te chatten</h2>
             <div>
                 <h3>{{ $friendship['other_user']->username }}</h3>
-                <a class="knop" href="./chat/{{ $friendship['other_user']->id }}">Chat</a>
+                <a class="knop" href="./friends/chat/{{ $friendship['other_user']->id }}">Chat</a>
             </div>
         @endif
     @endforeach
