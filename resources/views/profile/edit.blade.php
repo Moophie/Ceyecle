@@ -10,7 +10,7 @@
 <p class="me">Hier maak je aanpassingen aan je profiel!</p>
 
 <div class="aanpassing">
-    <form  id="from" class="form-group" action="/update" method="POST" enctype="multipart/form-data">
+    <form  id="from" class="form-group" action="./update" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
         <label class="titel" for="image">Profile picture</label><br>
         <input type="file" name="image" id="image">

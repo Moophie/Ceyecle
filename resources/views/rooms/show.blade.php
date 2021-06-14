@@ -4,7 +4,7 @@
     <h1>{{ $room->race->name }}</h1>
     @if ($current_stage !== 'No stage going on for this race')
         <h2>Current stage: {{ $current_stage->name }}</h2>
-        <img src="{{ $current_stage->profile_img }}" alt="" width="500px">
+        <img class="profilepic"  src="{{ $current_stage->profile_img }}" alt="" width="500px">
     @else
         <h2>Current stage: {{ $current_stage }}</h2>
     @endif
@@ -40,7 +40,7 @@
         @endforeach
     </div>
 
-    <form class="chatbox" action="/rooms/chat" method="POST">
+    <form class="chatbox" action="./rooms/chat" method="POST">
         {{ csrf_field() }}
 
         <input type="text" value="{{ $room->id }}" name="room-id" hidden>
@@ -60,7 +60,7 @@
         <h2>Room Question</h2>
 
         @if ($question)
-            <form action="/rooms/answerQuestion" method="POST">
+            <form action="./rooms/answerQuestion" method="POST">
                 {{ csrf_field() }}
 
                 {{ $question->question }}
@@ -73,14 +73,14 @@
             </form>
         @endif
 
-        <form action="/rooms/raceQuestion" method="POST">
+        <form action="./rooms/raceQuestion" method="POST">
             {{ csrf_field() }}
 
             <input type="text" value="{{ $room->id }}" name="room-id" hidden>
             <input type="submit" value="Test Race Question">
         </form>
 
-        <form action="/rooms/riderQuestion" method="POST">
+        <form action="./rooms/riderQuestion" method="POST">
             {{ csrf_field() }}
 
             <input type="text" value="{{ $room->id }}" name="room-id" hidden>

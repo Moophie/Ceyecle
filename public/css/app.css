@@ -463,3 +463,20 @@ ul li {
      object-fit: cover;
   width: 375px;
 }
+
+.topdrie {
+  display: flex;
+  flex-direction: row;
+}
+
+.podium:first-child {
+  position: absolute;
+  left: 30px;
+}
+
+.profilepic {
+  max-width: 115px;
+  border-radius: 250px;
+  border: 2px solid #3C7A84;
+  margin-top: 60px;
+}
