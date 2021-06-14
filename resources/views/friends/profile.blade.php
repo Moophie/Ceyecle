@@ -9,7 +9,7 @@
     <h1>{{ $username }}</h1>
 
     @if ($profilepic)
-        <img src="{{ $profilepic }}" alt="Profile picture">
+        <img class="profilepic" src="{{ $profilepic }}" alt="Profile picture">
     @endif
 
 <!-- TODO: conditional if already friends (verwijder button) or if pending request -->

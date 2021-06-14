@@ -18,7 +18,7 @@
         @foreach ($search as $user)
             <div class="evenement">
                 @if ($user->profilepic)
-                    <img src="{{ $user->profilepic }}" class="rounded-circle" style="max-width: 50px;">
+                    <img class="profilepic"  src="{{ $user->profilepic }}" class="rounded-circle" style="max-width: 50px;">
                 @endif
                 <h2 class="card-title">{{ $user->username }}</h2>
                 <a href="./add/{{ $user->id }}">Toevoegen</a>
