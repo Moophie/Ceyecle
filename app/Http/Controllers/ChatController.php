@@ -13,7 +13,7 @@ class ChatController extends Controller
 {
     public function overview()
     {
-        $userId = Auth::user()->id;
+        $userId = Auth::id();
         $data['friendships'] = UsersFriendship::where('status', '=', 'confirmed')
         ->where(function ($q) use ($userId) {
             $q->where('user_id1', '=', $userId)
@@ -40,6 +40,9 @@ class ChatController extends Controller
         })->first();
         $data['friend'] = User::where('id', '=', $friendId)->first();
         $data['chat'] = Chat::where('friendship_id', $data['friendship']['id'])->get();
+
+        // updates the messages to be "read" when they're displayed on the user's page
+        Chat::where([['friendship_id', '=', $data['friendship']['id']], ['status', '=', 'unread'],  ['user_id', '!=', $user->id]])->update(['status' => 'read']);
 
         return view('friends/chat', $data);
     }

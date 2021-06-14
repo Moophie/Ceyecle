@@ -18,6 +18,7 @@ class CreateChatsTable extends Migration
             $table->foreignId("user_id")->constrained();
             $table->foreignId("friendship_id")->constrained();
             $table->text("content");
+            $table->string("status")->default("unread");
             $table->timestamps();
         });
     }
