@@ -58,7 +58,18 @@ form {
   border-radius: 0px 25px 25px 0px;
   padding-top: 5px;
   padding-bottom: 5px;
-  margin-top: 130px;
+  padding: 10px 30px;
+  margin-top: 30px;
+  background-color: #D9E0E0;
+  position: absolute;
+}
+
+#btndecoo {
+  border: 2px solid #3C7A84;
+  border-radius: 0px 25px 25px 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-top: 650px;
   margin-right: 270px;
   padding: 10px 30px;
   background-color: #D9E0E0;
@@ -95,7 +106,7 @@ button img {
 
 hr {
   border: 10px solid #FF7F11;
-  width: 500px;
+  width: 355px;
   margin: 0;
 }
 
@@ -288,10 +299,7 @@ a {
   padding: 9px 23px;
   align-content: center;
   background-color: #D9E0E0;
-}
-
-.back {
-  background-image: url(/public/images/winnaar.jpeg);
+  margin-top: 20px;
 }
 
 .logout {
@@ -448,4 +456,10 @@ ul li {
   height: 170px;
   z-index: -1;
   margin-top: 30px;
+}
+
+.winnaar {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 375px;
 }
