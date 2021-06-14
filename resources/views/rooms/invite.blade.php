@@ -4,7 +4,7 @@
 
 @foreach($friends as $friend)
 <h1>{{ $friend->username }}</h1>
-<form action="./rooms/inviteFriend" method="POST">
+<form action="./inviteFriend" method="POST">
 
     {{ csrf_field() }}
 
