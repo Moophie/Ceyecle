@@ -3,7 +3,7 @@
 @section('title')
     Social
 @endsection
-
+<a href=""><img class="terug" src="{{ asset('/images/pijltje.png') }}" alt=""></a>
 @section('content')
 <div class="container">
     <a class="knop" id="knopone" href="./friends/search" class="btn">Zoek Vrienden</a>

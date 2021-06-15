@@ -4,7 +4,7 @@
 @endsection
 
 @section('content')
-
+<a href=""><img class="terug" src="{{ asset('/images/pijltje.png') }}" alt=""></a>
 <h1>{{ $race->name }}</h1>
 <img class="race" src="{{ $race->event_map_picture }}" alt="Event image" height="150px">
 <p class="me">{{ $race->startdate }} - {{ $race->enddate }}</p>

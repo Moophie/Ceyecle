@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-
+<a href=""><img class="terug" src="{{ asset('/images/pijltje.png') }}" alt=""></a>
     <h1>{{ $username }}</h1>
 
     @if ($profilepic)

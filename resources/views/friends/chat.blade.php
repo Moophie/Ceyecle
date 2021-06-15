@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-
+<a href=""><img class="terug" src="{{ asset('/images/pijltje.png') }}" alt=""></a>
     <h1>Chat with {{ $friend->username }}</h1>
 
     <div class="show-chat">

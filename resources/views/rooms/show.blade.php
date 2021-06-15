@@ -1,6 +1,7 @@
 @extends('layouts/app')
 
 @section('content')
+<a href=""><img class="terug" src="{{ asset('/images/pijltje.png') }}" alt=""></a>
     <h1>{{ $room->race->name }}</h1>
     @if ($current_stage !== 'No stage going on for this race')
         <h2>Current stage: {{ $current_stage->name }}</h2>

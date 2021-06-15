@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+<a href=""><img class="terug" src="{{ asset('/images/pijltje.png') }}" alt=""></a>
 <h1><strong>Terms and Conditions</strong></h1>
 
 <p>Welcome to Ceyecle!</p>

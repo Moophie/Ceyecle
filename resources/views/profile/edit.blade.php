@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-
+<a href=""><img class="terug" src="{{ asset('/images/pijltje.png') }}" alt=""></a>
 <h1>{{ Auth::user()->username }}</h1>
 <p class="me">Hier maak je aanpassingen aan je profiel!</p>
 
