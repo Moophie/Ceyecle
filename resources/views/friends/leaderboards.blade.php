@@ -3,9 +3,9 @@
 @section('title')
     Leaderboard
 @endsection
-<a href=""><img class="terug" src="{{ asset('/images/links.png') }}" alt=""></a>
-<img class="achtergrond" src="{{ asset('/images/grond.png') }}" alt="">
 @section('content')
+<a href="{{ url()->previous() }}"><img class="terug" src="{{ asset('/images/links.png') }}" alt=""></a>
+<img class="achtergrond" src="{{ asset('/images/grond.png') }}" alt="">
 
     @php
         $user = Auth::user();

@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<a href=""><img class="terug" src="{{ asset('/images/pijltje.png') }}" alt=""></a>
+<a href="{{ url()->previous() }}"><img class="terug" src="{{ asset('/images/pijltje.png') }}" alt=""></a>
     <h1>Chats</h1>
     <h2>Vrienden om mee te chatten</h2>
     @foreach($friendships as $friendship)

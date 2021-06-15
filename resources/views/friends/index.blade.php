@@ -3,8 +3,8 @@
 @section('title')
     Social
 @endsection
-<a href=""><img class="terug" src="{{ asset('/images/pijltje.png') }}" alt=""></a>
 @section('content')
+<a href="{{ url()->previous() }}"><img class="terug" src="{{ asset('/images/pijltje.png') }}" alt=""></a>
 <div class="container">
     <a class="knop" id="knopone" href="./friends/search" class="btn">Zoek Vrienden</a>
     <a class="knop" id="knopone" href="./friends/list" class="btn">Bekijk vriendenlijst</a> @if($requests)<span style="background-color: #3C7A84; padding: 2px 5px; border-radius: 5px; color: white;">{{ count($requests) }}</span>@endif

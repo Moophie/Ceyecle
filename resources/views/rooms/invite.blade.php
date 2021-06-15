@@ -3,7 +3,7 @@
 @section('content')
 
 @foreach($friends as $friend)
-<a href=""><img class="terug" src="{{ asset('/images/pijltje.png') }}" alt=""></a>
+<a href="{{ url()->previous() }}"><img class="terug" src="{{ asset('/images/pijltje.png') }}" alt=""></a>
 <h1>{{ $friend->username }}</h1>
 <form action="./inviteFriend" method="POST">
 

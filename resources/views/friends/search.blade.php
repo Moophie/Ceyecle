@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<a href=""><img class="terug" src="{{ asset('/images/pijltje.png') }}" alt=""></a>
+<a href="{{ url()->previous() }}"><img class="terug" src="{{ asset('/images/pijltje.png') }}" alt=""></a>
 <h1>Search</h1>
     <form class="search" action="./search" method="GET" role="search">
         <div class="form-group">

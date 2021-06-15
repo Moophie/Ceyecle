@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<a href=""><img class="terug" src="{{ asset('/images/pijltje.png') }}" alt=""></a>
+<a href="{{ url()->previous() }}"><img class="terug" src="{{ asset('/images/pijltje.png') }}" alt=""></a>
 <h1>Privacy Policy for Ceyecle</h1>
 
 <p>At Ceyecle, accessible from https://ceyecle.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Ceyecle and how we use it.</p>
