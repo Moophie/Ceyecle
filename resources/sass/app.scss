@@ -5,6 +5,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@300&display=swap');
+
 
 /*
 // Variables
@@ -63,7 +65,18 @@ form {
     border-radius: 0px 25px 25px 0px;
     padding-top: 5px;
     padding-bottom: 5px;
-    margin-top: 130px;
+    padding: 10px 30px;
+    margin-top: 30px;
+    background-color: #D9E0E0;
+    position: absolute;
+}
+
+#btndecoo {
+    border: 2px solid #3C7A84;
+    border-radius: 0px 25px 25px 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 650px;
     margin-right: 270px;
     padding: 10px 30px;
     background-color: #D9E0E0;
@@ -101,7 +114,7 @@ button img {
 
 hr {
     border: 10px solid #FF7F11;
-    width: 500px;
+    width: 355px;
     margin: 0;
 }
 
@@ -263,7 +276,6 @@ h3{
     
 }
 
-//temporary css
 .container {
     display: flex;
     flex-direction: column;
@@ -305,12 +317,10 @@ a{
     padding: 9px 23px;
     align-content: center;
     background-color: #D9E0E0;
+    margin-top: 20px;
 
 }
 
-.back{
-    background-image: url(/public/images/winnaar.jpeg);
-}
 
 .logout{
     font-family: 'Poppins', sans-serif;
@@ -323,7 +333,7 @@ a{
     text-decoration: none;
     float: left;
     position: absolute;
-    margin-top: 240px;
+    margin-top: 303px;
     margin-right: 90px;
 }
 
@@ -469,5 +479,132 @@ ul li{
     height: 170px;
     z-index: -1;
     margin-top: 30px;
+
 }
 
+.winnaar{
+    object-fit: cover;
+    width: 375px;
+}
+
+.topdrie{
+    display: flex;
+    flex-direction: row;
+}
+
+.top{
+    margin-top: 350px;
+    position: absolute;
+}
+
+.profilepic{
+    max-width: 115px;
+    border-radius: 250px;
+    border: 2px solid #3C7A84;
+    margin-top: 60px;
+}
+
+.profilepicie{
+    max-width: 70px;
+    border-radius: 250px;
+    border: 2px solid #3C7A84;
+    margin-top: 60px;
+}
+
+h4{
+    font-family: 'Dosis', sans-serif;
+    color: #FFF;
+    font-size: 20px;
+    text-align: center;
+
+}
+
+.podium:first-child{
+    position: absolute;
+    left: 155px;
+    top: 40px;
+}
+
+.podium:nth-child(2) {
+    position: absolute;
+    left: 60px;
+    top: 100px;
+  }
+
+  .podium:nth-child(3) {
+    position: absolute;
+    right: 50px;
+    top: 120px;
+  }
+
+.achtergrond{
+    position: absolute;
+    z-index: -2;
+    width: 375px;
+    height: 812px;
+}
+
+.profilepiciee{
+    max-width: 70px;
+    border-radius: 250px;
+    border: 2px solid #3C7A84;
+    position: absolute;
+    left: 90px;
+}
+
+.span{
+    font-family: 'Poppins', sans-serif;
+    color: #FF7F11;
+    font-size: 15px;
+    margin-left: 50px;
+    position: absolute;
+    top: 30px;
+}
+
+.naam{
+    font-family: 'Poppins', sans-serif;
+    color: #FF7F11;
+    font-size: 15px;
+    position: absolute;
+    left: 200px;
+    margin-top: 30px;
+
+}
+
+.punt{
+    font-family: 'Poppins', sans-serif;
+    color: #FF7F11;
+    font-size: 15px;
+    position: absolute;
+    left: 270px;
+    top: 14px;
+}
+
+.quizer{
+    margin-top: 430px;
+}
+
+.flex:first-child{
+    position: absolute;
+    left: 30px;
+}
+
+.flex:nth-child(2){
+    position: absolute;
+    left: 30px;
+    top: 560px;
+}
+
+.flex:nth-child(3){
+    position: absolute;
+    left: 30px;
+    top: 650px;
+}
+
+.terug{
+    position: absolute;
+    z-index: -1;
+    max-width: 19px;
+    top: 19px;
+    left: 19px;
+}

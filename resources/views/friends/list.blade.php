@@ -5,7 +5,8 @@
 @endsection
 
 @section('content')
-
+<a href=""><img class="terug" src="{{ asset('/images/pijltje.png') }}" alt=""></a>
+<br>
     <h2>Vriendschapsverzoeken</h2>
     @foreach($requests as $request)
         <div>

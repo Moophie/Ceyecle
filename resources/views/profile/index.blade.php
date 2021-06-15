@@ -5,10 +5,10 @@
 @endsection
 
 @section('content')
-
+<a href=""><img class="terug" src="{{ asset('/images/pijltje.png') }}" alt=""></a>
     <h1>Mijn profiel</h1>
     @if (Auth::user()->profilepic)
-        <img src="{{ Auth::user()->profilepic }}" alt="Profile picture">
+        <img  class="profilepic"  src="{{ Auth::user()->profilepic }}" alt="Profile picture">
     @endif
     <h2>{{ Auth::user()->username }}</h2>
     <a class="logout"href="./logout">Log out</a>

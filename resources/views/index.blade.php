@@ -14,7 +14,7 @@
         </div>
     </div>
 
-    <a class="kamer" href="./rooms">Mijn rooms @if(count($rooms)>0)<span style="position: absolute; z-index: 5; right: 0px;  font-size: 12px; background-color: #3C7A84; padding: 1px 5px; border-radius: 5px; color: white;">{{ count($rooms) }}</span>@endif</a>
+    <a class="kamer" href="./rooms">Mijn rooms</a>@if(count($rooms)>0)<span style="position: absolute; z-index: 5; right: 0px;  font-size: 12px; background-color: #3C7A84; padding: 1px 5px; border-radius: 5px; color: white;">{{ count($rooms) }}</span>@endif
 
             <h1>Huidige evenementen</h1>
 
