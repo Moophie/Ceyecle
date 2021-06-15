@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+
+    @php
+    $device_key = Auth::user()->device_key;
+    @endphp
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -34,63 +38,11 @@
             </div>
         </div>
     </div>
+@endsection
 
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase.js"></script>
-
+@section('extra-scripts')
     <script>
-        var firebaseConfig = {
-            apiKey: "AIzaSyBof_7d27cEczJNHt1NMlQcdDSOmzPycEY",
-            authDomain: "ceyecle-7ecca.firebaseapp.com",
-            projectId: "ceyecle-7ecca",
-            storageBucket: "ceyecle-7ecca.appspot.com",
-            messagingSenderId: "899643117549",
-            appId: "1:899643117549:web:9e17f990258f76f0ba21e4"
-        };
-
-        firebase.initializeApp(firebaseConfig);
-        const messaging = firebase.messaging();
-
-        function startFCM() {
-            messaging
-                .requestPermission()
-                .then(function() {
-                    return messaging.getToken()
-                })
-                .then(function(response) {
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        }
-                    });
-                    $.ajax({
-                        url: '{{ route('store.token') }}',
-                        type: 'POST',
-                        data: {
-                            token: response
-                        },
-                        dataType: 'JSON',
-                        success: function(response) {
-                            alert('Token stored.');
-                        },
-                        error: function(error) {
-                            alert(error);
-                        },
-                    });
-
-                }).catch(function(error) {
-                    alert(error);
-                });
-        }
-
-        messaging.onMessage(function(payload) {
-            const title = payload.notification.title;
-            const options = {
-                body: payload.notification.body,
-                icon: payload.notification.icon,
-            };
-            new Notification(title, options);
-        });
-
+        var device_key = '{{ $device_key }}';
     </script>
+    <script src="{{ asset('js/index.js') }}"></script>
 @endsection
