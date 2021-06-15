@@ -32,6 +32,10 @@ class ChatNotificationComposer
             $i++;
         }
 
+        if (empty($friendships[0])){
+            $unreadChats[0] = [];
+        }
+
         $view->with('chats', $unreadChats);
     }
 }
