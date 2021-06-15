@@ -44,7 +44,12 @@ class User extends Authenticatable
 
     public function rooms()
     {
-        return $this->belongsToMany(Room::class, 'users_rooms');
+        return $this->belongsToMany(Room::class, 'users_rooms')->withPivot('status');
+    }
+
+    public function activeRooms()
+    {
+        return $this->belongsToMany(Room::class, 'users_rooms')->wherePivot('status', 'active');
     }
 
     public function messages()

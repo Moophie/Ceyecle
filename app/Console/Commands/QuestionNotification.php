@@ -45,18 +45,19 @@ class QuestionNotification extends Command
         $users_with_rooms = User::has('rooms')->get();
         foreach ($users_with_rooms as $user) {
             foreach ($user->rooms as $room) {
-                $unanswered_questions = $room->questions->where('status', 'unanswered');
-                if (count($unanswered_questions) > 0) {
-                    if ($user->device_key) {
-                        array_push($registration_ids, $user->device_key);
+                if ($room->pivot->status == 'active') {
+                    $unanswered_questions = $room->questions->where('status', 'unanswered');
+                    if (count($unanswered_questions) > 0) {
+                        if ($user->device_key) {
+                            array_push($registration_ids, $user->device_key);
+                        }
                     }
                 }
             }
         }
 
-        Log::info($registration_ids);
-        if($registration_ids){
-            HelperFunctions::sendNotification('hello', 'test', $registration_ids);
+        if ($registration_ids) {
+            HelperFunctions::sendNotification('A new question!', 'You have an unanswered question waiting for you in Ceyecle!', $registration_ids);
         }
         
         return 0;

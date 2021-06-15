@@ -11,7 +11,7 @@ class Room extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'users_rooms');
+        return $this->belongsToMany(User::class, 'users_rooms')->withPivot('status');
     }
 
     public function race()
