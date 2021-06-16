@@ -74,14 +74,14 @@
             </form>
         @endif
 
-        <form action="/raceQuestion" method="POST">
+        <form action="/rooms/raceQuestion" method="POST">
             {{ csrf_field() }}
 
             <input type="text" value="{{ $room->id }}" name="room-id" hidden>
             <input type="submit" value="Test Race Question">
         </form>
 
-        <form action="/riderQuestion" method="POST">
+        <form action="/rooms/riderQuestion" method="POST">
             {{ csrf_field() }}
 
             <input type="text" value="{{ $current_stage->id }}" name="stage-id" hidden>

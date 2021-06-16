@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Models\Chat;
 use App\Models\User;
 use App\Models\UsersFriendship;
+use Illuminate\Support\Facades\Log;
 
 class ChatController extends Controller
 {
