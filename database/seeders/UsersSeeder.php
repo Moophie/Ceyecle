@@ -33,6 +33,5 @@ class UsersSeeder extends Seeder
         $lize->email = "lize@test.com";
         $lize->password = Hash::make("test");
         $lize->save();
-
     }
 }

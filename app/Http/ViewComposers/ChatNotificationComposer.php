@@ -20,6 +20,7 @@ class ChatNotificationComposer
     public function compose(View $view)
     {
         $userId = Auth::id();
+        
         $friendships = UsersFriendship::where('status', '=', 'confirmed')
         ->where(function ($q) use ($userId) {
             $q->where('user_id1', '=', $userId)
@@ -32,7 +33,7 @@ class ChatNotificationComposer
             $i++;
         }
 
-        if (empty($friendships[0])){
+        if (empty($friendships[0])) {
             $unreadChats[0] = [];
         }
 

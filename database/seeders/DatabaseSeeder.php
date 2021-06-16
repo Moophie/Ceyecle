@@ -15,10 +15,8 @@ class DatabaseSeeder extends Seeder
     {
         // Call all other seeders
         $this->call(UsersSeeder::class);
-        
         $this->call(TeamsSeeder::class);
         $this->call(RidersSeeder::class);
-
         $this->call(RacesSeeder::class);
         $this->call(StagesSeeder::class);
     }

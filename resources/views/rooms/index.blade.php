@@ -1,7 +1,7 @@
 @extends('layouts/app')
 
 @section('content')
-<a href="{{ url()->previous() }}"><img class="terug" src="{{ asset('/images/pijltje.png') }}" alt=""></a>
+    <a href="{{ url()->previous() }}"><img class="terug" src="{{ asset('/images/pijltje.png') }}" alt=""></a>
     <h1>Mijn rooms</h1>
 
     @foreach ($room_requests as $room_request)

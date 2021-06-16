@@ -39,7 +39,6 @@ class QuestionController extends Controller
         $q->save();
 
         return redirect()->route('show-room', ['room' => $room->id]);
-        ;
     }
 
     public static function riderQuestion(Request $request)
@@ -66,7 +65,6 @@ class QuestionController extends Controller
         $q->save();
 
         return redirect()->route('show-room', ['room' => $room->id]);
-        ;
     }
 
     public function answerQuestion(Request $request)
@@ -83,6 +81,5 @@ class QuestionController extends Controller
         }
 
         return redirect()->route('show-room', ['room' => $room->id]);
-        ;
     }
 }

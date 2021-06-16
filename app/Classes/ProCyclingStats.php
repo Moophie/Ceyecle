@@ -68,7 +68,6 @@ class ProCyclingStats
             $name = substr($url, strrpos($url, '/') + 1);
             Storage::put('/cycling/races/' . $name, $contents);
             $race_info['event_map_picture'] = $name;
-
         } catch (Exception $e) {
             $race_info['event_map_picture'] = 'images/event_map_placeholder.png';
         }
@@ -81,7 +80,6 @@ class ProCyclingStats
             $name = substr($url, strrpos($url, '/') + 1);
             Storage::put('/cycling/logos/' . $name, $contents);
             $race_info['logo'] = $name;
-
         } catch (Exception $e) {
             $race_info['logo'] = 'images/logo_placeholder.png';
         }
@@ -114,6 +112,7 @@ class ProCyclingStats
         $timeInText = $crawler->filter('.infolist li div:nth-of-type(2)')->eq(0)->text();
 
         $stage_info['date'] = DateTime::createFromFormat('d M Y, H:i', $timeInText);
+
         if ($stage_info['date'] == false) {
             $stage_info['date'] = DateTime::createFromFormat('d M Y', $timeInText);
         }
@@ -153,6 +152,7 @@ class ProCyclingStats
         $url = self::BASE_URL . $stage_url . '/today/profiles';
         $client = new Client();
         $crawler = $client->request('GET', $url);
+
         try {
             $stage_info['profile_img'] = self::BASE_URL . $crawler->filter('.basic img')->eq(0)->attr('src');
 
@@ -161,7 +161,6 @@ class ProCyclingStats
             $name = substr($url, strrpos($url, '/') + 1);
             Storage::put('/cycling/stages/' . $name, $contents);
             $stage_info['profile_img'] = $name;
-
         } catch (Exception $e) {
             $stage_info['profile_img'] = 'images/stage_placeholder.png';
         }
@@ -201,6 +200,7 @@ class ProCyclingStats
         $url = self::BASE_URL . $team_url;
         $client = new Client();
         $crawler = $client->request('GET', $url);
+
         $riders = $crawler->filter('.ttabs.tabb a')->each(function (Crawler $node, $i) {
             $fullname = $node->text();
             $fullname = explode(' ', strrev($fullname), 2);
@@ -233,13 +233,11 @@ class ProCyclingStats
 
         try {
             $rider_info['picture'] = self::BASE_URL . $crawler->filter('.rdr-img-cont img')->attr('src') ;
-            
             $url = $rider_info['picture'];
             $contents = file_get_contents($url);
             $name = substr($url, strrpos($url, '/') + 1);
             Storage::put('/cycling/cyclists/' . $name, $contents);
             $rider_info['picture'] = $name;
-
         } catch (Exception $e) {
             $rider_info['picture'] = 'images/rider_placeholder.png';
         }
@@ -254,12 +252,13 @@ class ProCyclingStats
         $url = self::BASE_URL . $stage_url . "/today/livestats";
         $client = new Client();
         $crawler = $client->request('GET', $url);
+        
         $top_25_riders = $crawler->filter('.riders2 .name a')->each(function (Crawler $node, $i) {
             $top_25_rider['name'] = $node->text();
 
             return $top_25_rider;
         });
-
+        
         return $top_25_riders;
     }
 }

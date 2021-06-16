@@ -14,7 +14,8 @@ class Rider extends Model
         return $this->belongsTo(Team::class);
     }
 
-    public function wonRaces(){
+    public function wonRaces()
+    {
         return $this->belongsToMany(Race::class, 'previous_winners');
     }
 }

@@ -11,15 +11,15 @@
 
 <body>
     <div class="container">
-        
+
         @yield('content')
 
     </div>
 
-    <script src="{{asset('js/app.js')}}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-messaging.js"></script>
-    
+
     @yield('extra-scripts')
 </body>
 

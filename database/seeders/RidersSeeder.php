@@ -35,6 +35,7 @@ class RidersSeeder extends Seeder
                 $r->weight = $rider['weight'];
                 $r->uci_wr = $rider['uci_wr'];
                 $r->save();
+                
                 sleep(1);
             }
         }

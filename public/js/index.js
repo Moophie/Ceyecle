@@ -45,6 +45,7 @@ if (device_key.length == 0) {
                     alert(error);
                 });
         }
+
         messaging.onMessage(function (payload) {
             const title = payload.notification.title;
             const options = {

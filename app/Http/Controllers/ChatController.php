@@ -14,6 +14,7 @@ class ChatController extends Controller
     public function overview()
     {
         $userId = Auth::id();
+        
         $data['friendships'] = UsersFriendship::where('status', '=', 'confirmed')
         ->where(function ($q) use ($userId) {
             $q->where('user_id1', '=', $userId)
@@ -33,11 +34,13 @@ class ChatController extends Controller
     public function index($friendId)
     {
         $user = Auth::user();
+
         $data['friendship'] = UsersFriendship::where('status', '=', 'confirmed')
         ->where(function ($q) use ($user, $friendId) {
             $q->where([['user_id1', '=', $user->id], ['user_id2', '=', $friendId]])
             ->orWhere([['user_id2', '=', $user->id], ['user_id1', '=', $friendId]]);
         })->first();
+
         $data['friend'] = User::where('id', '=', $friendId)->first();
         $data['chat'] = Chat::where('friendship_id', $data['friendship']['id'])->get();
 

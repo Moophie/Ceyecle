@@ -5,10 +5,10 @@
 @endsection
 
 @section('content')
-<a href="{{ url()->previous() }}"><img class="terug" src="{{ asset('/images/pijltje.png') }}" alt=""></a>
-<br>
+    <a href="{{ url()->previous() }}"><img class="terug" src="{{ asset('/images/pijltje.png') }}" alt=""></a>
+    <br>
     <h2>Vriendschapsverzoeken</h2>
-    @foreach($requests as $request)
+    @foreach ($requests as $request)
         <div>
             <h3>{{ $request->username }}</h3>
             <a class="knop" href="/accept/{{ $request->id }}">Accepteren</a>
@@ -16,7 +16,7 @@
     @endforeach
 
     <h2>Vrienden</h2>
-    @foreach($friends as $friend)
+    @foreach ($friends as $friend)
         <div>
             <h3>{{ $friend->username }}</h3>
             <a class="knop" href="/chat/{{ $friend->id }}">Chat</a>

@@ -5,14 +5,14 @@
 @endsection
 
 @section('content')
-<a href="{{ url()->previous() }}"><img class="terug" src="{{ asset('/images/pijltje.png') }}" alt=""></a>
+    <a href="{{ url()->previous() }}"><img class="terug" src="{{ asset('/images/pijltje.png') }}" alt=""></a>
     <h1>Chat with {{ $friend->username }}</h1>
 
     <div class="show-chat">
         @foreach ($chat as $message)
             <p>{{ $message->user->username }}: {{ $message->content }}</p>
         @endforeach
-    </div> 
+    </div>
 
     <form action="/friends/chat" method="POST">
         {{ csrf_field() }}
@@ -25,7 +25,7 @@
 
     </form>
 
-@component('components/navbar')
-@endcomponent
+    @component('components/navbar')
+    @endcomponent
 
 @endsection

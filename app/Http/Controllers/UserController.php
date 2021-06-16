@@ -99,9 +99,10 @@ class UserController extends Controller
         // upload profile picture
         if ($request->hasFile('image')) {
             $imageName = time() . '-' . $request->image->getClientOriginalName();
+            
             if (Auth::user()->profilepic) {
                 if (substr(Auth::user()->profilepic, 0, 4) != "http") {
-                    unlink(public_path('images/profile_pic') . str_replace( url('images/profile_pic/'), "", Auth::user()->profilepic));
+                    unlink(public_path('images/profile_pic') . str_replace(url('images/profile_pic/'), "", Auth::user()->profilepic));
                 }
             }
             $request->image->move(public_path('images/profile_pic'), $imageName);

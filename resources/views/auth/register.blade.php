@@ -76,34 +76,36 @@
 
                             <div class="form-group row">
                                 <btn id="inlogbtn" class="col-md-6">
-                                <img class="loginlogo" src="{{ asset('/images/twitter.png') }}" alt="">
-                                <a id="login" href="/register/facebook" class="btn btn-secondary">Sign in with Facebook</a>
+                                    <img class="loginlogo" src="{{ asset('/images/twitter.png') }}" alt="">
+                                    <a id="login" href="/register/facebook" class="btn btn-secondary">Sign in with
+                                        Facebook</a>
                                 </btn>
                             </div>
                             <br>
                             <div class="form-group row">
                                 <btn id="inlogbtn" class="col-md-6">
-                                <img class="loginlogo" src="{{ asset('/images/google.png') }}" alt="">
-                                <a id="login" href="/register/google" class="btn btn-secondary">Sign in with Google</a>
+                                    <img class="loginlogo" src="{{ asset('/images/google.png') }}" alt="">
+                                    <a id="login" href="/register/google" class="btn btn-secondary">Sign in with Google</a>
                                 </btn>
                             </div>
                             <br>
                             <div class="form-group row">
                                 <btn id="inlogbtn" class="col-md-6">
-                                <img class="loginlogo" src="{{ asset('/images/twitter.png') }}" alt="">
-                                <a id="login" href="/register/twitter" class="btn btn-secondary">Sign in with Twitter</a>
-                                </div>
+                                    <img class="loginlogo" src="{{ asset('/images/twitter.png') }}" alt="">
+                                    <a id="login" href="/register/twitter" class="btn btn-secondary">Sign in with
+                                        Twitter</a>
                             </div>
-
-                        </form>
                     </div>
+
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+    </div>
     <br>
     <hr>
     <button id="btndeco"><a id="btndecoa" href="login">{{ __('Log in') }}</a></button>
-    <img class="winnaar"  src="{{ asset('/images/winnaar.jpg') }}" alt="">
+    <img class="winnaar" src="{{ asset('/images/winnaar.jpg') }}" alt="">
 
 @endsection

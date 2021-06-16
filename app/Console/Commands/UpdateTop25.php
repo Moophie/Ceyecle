@@ -44,8 +44,10 @@ class UpdateTop25 extends Command
     {
         $current_stage = '';
         $past_stages = Stage::whereRaw('date < ? ', [date("Y-m-d H:i:s")])->get();
+
         foreach ($past_stages as $p_s) {
             $end_of_stage = Carbon::createFromFormat('Y-m-d H:i:s', $p_s->date)->endOfDay();
+
             if (date("Y-m-d H:i:s") < date($end_of_stage)) {
                 $current_stage = $p_s;
             };
@@ -57,7 +59,8 @@ class UpdateTop25 extends Command
             $top25_names = array('EGHOLM Jakob', 'MORENO Ivan', 'DONOVAN Mark', 'FRAILE Omar', 'FOSS Tobias', 'FRANK Mathias', 'FROOME Chris', 'VALVERDE Alejandro', 'ALAPHILIPPE Julian', 'BERNAL Egan', 'CARUSO Damiano', 'YATES Adam', 'ALMEIDA João', 'SAGAN Peter', 'WOODS Michael', 'GAUDU David', 'MARTIN Guillaume', 'EWAN Caleb', 'LANDA Mikel', 'MAS Enric', 'YATES Simon', 'CARTHY Hugh', 'PHILIPSEN Jasper', 'ULISSI Diego', 'NIZZOLO Giacomo');
             shuffle($top25_names);
             // Real version
-            //$top25_names = ProCyclingStats::getLiveRanking($current_stage->pcs_url);
+            // $top25_names = ProCyclingStats::getLiveRanking($current_stage->pcs_url);
+            
             foreach ($top25_names as $name) {
                 $rider_name = explode(" ", strrev($name), 2);
                 $rider = Rider::where('firstname', strrev($rider_name[0]))->where('lastname', strrev($rider_name[1]))->first();

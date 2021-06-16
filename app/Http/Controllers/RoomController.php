@@ -32,6 +32,7 @@ class RoomController extends Controller
     public function createRoom(Request $request)
     {
         $race_id = $request->input('race-id');
+
         $existing_room = Room::whereHas('users', function (Builder $query) {
             $query->where('user_id', '=', Auth::user()->id);
         })->whereHas('users', function (Builder $query) use ($race_id) {
@@ -60,6 +61,7 @@ class RoomController extends Controller
         
         $data['current_stage'] = "No stage going on for this race";
         $past_stages = Stage::where('race_id', $room->race_id)->whereRaw('date < ? ', [date("Y-m-d H:i:s")])->get();
+
         foreach ($past_stages as $p_s) {
             $end_of_stage = Carbon::createFromFormat('Y-m-d H:i:s', $p_s->date)->endOfDay();
             if (date("Y-m-d H:i:s") < date($end_of_stage)) {
@@ -71,9 +73,10 @@ class RoomController extends Controller
         $data['participating_teams'] = $race->teams;
         $data['top25'] = [];
 
-        if($data['current_stage'] != "No stage going on for this race"){
+        if ($data['current_stage'] != "No stage going on for this race") {
             $top25 = unserialize($data['current_stage']->top25);
-            foreach($top25 as $rider_id){
+
+            foreach ($top25 as $rider_id) {
                 $rider = Rider::find($rider_id);
                 array_push($data['top25'], $rider);
             }
@@ -102,6 +105,7 @@ class RoomController extends Controller
     {
         $room = Room::find($room_id);
         $room->users()->updateExistingPivot(Auth::user()->id, ['status' => 'active']);
+        
         return redirect('rooms');
     }
 

@@ -84,7 +84,7 @@ form {
 }
 
 #btndecoa {
-    text-decoration: none; 
+    text-decoration: none;
     font-family: 'Poppins', sans-serif;
     font-size: 15px;
     background-color: #D9E0E0;
@@ -128,7 +128,7 @@ hr {
 
 .profiel {
     width: 50px;
-    margin-right:-56px;
+    margin-right: -56px;
     float: right;
     margin-top: 21px;
 }
@@ -174,22 +174,22 @@ hr {
     margin-bottom: 170px;
 }
 
-nav a{
- margin-right: 40px;
- margin-left: 30px;
- margin-top: 30px;
+nav a {
+    margin-right: 40px;
+    margin-left: 30px;
+    margin-top: 30px;
 }
 
-#nav{
+#nav {
     width: 375px;
-    background-color: #FF7F11 ;
+    background-color: #FF7F11;
     padding-top: 10px;
     position: fixed;
     bottom: 0;
     overflow: hidden;
 }
 
-.kamer{ 
+.kamer {
     font-family: 'Poppins', sans-serif;
     color: #FF7F11;
     font-size: 15px;
@@ -199,17 +199,17 @@ nav a{
     margin-top: 10px;
     background-color: #D9E0E0;
     text-decoration: none;
-    }
+}
 
 
-h1{
+h1 {
     text-align: center;
     font-family: 'Catamaran', sans-serif;
     font-size: 25px;
     color: #FF7F11;
 }
 
-h2{
+h2 {
     font-family: 'Poppins', sans-serif;
     color: #FF7F11;
     font-size: 18px;
@@ -217,7 +217,7 @@ h2{
     margin: 10px;
 }
 
-h3{
+h3 {
     font-family: 'Poppins', sans-serif;
     color: #FF7F11;
     font-size: 15px;
@@ -230,14 +230,14 @@ h3{
     margin-bottom: 20px;
 }
 
-.info{
+.info {
     font-family: 'Poppins', sans-serif;
     color: #FF7F11;
     font-size: 15px;
     border: 2px solid #3C7A84;
     border-radius: 25px;
     padding: 9px 20px;
-    float: left;  
+    float: left;
     margin-right: 130px;
     margin-top: 180px;
     position: absolute;
@@ -246,7 +246,7 @@ h3{
 
 }
 
-.knop{
+.knop {
     font-family: 'Poppins', sans-serif;
     color: #FF7F11;
     font-size: 15px;
@@ -255,25 +255,25 @@ h3{
     padding: 9px 20px;
     background-color: #D9E0E0;
     text-decoration: none;
-    
+
 }
 
-.create{ 
+.create {
     float: left;
     padding-top: 120px;
     margin-left: 140px;
     float: right;
     position: absolute;
-    
+
 }
 
-.createone{ 
+.createone {
     float: left;
     padding-top: 120px;
     margin-left: 140px;
     float: right;
     position: absolute;
-    
+
 }
 
 .container {
@@ -282,36 +282,36 @@ h3{
     align-items: center;
 }
 
-.search{
+.search {
     font-family: 'Poppins', sans-serif;
     color: #FF7F11;
     font-size: 20px;
     text-align: center;
 }
 
-a{
+a {
     font-family: 'Poppins', sans-serif;
     color: #FF7F11;
     font-size: 20px;
     text-align: center;
 }
 
-#login{
-    text-decoration: none; 
+#login {
+    text-decoration: none;
     font-family: 'Poppins', sans-serif;
     font-size: 11px;
-    
+
 
 }
 
-.loginlogo{
+.loginlogo {
     margin-top: 10px;
     width: 20px;
     height: 20px;
 
 }
 
-#inlogbtn{
+#inlogbtn {
     border: 2px solid #3C7A84;
     border-radius: 25px;
     padding: 9px 23px;
@@ -322,7 +322,7 @@ a{
 }
 
 
-.logout{
+.logout {
     font-family: 'Poppins', sans-serif;
     background-color: #D9E0E0;
     color: #FF7F11;
@@ -337,7 +337,7 @@ a{
     margin-right: 90px;
 }
 
-.edit{
+.edit {
     font-family: 'Poppins', sans-serif;
     background-color: #D9E0E0;
     color: #FF7F11;
@@ -349,8 +349,9 @@ a{
     margin-left: 110px;
 }
 
-.knowme{
-    border: 3px solid #FF7F11; ;
+.knowme {
+    border: 3px solid #FF7F11;
+    ;
     border-radius: 25px;
     width: 300px;
     height: 110px;
@@ -358,14 +359,14 @@ a{
     margin-bottom: 20px;
 }
 
-.me{
+.me {
     font-family: 'Poppins', sans-serif;
     color: #FF7F11;
     font-size: 15px;
     text-align: center;
 }
 
-.infoo{
+.infoo {
     font-family: 'Poppins', sans-serif;
     color: #FF7F11;
     background-color: #D9E0E0;
@@ -376,7 +377,7 @@ a{
     text-decoration: none;
 }
 
-.vrienden{
+.vrienden {
     font-family: 'Poppins', sans-serif;
     background-color: #D9E0E0;
     color: #FF7F11;
@@ -386,10 +387,10 @@ a{
     padding: 9px 30px;
     text-decoration: none;
     margin-top: 20px;
- 
+
 }
 
-.aanpassing{
+.aanpassing {
     width: 300px;
     height: 310px;
     border: 3px solid #FF7F11;
@@ -400,7 +401,7 @@ a{
     margin-bottom: 20px;
 }
 
-.titel{
+.titel {
     font-family: 'Poppins', sans-serif;
     color: #FF7F11;
     font-size: 15px;
@@ -408,7 +409,7 @@ a{
 }
 
 
-.bevestig{
+.bevestig {
     font-family: 'Poppins', sans-serif;
     background-color: #D9E0E0;
     color: #FF7F11;
@@ -419,26 +420,26 @@ a{
     margin-top: 20px;
 }
 
-#form{
+#form {
     margin-left: -100px;
 }
 
-ul li{
+ul li {
     font-family: 'Poppins', sans-serif;
     color: #FF7F11;
     font-size: 15px;
     margin-left: 60px;
 }
 
-.chatbox{
+.chatbox {
     margin-right: 180px;
 }
 
-.text{
+.text {
     margin-bottom: 15px;
 }
 
-#knop{
+#knop {
     margin-right: 180px;
     margin-bottom: 30px;
 }
@@ -454,26 +455,26 @@ ul li{
     margin-bottom: 90px;
 }
 
-#knopone{
+#knopone {
     margin-top: 35px;
     width: 160px;
 }
 
-#knoptwo{
+#knoptwo {
     margin-top: 35px;
     margin-bottom: 500px;
     width: 160px;
 }
 
-#knopdrie{
+#knopdrie {
     margin-right: 180px;
     margin-top: 10px;
     margin-bottom: 522px;
     width: 160px;
-    
+
 }
 
-.sparkel{
+.sparkel {
     position: absolute;
     width: 170px;
     height: 170px;
@@ -482,36 +483,36 @@ ul li{
 
 }
 
-.winnaar{
+.winnaar {
     object-fit: cover;
     width: 375px;
 }
 
-.topdrie{
+.topdrie {
     display: flex;
     flex-direction: row;
 }
 
-.top{
+.top {
     margin-top: 350px;
     position: absolute;
 }
 
-.profilepic{
+.profilepic {
     max-width: 115px;
     border-radius: 250px;
     border: 2px solid #3C7A84;
     margin-top: 60px;
 }
 
-.profilepicie{
+.profilepicie {
     max-width: 70px;
     border-radius: 250px;
     border: 2px solid #3C7A84;
     margin-top: 60px;
 }
 
-h4{
+h4 {
     font-family: 'Dosis', sans-serif;
     color: #FFF;
     font-size: 20px;
@@ -519,7 +520,7 @@ h4{
 
 }
 
-.podium:first-child{
+.podium:first-child {
     position: absolute;
     left: 155px;
     top: 40px;
@@ -529,22 +530,22 @@ h4{
     position: absolute;
     left: 60px;
     top: 100px;
-  }
+}
 
-  .podium:nth-child(3) {
+.podium:nth-child(3) {
     position: absolute;
     right: 50px;
     top: 120px;
-  }
+}
 
-.achtergrond{
+.achtergrond {
     position: absolute;
     z-index: -2;
     width: 375px;
     height: 812px;
 }
 
-.profilepiciee{
+.profilepiciee {
     max-width: 70px;
     border-radius: 250px;
     border: 2px solid #3C7A84;
@@ -552,7 +553,7 @@ h4{
     left: 90px;
 }
 
-.span{
+.span {
     font-family: 'Poppins', sans-serif;
     color: #FF7F11;
     font-size: 15px;
@@ -561,7 +562,7 @@ h4{
     top: 30px;
 }
 
-.naam{
+.naam {
     font-family: 'Poppins', sans-serif;
     color: #FF7F11;
     font-size: 15px;
@@ -571,7 +572,7 @@ h4{
 
 }
 
-.punt{
+.punt {
     font-family: 'Poppins', sans-serif;
     color: #FF7F11;
     font-size: 15px;
@@ -580,28 +581,28 @@ h4{
     top: 14px;
 }
 
-.quizer{
+.quizer {
     margin-top: 430px;
 }
 
-.flex:first-child{
+.flex:first-child {
     position: absolute;
     left: 30px;
 }
 
-.flex:nth-child(2){
+.flex:nth-child(2) {
     position: absolute;
     left: 30px;
     top: 560px;
 }
 
-.flex:nth-child(3){
+.flex:nth-child(3) {
     position: absolute;
     left: 30px;
     top: 650px;
 }
 
-.terug{
+.terug {
     position: absolute;
     max-width: 19px;
     top: 19px;

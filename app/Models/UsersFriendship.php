@@ -15,7 +15,8 @@ class UsersFriendship extends Model
         return $this->hasMany(User::class, 'users_friendships', 'user_id1', 'user_id2');
     }
 
-    public function other_user(){
+    public function other_user()
+    {
         if ($this->user_id1 == Auth::id()) {
             $other_user = User::find($this->user_id2);
         }
@@ -27,7 +28,8 @@ class UsersFriendship extends Model
         return $other_user;
     }
 
-    public function chats(){
+    public function chats()
+    {
         return $this->hasMany(Chat::class, 'friendship_id');
     }
 }
