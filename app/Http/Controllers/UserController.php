@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Race;
+use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Str;
 
@@ -80,7 +83,10 @@ class UserController extends Controller
 
     public function profile()
     {
-        return view('profile/index');
+        $last_room = User::find(Auth::id())->rooms()->latest()->first();
+        $data['last_race'] = Race::find($last_room->race_id);
+        
+        return view('profile/index', $data);
     }
 
     public function editProfile()
