@@ -321,6 +321,10 @@ a {
 
 }
 
+.profile-buttons {
+    display:flex;
+    justify-content: center;
+}
 
 .logout {
     font-family: 'Poppins', sans-serif;
@@ -331,10 +335,7 @@ a {
     border-radius: 25px;
     padding: 9px 20px;
     text-decoration: none;
-    float: left;
-    position: absolute;
-    margin-top: 303px;
-    margin-right: 90px;
+    margin-right: 15px;
 }
 
 .edit {
@@ -346,7 +347,6 @@ a {
     border-radius: 25px;
     padding: 9px 20px;
     text-decoration: none;
-    margin-left: 110px;
 }
 
 .knowme {
@@ -384,9 +384,9 @@ a {
     font-size: 15px;
     border: 2px solid #3C7A84;
     border-radius: 25px;
-    padding: 9px 30px;
+    padding: 9px 22px;
     text-decoration: none;
-    margin-top: 20px;
+    margin-bottom: 20px;
 
 }
 
