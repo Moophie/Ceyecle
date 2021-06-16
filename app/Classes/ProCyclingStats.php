@@ -162,7 +162,7 @@ class ProCyclingStats
             Storage::put('/cycling/stages/' . $name, $contents);
             $stage_info['profile_img'] = $name;
         } catch (Exception $e) {
-            $stage_info['profile_img'] = 'images/stage_placeholder.png';
+            $stage_info['profile_img'] = 'stage_placeholder.png';
         }
 
         return $stage_info;
