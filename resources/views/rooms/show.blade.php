@@ -5,7 +5,7 @@
     <h1>{{ $room->race->name }}</h1>
     @if ($current_stage !== 'No stage going on for this race')
         <h2>Current stage: {{ $current_stage->name }}</h2>
-        <img class="profilepic"  src="{{ { asset('/storage/cycling/stages/' . $current_stage->profile_img) }} }}" alt="" width="500px">
+        <img class="profilepic"  src="{{ asset('/storage/cycling/stages/' . $current_stage->profile_img) }}" alt="" width="500px">
     @else
         <h2>Current stage: {{ $current_stage }}</h2>
     @endif
@@ -26,8 +26,7 @@
         <h1>Top 25</h1>
         <ol>
             @foreach ($top25 as $rider)
-                <li>{{ $rider['name'] }}</li>
-
+                <li>{{ $rider->firstname }} {{ $rider->lastname }}</li>
             @endforeach
         </ol>
     @endif
@@ -84,8 +83,8 @@
         <form action="./riderQuestion" method="POST">
             {{ csrf_field() }}
 
+            <input type="text" value="{{ $current_stage->id }}" name="stage-id" hidden>
             <input type="text" value="{{ $room->id }}" name="room-id" hidden>
-            <input type="text" value="{{ $top25_json }}" name="top-25" hidden>
             <input type="submit" value="Test Rider Question">
         </form>
     @endif

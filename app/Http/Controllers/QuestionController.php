@@ -38,7 +38,8 @@ class QuestionController extends Controller
         $q->status = "unanswered";
         $q->save();
 
-        return redirect()->route('show-room', ['room' => $room->id]);;
+        return redirect()->route('show-room', ['room' => $room->id]);
+        ;
     }
 
     public static function riderQuestion(Request $request)
@@ -48,8 +49,8 @@ class QuestionController extends Controller
         $top25 = json_decode($request->input('top-25'));
         $rng_rider = rand(0, (count($top25)-1));
         $rng = rand(0, 0);
-        $rider_name = explode(" ", $top25[0]->name);
-        $rider = Rider::where('lastname', $rider_name[0])->where('firstname', $rider_name[1])->first(); 
+        $rider_name = explode(" ", strrev($top25[0]->name), 2);
+        $rider = Rider::where('firstname', strrev($rider_name[0]))->where('lastname', strrev($rider_name[1]))->first();
 
         $q = new Question();
 
@@ -64,21 +65,24 @@ class QuestionController extends Controller
         $q->status = "unanswered";
         $q->save();
 
-        return redirect()->route('show-room', ['room' => $room->id]);;
+        return redirect()->route('show-room', ['room' => $room->id]);
+        ;
     }
 
-    public function answerQuestion(Request $request){
+    public function answerQuestion(Request $request)
+    {
         $question = Question::find($request->input('question-id'));
         $room = Room::find($request->input('room-id'));
         $answer = strtolower($request->input('question-answer'));
         $user = User::find($request->input('user-id'));
         $new_score = $user->score + 1;
 
-        if($answer == strtolower($question->answer)){
+        if ($answer == strtolower($question->answer)) {
             Question::where('id', $question->id)->update(['status' => 'answered', 'user_id' => $user->id]);
             User::where('id', $user->id)->update(['score' => $new_score]);
         }
 
-        return redirect()->route('show-room', ['room' => $room->id]);;
+        return redirect()->route('show-room', ['room' => $room->id]);
+        ;
     }
 }

@@ -203,10 +203,11 @@ class ProCyclingStats
         $crawler = $client->request('GET', $url);
         $riders = $crawler->filter('.ttabs.tabb a')->each(function (Crawler $node, $i) {
             $fullname = $node->text();
-            $fullname = explode(' ', $fullname, 2);
-            $rider['firstname'] = $fullname[1];
-            $rider['lastname'] = $fullname[0];
+            $fullname = explode(' ', strrev($fullname), 2);
+            $rider['firstname'] = strrev($fullname[0]);
+            $rider['lastname'] = strrev($fullname[1]);
             $rider['pcs_url'] = $node->attr('href');
+            
 
             return $rider;
         });

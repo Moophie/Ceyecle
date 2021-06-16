@@ -69,10 +69,14 @@ class RoomController extends Controller
 
         $race = Race::find($room->race_id);
         $data['participating_teams'] = $race->teams;
+        $data['top25'] = [];
 
         if($data['current_stage'] != "No stage going on for this race"){
-            $data['top25'] = ProCyclingStats::getLiveRanking($data['current_stage']->pcs_url);
-            $data['top25_json'] = json_encode($data['top25']);
+            $top25 = unserialize($data['current_stage']->top25);
+            foreach($top25 as $rider_id){
+                $rider = Rider::find($rider_id);
+                array_push($data['top25'], $rider);
+            }
         }
 
         return view('rooms/show', $data);

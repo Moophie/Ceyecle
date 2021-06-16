@@ -25,6 +25,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('notification:question')->everyThirtyMinutes();
+        $schedule->command('top25:update')->everyMinute();
     }
 
     /**
