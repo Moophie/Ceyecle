@@ -67,5 +67,8 @@
 @endsection
 
 @section('extra-scripts')
+<script>
+    var device_key = '{{ $device_key }}';
+</script>
 <script src="{{asset('js/index.js')}}"></script>
 @endsection

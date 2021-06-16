@@ -28,7 +28,7 @@ if (device_key.length == 0) {
                         }
                     });
                     $.ajax({
-                        url: 'https://ceyecle.test/store-token',
+                        url: '/store-token',
                         type: 'POST',
                         data: {
                             token: response
