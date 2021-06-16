@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
+use App\Http\Controllers\WebNotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,3 +88,5 @@ Route::post('/rooms/answerQuestion', 'App\Http\Controllers\QuestionController@an
 
 // Races
 Route::get('/races/{race}', 'App\Http\Controllers\RaceController@showRace');
+
+Route::post('/store-token', [WebNotificationController::class, 'storeToken'])->name('store.token');
