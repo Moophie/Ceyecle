@@ -25,9 +25,8 @@
     @foreach ($ongoing_races as $race)
         <div class="race-event">
             <div class="evenement">
-                <img class="races" src="{{ asset('/storage/cycling/logos/' . $race->logo) }}" alt="Event image">
                 <h2>{{ $race->name }}</h2>
-                <p>{{ $race->date }}</p>
+                <div class="image-container"><img class="races" src="{{ asset('/storage/cycling/logos/' . $race->logo) }}" alt="Event image"></div>
                 <a class="info" href="/races/{{ $race->id }}">Meer info</a>
                 <form class="create" action="/rooms/create" method="POST">
 
@@ -45,9 +44,8 @@
     @foreach ($upcoming_races as $race)
         <div class="race-event">
             <div class="evenement">
-                <img class="races" src="{{ asset('/storage/cycling/logos/' . $race->logo) }}" alt="Event logo">
                 <h2>{{ $race->name }}</h2>
-                <p>{{ $race->date }}</p>
+                <div class="image-container"><img class="races" src="{{ asset('/storage/cycling/logos/' . $race->logo) }}" alt="Event logo"></div>
                 <a class="info" href="/races/{{ $race->id }}">Meer info</a>
                 <form class="createone" action="/rooms/create" method="POST">
 

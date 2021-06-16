@@ -51,9 +51,9 @@
                                     <div class="form-check">
                                         <!--<input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
-                                            <label class="form-check-label" for="remember">
-                                                {{ __('Remember Me') }}
-                                            </label> -->
+                                                <label class="form-check-label" for="remember">
+                                                    {{ __('Remember Me') }}
+                                                </label> -->
                                     </div>
                                 </div>
                             </div>
@@ -61,8 +61,8 @@
                             <div class="form-group row mb-0">
                                 <btn id="inlogbtn" class="col-md-8 offset-md-4">
                                     <!--  <button id="btndeco" type="submit" class="btn btn-primary">
-                                            {{ __('Aanmelden') }}
-                                        </button> -->
+                                                {{ __('Aanmelden') }}
+                                            </button> -->
 
                                     @if (Route::has('password.request'))
                                         <a id="login" class="btn btn-link" href="{{ route('password.request') }}">
@@ -72,32 +72,22 @@
                                 </btn>
                             </div>
                             <br>
-                            <div class="form-group row">
-                                <btn id="inlogbtn" class="col-md-6">
-                                    <img class="loginlogo" src="{{ asset('/images/facebook.svg') }}" alt="">
-                                    <a id="login" href="/register/facebook" class="btn btn-secondary">Login with
-                                        Facebook</a>
-                                </btn>
+                            <div class="social-logins">
+                                <a href="/register/facebook"><img class="loginlogo"
+                                        src="{{ asset('/images/facebook.svg') }}" alt=""></a>
+
+                                <a href="/register/google"><img class="loginlogo" src="{{ asset('/images/google.png') }}"
+                                        alt=""></a>
+
+                                <a href="/register/twitter"><img class="loginlogo"
+                                        src="{{ asset('/images/twitter.png') }}" alt=""></a>
                             </div>
-                            <br>
-                            <div class="form-group row">
-                                <btn id="inlogbtn" class="col-md-6">
-                                    <img class="loginlogo" src="{{ asset('/images/google.png') }}" alt="">
-                                    <a id="login" href="/register/google" class="btn btn-secondary">Login with Google</a>
-                                </btn>
-                            </div>
-                            <br>
-                            <div class="form-group row">
-                                <btn id="inlogbtn" class="col-md-6">
-                                    <img class="loginlogo" src="{{ asset('/images/twitter.png') }}" alt="">
-                                    <a id="login" href="/register/twitter" class="btn btn-secondary">Login with Twitter</a>
-                                </btn>
-                            </div>
-                        </form>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <br>
     <hr>

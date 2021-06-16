@@ -14,15 +14,14 @@
         @endforeach
     </div>
 
-    <form action="/friends/chat" method="POST">
+    <form action="/friends/chat" method="POST" class="chat-input">
         {{ csrf_field() }}
 
         <input type="text" value="{{ $friendship->id }}" name="friendship-id" hidden>
         <input type="text" value="{{ Auth::user()->id }}" name="user-id" hidden>
         <input type="text" value="{{ $friend->id }}" name="friend-id" hidden>
         <input type="textarea" name="message-content">
-        <input type="submit" value="Send message">
-
+        <input type="submit" value="Send">
     </form>
 
     @component('components/navbar')

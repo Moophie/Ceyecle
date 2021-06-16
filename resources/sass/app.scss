@@ -174,16 +174,16 @@ hr {
     margin-bottom: 170px;
 }
 
-nav a {
-    margin-right: 40px;
-    margin-left: 30px;
-    margin-top: 30px;
+nav {
+    display: flex;
+    justify-content: space-around;
+    padding: 0px 20px;
 }
 
 #nav {
-    width: 375px;
+    width: 100%;
     background-color: #FF7F11;
-    padding-top: 10px;
+    padding-top: 15px;
     position: fixed;
     bottom: 0;
     overflow: hidden;
@@ -255,6 +255,7 @@ h3 {
     padding: 9px 20px;
     background-color: #D9E0E0;
     text-decoration: none;
+    cursor: pointer;
 
 }
 
@@ -280,6 +281,7 @@ h3 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 75px;
 }
 
 .search {
@@ -300,15 +302,6 @@ a {
     text-decoration: none;
     font-family: 'Poppins', sans-serif;
     font-size: 11px;
-
-
-}
-
-.loginlogo {
-    margin-top: 10px;
-    width: 20px;
-    height: 20px;
-
 }
 
 #inlogbtn {
@@ -322,7 +315,7 @@ a {
 }
 
 .profile-buttons {
-    display:flex;
+    display: flex;
     justify-content: center;
 }
 
@@ -485,7 +478,7 @@ ul li {
 
 .winnaar {
     object-fit: cover;
-    width: 375px;
+    width: 100vw;
 }
 
 .topdrie {
@@ -500,7 +493,7 @@ ul li {
 
 .profilepic {
     max-width: 115px;
-    border-radius: 250px;
+    border-radius: 50px;
     border: 2px solid #3C7A84;
     margin-top: 60px;
 }
@@ -607,4 +600,77 @@ h4 {
     max-width: 19px;
     top: 19px;
     left: 19px;
+}
+
+.social-logins {
+    display: flex;
+
+    img {
+        width: 25px;
+    }
+
+    a {
+        margin: 0px 15px;
+    }
+}
+
+.chat-box {
+    border: solid 2px #FF7F11;
+    padding: 10px;
+    border-radius: 50px;
+    width: 70%;
+    height: 110px;
+
+    a {
+        display: flex;
+        justify-content: space-between;
+        text-decoration: none;
+        text-align: left;
+        width: 100%;
+    }
+
+    p {
+        color: black;
+        font-size: 15px;
+        margin-left: 10px;
+    }
+
+    span {
+        position: relative;
+        top: 105px;
+        right: 10px;
+        font-size: 15px;
+        padding: 10px;
+        height: 25px;
+    }
+
+    .profilepic {
+        max-width: 75px;
+        margin-top: 0px;
+    }
+}
+
+.show-chat {
+    max-height: 60vh;
+    overflow: scroll;
+    overflow-x: hidden;
+    width: 50%;
+}
+
+.chat-input {
+    display: flex;
+    margin: 10px 0px;
+
+    input[type='submit'] {
+        margin-left: 5px;
+    }
+}
+
+.evenement {
+    .image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40%;
+    }
 }

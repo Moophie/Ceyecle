@@ -7,7 +7,7 @@
     @foreach ($room_requests as $room_request)
         <div>
             <h3>{{ $room_request->race->name }}</h3>
-            <a href="/accept/{{ $room_request->id }}">Accepteren</a>
+            <a href="/rooms/accept/{{ $room_request->id }}">Accepteren</a>
         </div>
     @endforeach
 

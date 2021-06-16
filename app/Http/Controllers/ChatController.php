@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\HelperFunctions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
@@ -58,6 +59,14 @@ class ChatController extends Controller
         $message->content = $request->input('message-content');
         $message->save();
 
+        $friendship = UsersFriendship::find($message->friendship_id);
+        $other_user = $friendship->other_user();
+
+        if ($other_user->device_key) {
+            $registration_ids = array($other_user->device_key);
+            HelperFunctions::sendNotification('New message', $message->content, $registration_ids);
+        }
+        
         return redirect()->route('chat', ['friend' => $request->input('friend-id')]);
     }
 }

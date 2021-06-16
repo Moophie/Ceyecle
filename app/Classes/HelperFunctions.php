@@ -62,8 +62,5 @@ class HelperFunctions
 
         // Close connection
         curl_close($ch);
-
-        // FCM response
-        dd($result);
     }
 }
