@@ -13,7 +13,7 @@
 
     @foreach ($rooms as $room)
         <div class="room-container" style="border: solid 2px black; border-radius: 5px; padding:20px">
-            <a href="./{{ $room->id }}"><img src="{{ $room->race->logo }}"
+            <a href="./{{ $room->id }}"><img src="{{ asset('/storage/cycling/logos/' . $room->race->logo) }}"
                     alt="A thumbnail of the relevant race." width="200px;"></a>
             <h1>{{ $room->race->name }}</h1>
         </div>

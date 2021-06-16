@@ -5,7 +5,7 @@
     <h1>{{ $room->race->name }}</h1>
     @if ($current_stage !== 'No stage going on for this race')
         <h2>Current stage: {{ $current_stage->name }}</h2>
-        <img class="profilepic"  src="{{ $current_stage->profile_img }}" alt="" width="500px">
+        <img class="profilepic"  src="{{ { asset('/storage/cycling/stages/' . $current_stage->profile_img) }} }}" alt="" width="500px">
     @else
         <h2>Current stage: {{ $current_stage }}</h2>
     @endif

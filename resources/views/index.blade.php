@@ -25,7 +25,7 @@
     @foreach ($ongoing_races as $race)
         <div class="race-event">
             <div class="evenement">
-                <img class="races" src="{{ $race->logo }}" alt="Event image">
+                <img class="races" src="{{ asset('/storage/cycling/logos/' . $race->logo) }}" alt="Event image">
                 <h2>{{ $race->name }}</h2>
                 <p>{{ $race->date }}</p>
                 <a class="info" href="./races/{{ $race->id }}">Meer info</a>
@@ -45,7 +45,7 @@
     @foreach ($upcoming_races as $race)
         <div class="race-event">
             <div class="evenement">
-                <img class="races" src="{{ $race->logo }}" alt="Event logo">
+                <img class="races" src="{{ asset('/storage/cycling/logos/' . $race->logo) }}" alt="Event logo">
                 <h2>{{ $race->name }}</h2>
                 <p>{{ $race->date }}</p>
                 <a class="info" href="./races/{{ $race->id }}">Meer info</a>
