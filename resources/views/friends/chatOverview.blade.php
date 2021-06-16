@@ -10,7 +10,7 @@
     <h2>Vrienden om mee te chatten</h2>
     @foreach($friendships as $friendship)
         @if($friendship['latest_chat'])
-            <a href="./friends/chat/{{ $friendship['other_user']->id }}">
+            <a href="/friends/chat/{{ $friendship['other_user']->id }}">
                 <img src="{{ $friendship['other_user']->profilepic }}" alt="">
                 <h2>{{ $friendship['other_user']->username }}</h2>
                 <p class="me">{{ $friendship['latest_chat']->content }}</p>
@@ -19,7 +19,7 @@
         @else
             <div>
                 <h3>{{ $friendship['other_user']->username }}</h3>
-                <a class="knop" href="./friends/chat/{{ $friendship['other_user']->id }}">Chat</a>
+                <a class="knop" href="/friends/chat/{{ $friendship['other_user']->id }}">Chat</a>
             </div>
         @endif
     @endforeach

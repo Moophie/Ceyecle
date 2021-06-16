@@ -40,7 +40,7 @@
         @endforeach
     </div>
 
-    <form class="chatbox" action="./chat" method="POST">
+    <form class="chatbox" action="/chat" method="POST">
         {{ csrf_field() }}
 
         <input type="text" value="{{ $room->id }}" name="room-id" hidden>
@@ -49,7 +49,7 @@
         <input class="knop" type="submit" value="Send message">
     </form>
 
-    <form action="./invite" method="POST">
+    <form action="/invite" method="POST">
         {{ csrf_field() }}
 
         <input type="text" value="{{ $room->id }}" name="room-id" hidden>
@@ -60,7 +60,7 @@
         <h2>Room Question</h2>
 
         @if ($question)
-            <form action="./answerQuestion" method="POST">
+            <form action="/answerQuestion" method="POST">
                 {{ csrf_field() }}
 
                 {{ $question->question }}
@@ -73,14 +73,14 @@
             </form>
         @endif
 
-        <form action="./raceQuestion" method="POST">
+        <form action="/raceQuestion" method="POST">
             {{ csrf_field() }}
 
             <input type="text" value="{{ $room->id }}" name="room-id" hidden>
             <input type="submit" value="Test Race Question">
         </form>
 
-        <form action="./riderQuestion" method="POST">
+        <form action="/riderQuestion" method="POST">
             {{ csrf_field() }}
 
             <input type="text" value="{{ $current_stage->id }}" name="stage-id" hidden>
