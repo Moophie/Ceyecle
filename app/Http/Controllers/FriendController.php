@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\HelperFunctions;
 use App\Models\User;
 use App\Models\UsersFriendship;
 use Illuminate\Support\Facades\Auth;
@@ -31,6 +32,11 @@ class FriendController extends Controller
         $currentUser = Auth::user();
         $user = User::find($user);
         $user->friends()->attach($currentUser->id, ['status' => 'pending']);
+
+        if ($user->device_key) {
+            $registration_ids = array($user->device_key);
+            HelperFunctions::sendNotification('New friendrequest', "You have a friend request from ".$currentUser->username, $registration_ids);
+        }
 
         return view('friends/search');
     }
