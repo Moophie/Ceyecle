@@ -60,6 +60,9 @@ class UpdateTop25 extends Command
             shuffle($top25_names);
             // Real version
             // $top25_names = ProCyclingStats::getLiveRanking($current_stage->pcs_url);
+            $last_top25 = unserialize($current_stage->top25);
+
+            $current_stage->last_leader = $last_top25[0];
             
             foreach ($top25_names as $name) {
                 $rider_name = explode(" ", strrev($name), 2);
