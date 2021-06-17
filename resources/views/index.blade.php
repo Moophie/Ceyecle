@@ -10,7 +10,7 @@
         <img class="logoklein" src="{{ asset('/images/LK-8.png') }}" alt="">
         <a href="/profile/"> <img class="profiel" src="{{ asset('/images/icons/Profiel_2-8.png') }}" alt=""></a>
         <div class="header">
-            <p>Nu bezig: Ethias Cross Eeklo 2021</p>
+            <p>Nu bezig: {{ $ongoing_races[0]->name }}</p>
         </div>
     </div>
 

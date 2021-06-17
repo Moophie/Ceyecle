@@ -21,11 +21,11 @@
         <p class="me">Leeftijd: {{ Auth::user()->age }}</p>
     </div>
 
-    <div class="kader">
-        <h2>Deelgenomen aan</h2>
-        <img src="https://via.placeholder.com/100" alt="Race picture">
-        <h2>WK Veldrijden 2021</h2>
-        <p class="me">30-31/01/2021</p>
+    <div class="kader" style="height: auto; padding-bottom: 20px">
+        <h2>Laatst gekeken naar</h2>
+        <img src="{{ asset('/storage/cycling/logos/' . $last_race->logo) }}" alt="Race picture" style="max-width: 50%">
+        <h2>{{ $last_race->name }}</h2>
+        <p class="me">{{$last_race->startdate}} tot {{$last_race->enddate}}</p>
         <a class="infoo" href="">Meer info</a>
     </div>
 
