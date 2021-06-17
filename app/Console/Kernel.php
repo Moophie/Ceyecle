@@ -26,6 +26,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('notification:question')->everyThirtyMinutes();
         $schedule->command('top25:update')->everyMinute();
+        $schedule->command('question:generate')->everyFiveMinutes();
     }
 
     /**
