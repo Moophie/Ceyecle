@@ -90,9 +90,9 @@
         </div>
     </div>
 
-
-    <button id="btndeco"><a id="btndecoa" href="login">{{ __('Log in') }}</a></button>
     <hr>
-    <img class="winnaar" src="{{ asset('/images/winnaar.jpg') }}" alt="">
+    <div class="login-hero">
+        <button id="btndeco"><a id="btndecoa" href="login">{{ __('Log in') }}</a></button>
+    </div>
 
 @endsection

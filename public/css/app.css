@@ -59,8 +59,8 @@ form {
   border-radius: 0px 25px 25px 0px;
   padding: 10px 30px;
   background-color: #D9E0E0;
-  position: absolute;
-  top: 75%;
+  position: relative;
+  top: 30px;
   left: 0px;
   border-left: 0px;
 }
@@ -70,8 +70,8 @@ form {
   border-radius: 0px 25px 25px 0px;
   padding: 10px 30px;
   background-color: #D9E0E0;
-  position: absolute;
-  top: 70%;
+  position: relative;
+  top: 30px;
   left: 0px;
   border-left: 0px;
 }
@@ -779,4 +779,13 @@ h4 {
 
 .room-detail-modals button {
   margin: 5Px;
+}
+
+.login-hero {
+  background-image: url("/images/winnaar.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 45vh;
+  width: 100%;
+  display: block;
 }
