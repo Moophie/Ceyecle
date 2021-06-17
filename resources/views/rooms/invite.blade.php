@@ -5,7 +5,7 @@
     @foreach ($friends as $friend)
         <a href="{{ url()->previous() }}"><img class="terug" src="{{ asset('/images/pijltje.png') }}" alt=""></a>
         <h1>{{ $friend->username }}</h1>
-        <form action="/inviteFriend" method="POST">
+        <form action="/rooms/inviteFriend" method="POST">
 
             {{ csrf_field() }}
 

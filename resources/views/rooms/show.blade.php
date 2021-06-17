@@ -41,7 +41,7 @@
         @endforeach
     </div>
 
-    <form class="chatbox" action="/chat" method="POST">
+    <form class="chatbox" action="/rooms/chat" method="POST">
         {{ csrf_field() }}
 
         <input type="text" value="{{ $room->id }}" name="room-id" hidden>
@@ -50,7 +50,7 @@
         <input class="knop" type="submit" value="Send message">
     </form>
 
-    <form action="/invite" method="POST">
+    <form action="/rooms/invite" method="POST">
         {{ csrf_field() }}
 
         <input type="text" value="{{ $room->id }}" name="room-id" hidden>
