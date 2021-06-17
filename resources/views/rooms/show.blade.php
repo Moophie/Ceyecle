@@ -61,7 +61,7 @@
         <h2>Room Question</h2>
 
         @if ($question)
-            <form action="/answerQuestion" method="POST">
+            <form action="/rooms/answerQuestion" method="POST">
                 {{ csrf_field() }}
 
                 {{ $question->question }}

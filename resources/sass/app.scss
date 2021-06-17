@@ -460,11 +460,20 @@ ul li {
 }
 
 #knopdrie {
-    margin-right: 180px;
     margin-top: 10px;
-    margin-bottom: 522px;
+    margin-bottom: 20px;
     width: 160px;
+}
 
+.search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px;
+
+    .chatbox {
+        margin: 0px;
+    }
 }
 
 .sparkel {
@@ -473,7 +482,6 @@ ul li {
     height: 170px;
     z-index: -1;
     margin-top: 30px;
-
 }
 
 .winnaar {

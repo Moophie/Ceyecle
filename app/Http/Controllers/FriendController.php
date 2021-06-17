@@ -35,7 +35,7 @@ class FriendController extends Controller
 
         if ($user->device_key) {
             $registration_ids = array($user->device_key);
-            HelperFunctions::sendNotification('New friendrequest', "You have a friend request from ".$currentUser->username, $registration_ids);
+            HelperFunctions::sendNotification('New friendrequest', "You have a friend request from " . $currentUser->username, $registration_ids);
         }
 
         return view('friends/search');

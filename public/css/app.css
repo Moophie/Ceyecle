@@ -442,10 +442,19 @@ ul li {
 }
 
 #knopdrie {
-  margin-right: 180px;
   margin-top: 10px;
-  margin-bottom: 522px;
+  margin-bottom: 20px;
   width: 160px;
+}
+
+.search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0px;
+}
+.search .chatbox {
+  margin: 0px;
 }
 
 .sparkel {

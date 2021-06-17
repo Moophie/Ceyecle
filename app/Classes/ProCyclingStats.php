@@ -142,8 +142,8 @@ class ProCyclingStats
 
         }
 
-        $stage_info['departure'] = $crawler->filter('.infolist li div:nth-of-type(2)')->eq(5)->text();
-        $stage_info['arrival'] = $crawler->filter('.infolist li div:nth-of-type(2)')->eq(6)->text();
+        $stage_info['departure'] = $crawler->filter('.infolist li div:nth-of-type(2)')->eq(8)->text();
+        $stage_info['arrival'] = $crawler->filter('.infolist li div:nth-of-type(2)')->eq(9)->text();
 
         $distance_string = $crawler->filter('.infolist li div:nth-of-type(2)')->eq(7)->text();
         $distance_string= explode(' ', $distance_string, 2);

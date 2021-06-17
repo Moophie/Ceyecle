@@ -66,6 +66,7 @@ class ChatController extends Controller
         if ($other_user->device_key) {
             $registration_ids = array($other_user->device_key);
             HelperFunctions::sendNotification('New message', $message->content, $registration_ids);
+            Log::info($registration_ids);
         }
         
         return redirect()->route('chat', ['friend' => $request->input('friend-id')]);
