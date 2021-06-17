@@ -83,8 +83,11 @@ class UserController extends Controller
 
     public function profile()
     {
+        $data = [];
         $last_room = User::find(Auth::id())->rooms()->latest()->first();
-        $data['last_race'] = Race::find($last_room->race_id);
+        if($last_room){
+            $data['last_race'] = Race::find($last_room->race_id);
+        }
         
         return view('profile/index', $data);
     }

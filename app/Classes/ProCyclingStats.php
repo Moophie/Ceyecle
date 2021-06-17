@@ -69,7 +69,7 @@ class ProCyclingStats
             Storage::put('/cycling/races/' . $name, $contents);
             $race_info['event_map_picture'] = $name;
         } catch (Exception $e) {
-            $race_info['event_map_picture'] = 'images/event_map_placeholder.png';
+            $race_info['event_map_picture'] = 'event_map_placeholder.png';
         }
 
         try {
@@ -81,7 +81,7 @@ class ProCyclingStats
             Storage::put('/cycling/logos/' . $name, $contents);
             $race_info['logo'] = $name;
         } catch (Exception $e) {
-            $race_info['logo'] = 'images/logo_placeholder.png';
+            $race_info['logo'] = 'logo_placeholder.png';
         }
         
 
@@ -239,7 +239,7 @@ class ProCyclingStats
             Storage::put('/cycling/cyclists/' . $name, $contents);
             $rider_info['picture'] = $name;
         } catch (Exception $e) {
-            $rider_info['picture'] = 'images/rider_placeholder.png';
+            $rider_info['picture'] = 'rider_placeholder.png';
         }
         
         $rider_info['nationality'] = $crawler->filter('.rdr-info-cont a:nth-of-type(1)')->text();

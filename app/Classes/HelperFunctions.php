@@ -62,5 +62,7 @@ class HelperFunctions
 
         // Close connection
         curl_close($ch);
+
+        dd($result);
     }
 }
