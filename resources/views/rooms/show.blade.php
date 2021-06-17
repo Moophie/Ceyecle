@@ -72,17 +72,6 @@
                         </div>
                     </form>
                 @endif
-                <form action="/rooms/raceQuestion" method="POST">
-                    {{ csrf_field() }}
-                    <input type="text" value="{{ $room->id }}" name="room-id" hidden>
-                    <input type="submit" value="Test Race Question">
-                </form>
-                <form action="/rooms/riderQuestion" method="POST">
-                    {{ csrf_field() }}
-                    <input type="text" value="{{ $current_stage->id }}" name="stage-id" hidden>
-                    <input type="text" value="{{ $room->id }}" name="room-id" hidden>
-                    <input type="submit" value="Test Rider Question">
-                </form>
             </div>
         @endif
         <div class="room-chat">

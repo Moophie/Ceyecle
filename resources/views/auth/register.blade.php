@@ -90,8 +90,8 @@
         </div>
     </div>
 
-    <hr>
     <div class="login-hero">
+        <hr>
         <button id="btndeco"><a id="btndecoa" href="login">{{ __('Log in') }}</a></button>
     </div>
 

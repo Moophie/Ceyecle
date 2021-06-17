@@ -30,7 +30,7 @@
                 <div class="podium">
                     <img class="profilepicie" src="{{ $friends[$i]['profilepic'] }}"
                         alt="{{ $friends[$i]['username'] }}">
-                    <p>{{ $friends[$i]['username'] }}</p>
+                    <h4>{{ $friends[$i]['username'] }}</h4>
                 </div>
             @endfor
         @endif

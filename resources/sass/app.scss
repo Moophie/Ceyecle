@@ -388,6 +388,12 @@ a {
     flex-direction: column;
     align-items: center;
     margin-bottom: 20px;
+
+    form {
+        margin: 0px;
+        display:flex;
+        flex-direction: column;
+    }
 }
 
 .titel {
@@ -616,6 +622,8 @@ h4 {
     a {
         margin: 0px 15px;
     }
+    
+    margin-bottom: 100px;
 }
 
 .chat-box {
@@ -835,4 +843,13 @@ h4 {
     height: 45vh;
     width: 100%;
     display:block;
+}
+
+
+.login-container {
+    display:flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    width: 100%;
 }
