@@ -73,7 +73,7 @@
         </div>
     </div>
 
-    <button id="btndecoo"><a id="btndecoa" href="register">{{ __('Aanmelden') }}</a></button>
+    <button id="btndecoo"><a id="btndecoa" href="register">{{ __('Registreer') }}</a></button>
     <hr>
     <img class="winnaar" src="{{ asset('/images/winnaar.jpg') }}" alt="">
 @endsection

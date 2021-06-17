@@ -49,9 +49,6 @@ Route::get('/profile', 'App\Http\Controllers\UserController@profile')->middlewar
 Route::get('/editProfile', 'App\Http\Controllers\UserController@editProfile')->middleware('auth');
 Route::post('/update', 'App\Http\Controllers\UserController@update')->middleware('auth');
 
-// Social
-Route::get('/social', 'App\Http\Controllers\SocialController@social')->middleware('auth');
-
 // Friends
 Route::get('/social', function () {
     return view('friends/index');

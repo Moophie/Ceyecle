@@ -57,12 +57,12 @@ form {
 #btndeco {
   border: 2px solid #3C7A84;
   border-radius: 0px 25px 25px 0px;
-  padding-top: 5px;
-  padding-bottom: 5px;
   padding: 10px 30px;
-  margin-top: 30px;
   background-color: #D9E0E0;
   position: absolute;
+  top: 75%;
+  left: 0px;
+  border-left: 0px;
 }
 
 #btndecoo {
@@ -96,11 +96,9 @@ button img {
 
 #btnn {
   border-radius: 50px;
-  margin-right: 170px;
-  position: absolute;
-  right: -75px;
-  top: 276px;
-  background-color: #D9E0E0;
+  position: relative;
+  left: 178px;
+  top: -90px;
 }
 
 hr {
