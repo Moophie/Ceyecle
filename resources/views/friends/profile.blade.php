@@ -13,7 +13,7 @@
     @endif
 
     <!-- TODO: conditional if already friends (verwijder button) or if pending request -->
-    <a class="vrienden" href="./add/{{ $id }}">Toevoegen</a>
+    <a class="vrienden" href="/add/{{ $id }}">Toevoegen</a>
     <!-- TODO: if received pending request => add accept request button -->
 
     <div class="knowme">

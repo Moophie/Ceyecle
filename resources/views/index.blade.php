@@ -8,13 +8,13 @@
 
     <div>
         <img class="logoklein" src="{{ asset('/images/LK-8.png') }}" alt="">
-        <a href="./profile/"> <img class="profiel" src="{{ asset('/images/icons/Profiel_2-8.png') }}" alt=""></a>
+        <a href="/profile/"> <img class="profiel" src="{{ asset('/images/icons/Profiel_2-8.png') }}" alt=""></a>
         <div class="header">
             <p>Nu bezig: @if(!empty($ongoing_races[0])){{ $ongoing_races[0]->name }} @else Sorry, momenteel niets. @endif</p>
         </div>
     </div>
 
-    <a class="kamer" href="./rooms">Mijn rooms</a>
+    <a class="kamer" href="/rooms">Mijn rooms</a>
     @if (count($rooms) > 0)<span
             style="position: absolute; z-index: 5; right: 0px;  font-size: 12px; background-color: #3C7A84; padding: 1px 5px; border-radius: 5px; color: white;">{{ count($rooms) }}</span>
     @endif
@@ -28,7 +28,7 @@
                 <h2>{{ $race->name }}</h2>
                 <div class="image-container"><img class="races" src="{{ asset('/storage/cycling/logos/' . $race->logo) }}" alt="Event image"></div>
                 <a class="info" href="/races/{{ $race->id }}">Meer info</a>
-                <form class="create" action="./rooms/create" method="POST">
+                <form class="create" action="/rooms/create" method="POST">
 
                     {{ csrf_field() }}
 
@@ -47,7 +47,7 @@
                 <h2>{{ $race->name }}</h2>
                 <div class="image-container"><img class="races" src="{{ asset('/storage/cycling/logos/' . $race->logo) }}" alt="Event logo"></div>
                 <a class="info" href="/races/{{ $race->id }}">Meer info</a>
-                <form class="createone" action="./rooms/create" method="POST">
+                <form class="createone" action="/rooms/create" method="POST">
 
                     {{ csrf_field() }}
 

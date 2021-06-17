@@ -14,7 +14,7 @@
         @endforeach
     </div>
 
-    <form action="./friends/chat" method="POST" class="chat-input">
+    <form action="/friends/chat" method="POST" class="chat-input">
         {{ csrf_field() }}
 
         <input type="text" value="{{ $friendship->id }}" name="friendship-id" hidden>
