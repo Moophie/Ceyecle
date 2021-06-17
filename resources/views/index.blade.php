@@ -10,7 +10,7 @@
         <img class="logoklein" src="{{ asset('/images/LK-8.png') }}" alt="">
         <a href="/profile/"> <img class="profiel" src="{{ asset('/images/icons/Profiel_2-8.png') }}" alt=""></a>
         <div class="header">
-            <p>Nu bezig: @if(!empty($ongoing_races[0])){{ $ongoing_races[0]->name }} @else Geen huidige evenement @endif</p>
+            <p>Nu bezig: @if(!empty($ongoing_races[0])){{ $ongoing_races[0]->name }} @else Sorry, momenteel niets. @endif</p>
         </div>
     </div>
 

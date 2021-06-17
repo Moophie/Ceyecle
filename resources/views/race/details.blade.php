@@ -4,7 +4,7 @@
 @endsection
 
 @section('content')
-    <a href=""><img class="terug" src="{{ asset('/images/pijltje.png') }}" alt=""></a>
+    <a href="{{ url()->previous() }}"><img class="terug" src="{{ asset('/images/pijltje.png') }}" alt=""></a>
     <h1>{{ $race->name }}</h1>
     <img class="race" src="{{ asset('/storage/cycling/races/' . $race->event_map_picture) }}" alt="Event image"
         height="150px">
