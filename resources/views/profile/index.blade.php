@@ -23,10 +23,14 @@
 
     <div class="kader" style="height: auto; padding-bottom: 20px">
         <h2>Laatst gekeken naar</h2>
+        @if(!empty($last_race))
         <img src="{{ asset('/storage/cycling/logos/' . $last_race->logo) }}" alt="Race picture" style="max-width: 50%">
         <h2>{{ $last_race->name }}</h2>
         <p class="me">{{$last_race->startdate}} tot {{$last_race->enddate}}</p>
         <a class="infoo" href="">Meer info</a>
+        @else 
+        <h2>Deze gebruiker heeft nog geen evenement meegemaakt.</h2>
+        @endif
     </div>
 
     @component('components/navbar')
