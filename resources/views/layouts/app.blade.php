@@ -14,7 +14,15 @@
 </head>
 
 <body>
-    <div class="container">
+    @php
+
+    $uri_fullpath = $_SERVER['REQUEST_URI'];
+    $uri_parts = explode('/', $uri_fullpath);
+    $nav_location = $uri_parts[1];
+    
+    @endphp
+
+    <div class="container" @if($nav_location == 'login' || $nav_location == 'register')style="margin-bottom: 0px;"@endif>
 
         @yield('content')
 

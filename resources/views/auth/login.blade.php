@@ -76,4 +76,5 @@
     <button id="btndecoo"><a id="btndecoa" href="register">{{ __('Registreer') }}</a></button>
     <hr class="lijn">
     <img class="winnaar" src="{{ asset('/images/winnaar.jpg') }}" alt="">
+    <hr>
 @endsection

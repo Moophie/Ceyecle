@@ -59,8 +59,8 @@ form {
   border-radius: 0px 25px 25px 0px;
   padding: 10px 30px;
   background-color: #D9E0E0;
-  position: absolute;
-  top: 75%;
+  position: relative;
+  top: 30px;
   left: 0px;
   border-left: 0px;
 }
@@ -788,8 +788,4 @@ h4 {
 
 .room-detail-modals button {
   margin: 5Px;
-}
-
-.winner {
-  background-image: url(/public/images/winnaar.png);
 }

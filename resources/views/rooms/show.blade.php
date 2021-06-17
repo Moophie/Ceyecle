@@ -72,7 +72,7 @@
                         </div>
                     </form>
                 @endif
-                {{-- <form action="./rooms/raceQuestion" method="POST">
+                <form action="/rooms/raceQuestion" method="POST">
                     {{ csrf_field() }}
                     <input type="text" value="{{ $room->id }}" name="room-id" hidden>
                     <input type="submit" value="Test Race Question">
@@ -82,7 +82,7 @@
                     <input type="text" value="{{ $current_stage->id }}" name="stage-id" hidden>
                     <input type="text" value="{{ $room->id }}" name="room-id" hidden>
                     <input type="submit" value="Test Rider Question">
-                </form> --}}
+                </form>
             </div>
         @endif
         <div class="room-chat">
