@@ -75,21 +75,21 @@
                             <div class="form-group row">
                                 <btn id="inlogbtn" class="col-md-6">
                                 <img class="loginlogo" src="{{ asset('/images/facebook.svg') }}" alt="">
-                                <a id="login" href="/register/facebook" class="btn btn-secondary">Login with Facebook</a>
+                                <a id="login" href="./register/facebook" class="btn btn-secondary">Login with Facebook</a>
                                 </btn>
                             </div>
                             <br>
                             <div class="form-group row">
                                 <btn id="inlogbtn" class="col-md-6">
                                 <img class="loginlogo" src="{{ asset('/images/google.png') }}" alt="">
-                                <a id="login" href="/register/google" class="btn btn-secondary">Login with Google</a>
+                                <a id="login" href="./register/google" class="btn btn-secondary">Login with Google</a>
                                 </btn>
                             </div>
                             <br>
                             <div class="form-group row">
                                 <btn id="inlogbtn" class="col-md-6">
                                 <img class="loginlogo" src="{{ asset('/images/twitter.png') }}" alt="">
-                                <a id="login" href="/register/twitter" class="btn btn-secondary">Login with Twitter</a>
+                                <a id="login" href="./register/twitter" class="btn btn-secondary">Login with Twitter</a>
                                 </btn>
                             </div>
                         </form>

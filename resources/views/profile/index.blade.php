@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<a href=""><img class="terug" src="{{ asset('/images/pijltje.png') }}" alt=""></a>
+<a href="{{ url()->previous() }}"><img class="terug" src="{{ asset('/images/pijltje.png') }}" alt=""></a>
     <h1>Mijn profiel</h1>
     @if (Auth::user()->profilepic)
         <img  class="profilepic"  src="{{ Auth::user()->profilepic }}" alt="Profile picture">
