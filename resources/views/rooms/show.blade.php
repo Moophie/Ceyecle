@@ -32,7 +32,7 @@
                 @foreach ($room->users as $user)
                     <p class="me">{{ $user->username }}</p>
                 @endforeach
-                <form action="/rooms/invite" method="POST">
+                <form action="./rooms/invite" method="POST">
                     {{ csrf_field() }}
                     <input type="text" value="{{ $room->id }}" name="room-id" hidden>
                     <input id="knop" class="knop" type="submit" value="Invite friends">
@@ -60,7 +60,7 @@
             <div class="room-question">
                 <h2>Room Question</h2>
                 @if ($question)
-                    <form action="/rooms/answerQuestion" method="POST">
+                    <form action="./rooms/answerQuestion" method="POST">
                         {{ csrf_field() }}
                         <input type="hidden" value="{{ $question->id }}" name="question-id" hidden>
                         <input type="hidden" value="{{ $room->id }}" name="room-id" hidden>
@@ -72,12 +72,12 @@
                         </div>
                     </form>
                 @endif
-                {{-- <form action="/rooms/raceQuestion" method="POST">
+                {{-- <form action="./rooms/raceQuestion" method="POST">
                     {{ csrf_field() }}
                     <input type="text" value="{{ $room->id }}" name="room-id" hidden>
                     <input type="submit" value="Test Race Question">
                 </form>
-                <form action="/rooms/riderQuestion" method="POST">
+                <form action="./rooms/riderQuestion" method="POST">
                     {{ csrf_field() }}
                     <input type="text" value="{{ $current_stage->id }}" name="stage-id" hidden>
                     <input type="text" value="{{ $room->id }}" name="room-id" hidden>

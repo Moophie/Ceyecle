@@ -71,7 +71,7 @@ form {
   padding: 10px 30px;
   background-color: #D9E0E0;
   position: absolute;
-  top: 70%;
+  top: 75%;
   left: 0px;
   border-left: 0px;
 }
@@ -90,21 +90,27 @@ button img {
 #btn {
   border-radius: 50px;
   position: relative;
-  left: 178px;
+  left: 158px;
   top: -52px;
 }
 
 #btnn {
   border-radius: 50px;
   position: relative;
-  left: 178px;
+  left: 158px;
   top: -90px;
 }
 
 hr {
   border: 10px solid #FF7F11;
-  width: 100%;
-  margin: 0;
+  width: 94.6%;
+  margin-top: 70px;
+}
+
+.lijn {
+  border: 10px solid #FF7F11;
+  width: 94.6%;
+  margin-top: 130px;
 }
 
 .logoklein {
@@ -463,6 +469,9 @@ ul li {
 
 .winnaar {
   width: 100vw;
+  position: absolute;
+  top: 531px;
+  z-index: -1;
 }
 
 .topdrie {
@@ -779,4 +788,8 @@ h4 {
 
 .room-detail-modals button {
   margin: 5Px;
+}
+
+.winner {
+  background-image: url(/public/images/winnaar.png);
 }

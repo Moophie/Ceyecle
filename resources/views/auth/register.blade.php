@@ -74,13 +74,13 @@
                         </div>
 
                         <div class="social-logins">
-                            <a href="/register/facebook"><img class="loginlogo" src="{{ asset('/images/facebook.svg') }}"
+                            <a href="./register/facebook"><img class="loginlogo" src="{{ asset('/images/facebook.svg') }}"
                                     alt=""></a>
 
-                            <a href="/register/google"><img class="loginlogo" src="{{ asset('/images/google.png') }}"
+                            <a href="./register/google"><img class="loginlogo" src="{{ asset('/images/google.png') }}"
                                     alt=""></a>
 
-                            <a href="/register/twitter"><img class="loginlogo" src="{{ asset('/images/twitter.png') }}"
+                            <a href="./register/twitter"><img class="loginlogo" src="{{ asset('/images/twitter.png') }}"
                                     alt=""></a>
                         </div>
                 </div>

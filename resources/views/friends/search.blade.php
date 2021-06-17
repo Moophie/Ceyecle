@@ -7,7 +7,7 @@
 @section('content')
     <a href="{{ url()->previous() }}"><img class="terug" src="{{ asset('/images/pijltje.png') }}" alt=""></a>
     <h1>Search</h1>
-    <form class="search" action="/search" method="GET" role="search">
+    <form class="search" action="./search" method="GET" role="search">
         <div class="form-group">
             <input class="chatbox" type="text" class="form-control" class="form-control mr-2" name="username"
                 placeholder="Search users" id="username">
@@ -24,8 +24,8 @@
                             style="max-width: 50px;">
                     @endif
                     <h2 class="card-title">{{ $user->username }}</h2>
-                    <a href="/add/{{ $user->id }}">Toevoegen</a>
-                    <a href="/user/{{ $user->id }}">Bekijk profiel</a>
+                    <a href="./add/{{ $user->id }}">Toevoegen</a>
+                    <a href="./user/{{ $user->id }}">Bekijk profiel</a>
                     <!-- @if ($user->age) <p>{{ $user->age }} jaar oud</p> @endif
                     @if ($user->intrests)
                         <p>Interesses: {{ $user->intrests }}</p>

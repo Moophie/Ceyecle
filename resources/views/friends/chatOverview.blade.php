@@ -11,7 +11,7 @@
     @foreach ($friendships as $friendship)
         @if ($friendship['latest_chat'])
             <div class="chat-box">
-                <a href="/friends/chat/{{ $friendship['other_user']->id }}">
+                <a href="./friends/chat/{{ $friendship['other_user']->id }}">
                     <div>
                         <h2>{{ $friendship['other_user']->username }}</h2>
                         <p>{{ $friendship['latest_chat']->content }}</p>
@@ -25,7 +25,7 @@
         @else
             <div>
                 <h3>{{ $friendship['other_user']->username }}</h3>
-                <a class="knop" href="/friends/chat/{{ $friendship['other_user']->id }}">Chat</a>
+                <a class="knop" href="./friends/chat/{{ $friendship['other_user']->id }}">Chat</a>
             </div>
         @endif
     @endforeach
